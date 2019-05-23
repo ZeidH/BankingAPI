@@ -22,6 +22,8 @@ public class Employee extends User  {
   @JsonProperty("employee_id")
   private BigDecimal employeeId = null;
 
+  public Employee(){
+  }
   public Employee employeeId(BigDecimal employeeId) {
     this.employeeId = employeeId;
     return this;
