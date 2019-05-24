@@ -1,13 +1,14 @@
 package io.swagger.service;
 
+import io.swagger.api.NotFoundException;
 import io.swagger.model.User;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Arrays;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -32,31 +33,34 @@ public class UserService {
     public void setSorting(boolean sorted){
         this.sorted = sorted;
     }
-    List<User> users = new ArrayList<>(
-            Arrays.asList(
-                    new User(5L,"Adolf"),
-                    new User( 6L, "Peter"),
-                    new User(12L, "Ulf")
-            )
-    );
-    public List<User> getUsers(){
-        if(sorted){
+    private List<User> users;
 
-        }
-        if(entries == 0){
-
-        }
-
-        return users;
+    public UserService() {
+        this.users = new ArrayList<>(
+                Arrays.asList(
+                        new User(5L,"Adolf"),
+                        new User( 6L, "Peter"),
+                        new User(12L, "Ulf")
+                )
+        );
     }
 
-    public ResponseEntity<User> getUser(int id){
+    public List<User> getUsers() {
+        if (sorted) {
+            users = users.stream().sorted().collect(Collectors.toList());
+        }
+        if (entries == 0) {
+            users = new ArrayList<>(users.subList(0, entries));
+        }
+        return users;
+    }
+    public User getUser(int id){
         for(User user : users){
             if(user.getId() == id){
-                return ResponseEntity.ok(user);
+                return user;
             }
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        throw new NoSuchElementException();
     }
 
 }
