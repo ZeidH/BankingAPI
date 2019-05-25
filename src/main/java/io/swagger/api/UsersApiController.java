@@ -25,7 +25,7 @@ import java.util.Locale;
 import static com.sun.activation.registries.LogSupport.log;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
-@Controller
+@RestController
 public class UsersApiController implements UsersApi {
 
     private static final Logger log = LoggerFactory.getLogger(UsersApiController.class);
@@ -47,22 +47,24 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<List<User>> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = false) Integer id, @ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false) Boolean sorted, @ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom, @ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo, @ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false) Integer entries) {
+    public ResponseEntity<List<User>> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = false) Integer id, @ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false, defaultValue = "false") Boolean sorted, @ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom, @ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo, @ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false, defaultValue = "0") Integer entries) {
         String accept = request.getHeader("Accept");
-        /*service.setSorting(sorted);
-        // Date from, date to, entries
+        service.setSorting(sorted);
         service.setEntries(entries);
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-        Date from = null;
-        Date to = null;
-        try {
-            from = format.parse(dateFrom);
-            to = format.parse(dateTo);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(dateFrom != null || dateTo != null){
+            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+            Date from = null;
+            Date to = null;
+            try {
+                from = format.parse(dateFrom);
+                to = format.parse(dateTo);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            service.setDateFrom(from);
+            service.setDateTo(to);
         }
-        service.setDateFrom(from);
-        service.setDateTo(to);*/
+
         List<User> user = service.getUsers();
         return new ResponseEntity<List<User>>(user, HttpStatus.OK);
     }

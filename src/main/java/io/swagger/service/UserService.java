@@ -17,6 +17,13 @@ public class UserService {
     private int entries;
     private Date dateFrom;
     private Date dateTo;
+    private List<User> users = new ArrayList<>(
+            Arrays.asList(
+                new User(5L,"Adolf"),
+                new User( 6L, "Peter"),
+                new User(12L, "Ulf")
+            ));
+
 
     public void setEntries(int entries) {
         this.entries = entries;
@@ -33,23 +40,17 @@ public class UserService {
     public void setSorting(boolean sorted){
         this.sorted = sorted;
     }
-    private List<User> users;
+
 
     public UserService() {
-        this.users = new ArrayList<>(
-                Arrays.asList(
-                        new User(5L,"Adolf"),
-                        new User( 6L, "Peter"),
-                        new User(12L, "Ulf")
-                )
-        );
+
     }
 
     public List<User> getUsers() {
         if (sorted) {
             users = users.stream().sorted().collect(Collectors.toList());
         }
-        if (entries == 0) {
+        if (entries > 0) {
             users = new ArrayList<>(users.subList(0, entries));
         }
         return users;
