@@ -17,6 +17,9 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 public class User   {
+  @JsonProperty("id")
+  private Long id = null;
+
   @JsonProperty("first_name")
   private String firstName = null;
 
@@ -45,11 +48,40 @@ public class User   {
   @Valid
   private List<String> accounts = new ArrayList<String>();
 
+public User(){}
+  public User(Long id, String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, List<String> accounts) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.phone = phone;
+    this.username = username;
+    this.password = password;
+    this.dateCreated = dateCreated;
+    this.birthday = birthday;
+    this.accounts = accounts;
+  }
+// Temporary
+  public User(Long id, String firstName) {
+    this.id = id;
+    this.firstName = firstName;
+  }
+
+  /**
+   * Get id
+   * @return id
+   **/
+  @ApiModelProperty(example = "124254", required = true, value = "")
+  @NotNull
+
+  public Long getId() {
+    return id;
+  }
+
   public User firstName(String firstName) {
     this.firstName = firstName;
     return this;
   }
-
   /**
    * Get firstName
    * @return firstName

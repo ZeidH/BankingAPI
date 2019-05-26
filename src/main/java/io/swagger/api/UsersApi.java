@@ -9,20 +9,16 @@ import io.swagger.model.InlineResponse200;
 import io.swagger.model.User;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-import java.util.Map;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Api(value = "Users", description = "the Users API")
 public interface UsersApi {
@@ -45,7 +41,7 @@ public interface UsersApi {
     @RequestMapping(value = "/Users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<User> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = false) Integer id,@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false) Boolean sorted,@ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom,@ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo,@ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false) Integer entries);
+    ResponseEntity<List<User>> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = false) Integer id,@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false) Boolean sorted,@ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom,@ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo,@ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false) Integer entries);
 
 
     @ApiOperation(value = "Registers user to the system", nickname = "registerUser", notes = "Registers user", response = InlineResponse200.class, authorizations = {
@@ -72,7 +68,7 @@ public interface UsersApi {
 
     @ApiOperation(value = "Logs user into the system", nickname = "usersLoginPost", notes = "Authorizes user creditentals", tags={ "User", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful login - Session started with a token that is shared with the user browser"),
+        @ApiResponse(code = 201, message = "successful login - Session started with a token that is shared with the user browser"),
         @ApiResponse(code = 401, message = "Invalid username/password supplied") })
     @RequestMapping(value = "/Users/Login",
         method = RequestMethod.POST)

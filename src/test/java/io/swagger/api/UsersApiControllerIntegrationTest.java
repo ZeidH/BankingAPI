@@ -36,7 +36,7 @@ public class UsersApiControllerIntegrationTest {
         String dateFrom = "dateFrom_example";
         String dateTo = "dateTo_example";
         Integer entries = 56;
-        ResponseEntity<User> responseEntity = api.getUser(id, sorted, dateFrom, dateTo, entries);
+        ResponseEntity<List<User>> responseEntity = api.getUser(id, sorted, dateFrom, dateTo, entries);
         assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
