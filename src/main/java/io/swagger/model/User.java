@@ -22,7 +22,6 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
-@NoArgsConstructor
 public class User   {
   @Id
   @SequenceGenerator(name = "userId_seq", initialValue = 10000001)
@@ -59,7 +58,7 @@ public class User   {
   @OneToMany
   private List<Account> accounts = new ArrayList<Account>();
 
-
+public User(){}
   public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, List<Account> accounts) {
     this.firstName = firstName;
     this.lastName = lastName;
