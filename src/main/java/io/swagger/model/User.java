@@ -7,7 +7,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -16,9 +21,14 @@ import javax.validation.constraints.*;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
+@Entity
+@NoArgsConstructor
 public class User   {
+  @Id
+  @SequenceGenerator(name = "userId_seq", initialValue = 10000001)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userId_seq")
   @JsonProperty("id")
-  private Long id = null;
+  private Long id;
 
   @JsonProperty("first_name")
   private String firstName = null;
@@ -46,11 +56,11 @@ public class User   {
 
   @JsonProperty("accounts")
   @Valid
-  private List<String> accounts = new ArrayList<String>();
+  @OneToMany
+  private List<Account> accounts = new ArrayList<Account>();
 
-public User(){}
-  public User(Long id, String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, List<String> accounts) {
-    this.id = id;
+
+  public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, List<Account> accounts) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -63,6 +73,7 @@ public User(){}
   }
 // Temporary
   public User(Long id, String firstName) {
+    this.id = null;
     this.id = id;
     this.firstName = firstName;
   }
@@ -237,12 +248,12 @@ public User(){}
     this.birthday = birthday;
   }
 
-  public User accounts(List<String> accounts) {
+  public User accounts(List<Account> accounts) {
     this.accounts = accounts;
     return this;
   }
 
-  public User addAccountsItem(String accountsItem) {
+  public User addAccountsItem(Account accountsItem) {
     this.accounts.add(accountsItem);
     return this;
   }
@@ -254,11 +265,11 @@ public User(){}
   @ApiModelProperty(required = true, value = "Array of account id's(IBAN)")
   @NotNull
 
-  public List<String> getAccounts() {
+  public List<Account> getAccounts() {
     return accounts;
   }
 
-  public void setAccounts(List<String> accounts) {
+  public void setAccounts(List<Account> accounts) {
     this.accounts = accounts;
   }
 

@@ -30,7 +30,7 @@ public interface UsersApi {
         @ApiResponse(code = 403, message = "Forbidden") })
     @RequestMapping(value = "/Users",
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteUser(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Integer id);
+    ResponseEntity<Void> deleteUser(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Long id);
 
 
     @ApiOperation(value = "Retreives user data", nickname = "getUser", notes = "", response = User.class, authorizations = {
@@ -41,7 +41,7 @@ public interface UsersApi {
     @RequestMapping(value = "/Users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<User>> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = false) Integer id,@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false) Boolean sorted,@ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom,@ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo,@ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false) Integer entries);
+    Iterable<User> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = false) Integer id,@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false) Boolean sorted,@ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom,@ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo,@ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false) Integer entries);
 
 
     @ApiOperation(value = "Registers user to the system", nickname = "registerUser", notes = "Registers user", response = InlineResponse200.class, authorizations = {
