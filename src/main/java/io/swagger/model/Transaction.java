@@ -7,7 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -16,7 +21,15 @@ import javax.validation.constraints.*;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
+@Entity
+@NoArgsConstructor
 public class Transaction   {
+  @Id
+  @SequenceGenerator(name = "transId_seq", initialValue = 10000001)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transId_seq")
+  @JsonProperty("id")
+  private Long id = null;
+
   @JsonProperty("amount")
   private BigDecimal amount = null;
 
@@ -25,6 +38,17 @@ public class Transaction   {
 
   @JsonProperty("creator")
   private String creator = null;
+
+  public Transaction(BigDecimal amount, String currency, String creator, CategoryEnum category, String sender, String receiver, String dateCreated, StatusEnum status) {
+    this.amount = amount;
+    this.currency = currency;
+    this.creator = creator;
+    this.category = category;
+    this.sender = sender;
+    this.receiver = receiver;
+    this.dateCreated = dateCreated;
+    this.status = status;
+  }
 
   /**
    * Experimental - Default is Other

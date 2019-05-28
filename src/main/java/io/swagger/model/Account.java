@@ -9,6 +9,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -17,8 +21,10 @@ import javax.validation.constraints.*;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
+@Entity
 public class Account   {
   @JsonProperty("id")
+  @Id
   private Integer id = null;
 
   @JsonProperty("accountNumber")
@@ -32,7 +38,8 @@ public class Account   {
 
   @JsonProperty("transactions")
   @Valid
-  private List<Integer> transactions = null;
+  @OneToMany
+  private List<Transaction> transactions = null;
 
   public Account id(Integer id) {
     this.id = id;
@@ -115,14 +122,14 @@ public class Account   {
     this.name = name;
   }
 
-  public Account transactions(List<Integer> transactions) {
+  public Account transactions(List<Transaction> transactions) {
     this.transactions = transactions;
     return this;
   }
 
-  public Account addTransactionsItem(Integer transactionsItem) {
+  public Account addTransactionsItem(Transaction transactionsItem) {
     if (this.transactions == null) {
-      this.transactions = new ArrayList<Integer>();
+      this.transactions = new ArrayList<Transaction>();
     }
     this.transactions.add(transactionsItem);
     return this;
@@ -134,11 +141,11 @@ public class Account   {
   **/
   @ApiModelProperty(value = "Array of transactions ids")
 
-  public List<Integer> getTransactions() {
+  public List<Transaction> getTransactions() {
     return transactions;
   }
 
-  public void setTransactions(List<Integer> transactions) {
+  public void setTransactions(List<Transaction> transactions) {
     this.transactions = transactions;
   }
 
