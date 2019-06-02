@@ -39,7 +39,7 @@ public class Account   {
   @JsonProperty("transactions")
   @Valid
   @OneToMany
-  private List<Transaction> transactions = null;
+  private List<Transaction> transactions = new ArrayList<Transaction>();
 
   public Account id(Integer id) {
     this.id = id;
@@ -52,7 +52,6 @@ public class Account   {
   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   public Integer getId() {
     return id;
   }

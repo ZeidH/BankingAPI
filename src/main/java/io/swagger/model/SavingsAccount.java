@@ -32,7 +32,6 @@ public class SavingsAccount extends Account  {
   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   @Valid
   public BigDecimal getInterestRate() {
     return interestRate;
