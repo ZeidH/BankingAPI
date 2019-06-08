@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import java.util.Collection;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -8,13 +9,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * User
@@ -22,7 +29,10 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
-public class User   {
+@Data
+@Builder
+@NoArgsConstructor
+public class User implements UserDetails {
   @Id
   @SequenceGenerator(name = "userId_seq", initialValue = 10000001)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userId_seq")
@@ -183,6 +193,26 @@ public User(){}
     return username;
   }
 
+  @Override
+  public boolean isAccountNonExpired() {
+    return false;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return false;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return false;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return false;
+  }
+
   public void setUsername(String username) {
     this.username = username;
   }
@@ -190,6 +220,15 @@ public User(){}
   public User password(String password) {
     this.password = password;
     return this;
+  }
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  @Builder.Default
+  private List<String> roles = new ArrayList<>();
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
   }
 
   /**

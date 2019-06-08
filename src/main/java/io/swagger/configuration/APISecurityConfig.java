@@ -1,51 +1,47 @@
 package io.swagger.configuration;
 
-import io.swagger.filter.ApiKeyAuthFilter;
-import io.swagger.repository.ApiKeyRepository;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.beans.factory.annotation.Value;
+
+import io.swagger.security.JwtConfigurer;
+import io.swagger.security.JwtTokenProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-
 
 @Configuration
 @EnableWebSecurity
-@Order(2)
 public class APISecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private ApiKeyRepository apiKeyRepository;
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
 
-    public  APISecurityConfig(ApiKeyRepository apiKeyRepository) {
-        this.apiKeyRepository = apiKeyRepository;
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
-
-    @Value("X-AUTHTOKEN")
-    private String headerName;
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        ApiKeyAuthFilter filter = new ApiKeyAuthFilter(headerName);
-        filter.setAuthenticationManager(authentication -> {
-            String principal = (String) authentication.getPrincipal();
-
-            if (!apiKeyRepository.exists(principal)) {
-                throw new BadCredentialsException("API Key was not found on the system");
-            }
-            authentication.setAuthenticated(true);
-            return authentication;
-        });
-
-        httpSecurity
-                .antMatcher("/guitars/**")
-                .csrf().disable()   // disable X-site request forgery
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // If Stateless every requests needs authentication
+    protected void configure(HttpSecurity http) throws Exception {
+        //@formatter:off
+        http
+                .httpBasic().disable()
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(filter).authorizeRequests() // authorize all requests that has a correct header value
-                .anyRequest().authenticated();  // all requests are authenticated
+                .authorizeRequests()
+                .antMatchers("/auth/signin").permitAll()
+                .antMatchers(HttpMethod.GET, "/vehicles/**").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/vehicles/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/v1/vehicles/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .apply(new JwtConfigurer(jwtTokenProvider));
+        //@formatter:on
     }
-
 }

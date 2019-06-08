@@ -1,20 +1,21 @@
 package io.swagger.service;
 
-import io.swagger.api.NotFoundException;
 import io.swagger.model.User;
 import io.swagger.repository.UserRepository;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
+import io.swagger.security.JwtTokenProvider;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
 
     private final UserRepository repo;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final AuthenticationManager authenticationManager;
     private boolean sorted;
     private int entries;
     private Date dateFrom;
@@ -44,8 +45,10 @@ public class UserService {
     }
 
 
-    public UserService(UserRepository repo) {
+    public UserService(UserRepository repo, JwtTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
         this.repo = repo;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.authenticationManager = authenticationManager;
     }
 
     public void deleteUser(Long id){
@@ -72,6 +75,13 @@ public class UserService {
         else{
             throw new NoSuchElementException();
         }
+    }
+
+    public String auth(String username, String password){
+
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        return jwtTokenProvider.createToken(username, repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles);
+
     }
 
 }
