@@ -30,9 +30,8 @@ import static java.util.stream.Collectors.toList;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
 @Data
-@Builder
-@NoArgsConstructor
 public class User implements UserDetails {
+  //region Declarations & Constructors
   @Id
   @SequenceGenerator(name = "userId_seq", initialValue = 10000001)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userId_seq")
@@ -86,11 +85,14 @@ public User(){}
     this.id = id;
     this.firstName = firstName;
   }
+  //endregion
 
+  //region Generated Annotations and Getters/Setters
   /**
    * Get id
    * @return id
    **/
+
   @ApiModelProperty(example = "124254", required = true, value = "")
   @NotNull
 
@@ -102,6 +104,7 @@ public User(){}
     this.firstName = firstName;
     return this;
   }
+
   /**
    * Get firstName
    * @return firstName
@@ -177,64 +180,27 @@ public User(){}
     this.phone = phone;
   }
 
-  public User username(String username) {
-    this.username = username;
-    return this;
-  }
-
   /**
    * Get username
    * @return username
   **/
   @ApiModelProperty(example = "John-Doe", required = true, value = "")
   @NotNull
-
-  public String getUsername() {
-    return username;
+  public User username(String username) {
+    this.username = username;
+    return this;
   }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return false;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return false;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return false;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return false;
-  }
-
   public void setUsername(String username) {
     this.username = username;
   }
-
-  public User password(String password) {
-    this.password = password;
-    return this;
-  }
-
-  @ElementCollection(fetch = FetchType.EAGER)
-  @Builder.Default
-  private List<String> roles = new ArrayList<>();
-
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
+  public String getUsername() {
+    return username;
   }
 
   /**
    * Get password
    * @return password
-  **/
+   **/
   @ApiModelProperty(example = "welkom21", required = true, value = "")
   @NotNull
 
@@ -245,18 +211,22 @@ public User(){}
   public void setPassword(String password) {
     this.password = password;
   }
-
-  public User dateCreated(String dateCreated) {
-    this.dateCreated = dateCreated;
+  public User password(String password) {
+    this.password = password;
     return this;
   }
 
   /**
    * Get dateCreated
    * @return dateCreated
-  **/
+   **/
   @ApiModelProperty(example = "12-05-2019 22:24:10", required = true, value = "")
   @NotNull
+
+  public User dateCreated(String dateCreated) {
+    this.dateCreated = dateCreated;
+    return this;
+  }
 
   public String getDateCreated() {
     return dateCreated;
@@ -274,7 +244,7 @@ public User(){}
   /**
    * Get birthday
    * @return birthday
-  **/
+   **/
   @ApiModelProperty(example = "27-11-1998", required = true, value = "")
   @NotNull
 
@@ -299,7 +269,7 @@ public User(){}
   /**
    * Array of account id's(IBAN)
    * @return accounts
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Array of account id's(IBAN)")
   @NotNull
 
@@ -322,14 +292,14 @@ public User(){}
     }
     User user = (User) o;
     return Objects.equals(this.firstName, user.firstName) &&
-        Objects.equals(this.lastName, user.lastName) &&
-        Objects.equals(this.email, user.email) &&
-        Objects.equals(this.phone, user.phone) &&
-        Objects.equals(this.username, user.username) &&
-        Objects.equals(this.password, user.password) &&
-        Objects.equals(this.dateCreated, user.dateCreated) &&
-        Objects.equals(this.birthday, user.birthday) &&
-        Objects.equals(this.accounts, user.accounts);
+            Objects.equals(this.lastName, user.lastName) &&
+            Objects.equals(this.email, user.email) &&
+            Objects.equals(this.phone, user.phone) &&
+            Objects.equals(this.username, user.username) &&
+            Objects.equals(this.password, user.password) &&
+            Objects.equals(this.dateCreated, user.dateCreated) &&
+            Objects.equals(this.birthday, user.birthday) &&
+            Objects.equals(this.accounts, user.accounts);
   }
 
   @Override
@@ -341,7 +311,7 @@ public User(){}
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
-    
+
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
@@ -364,5 +334,44 @@ public User(){}
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+  //endregion
+
+  //region Implemented UserDetails
+  @Override
+  public boolean isAccountNonExpired() {
+    return false;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return false;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return false;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return false;
+  }
+
+  //endregion
+
+
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  @Builder.Default
+  private List<String> roles = new ArrayList<>();
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
+  }
+
+  public List<String> getRoles() {
+    return roles;
   }
 }
