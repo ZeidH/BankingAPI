@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -27,19 +25,41 @@ public class Account   {
   @Id
   private Integer id = null;
 
-  @JsonProperty("accountNumber")
-  private String accountNumber = null;
-
   @JsonProperty("balance")
   private BigDecimal balance = null;
 
   @JsonProperty("name")
   private String name = null;
 
+  @Valid
+  @OneToOne(cascade = {CascadeType.ALL})
+  @JsonProperty("iban")
+  private Iban iban = null;
+
+  public Account iban(Iban iban) {
+    this.iban = iban;
+    return this;
+  }
+
+  /**
+   * Get iban
+   * @return iban
+   **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+  public Iban getIban() {
+    return iban;
+  }
+
+  public void setIban(Iban iban) {
+    this.iban = iban;
+  }
+
   @JsonProperty("transactions")
   @Valid
   @OneToMany
-  private List<Transaction> transactions = null;
+  private List<Transaction> transactions = new ArrayList<Transaction>();
 
   public Account id(Integer id) {
     this.id = id;
@@ -52,7 +72,6 @@ public class Account   {
   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   public Integer getId() {
     return id;
   }
@@ -61,10 +80,6 @@ public class Account   {
     this.id = id;
   }
 
-  public Account accountNumber(String accountNumber) {
-    this.accountNumber = accountNumber;
-    return this;
-  }
 
   /**
    * Get accountNumber
@@ -73,13 +88,6 @@ public class Account   {
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
-  public String getAccountNumber() {
-    return accountNumber;
-  }
-
-  public void setAccountNumber(String accountNumber) {
-    this.accountNumber = accountNumber;
-  }
 
   public Account balance(BigDecimal balance) {
     this.balance = balance;
@@ -160,7 +168,7 @@ public class Account   {
     }
     Account account = (Account) o;
     return Objects.equals(this.id, account.id) &&
-        Objects.equals(this.accountNumber, account.accountNumber) &&
+        Objects.equals(this.iban, account.iban) &&
         Objects.equals(this.balance, account.balance) &&
         Objects.equals(this.name, account.name) &&
         Objects.equals(this.transactions, account.transactions);
@@ -168,16 +176,16 @@ public class Account   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountNumber, balance, name, transactions);
+    return Objects.hash(id, iban, balance, name, transactions);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Account {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    accountNumber: ").append(toIndentedString(accountNumber)).append("\n");
+    sb.append("    accountNumber: ").append(toIndentedString(iban)).append("\n");
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
