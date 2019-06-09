@@ -60,7 +60,7 @@ public class UsersApiControllerIntegrationTest {
     public void usersLoginPostTest() throws Exception {
         String username = "username_example";
         String password = "password_example";
-        ResponseEntity<Void> responseEntity = api.usersLoginPost(username, password);
+        ResponseEntity<Map<Object,Object>> responseEntity = api.usersLoginPost(username, password);
         assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 

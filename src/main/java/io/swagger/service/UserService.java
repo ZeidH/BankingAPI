@@ -1,30 +1,26 @@
 package io.swagger.service;
 
-import io.swagger.api.NotFoundException;
+import io.swagger.model.Account;
 import io.swagger.model.User;
 import io.swagger.repository.UserRepository;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
+import io.swagger.security.JwtTokenProvider;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
 
     private final UserRepository repo;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final AuthenticationManager authenticationManager;
     private boolean sorted;
     private int entries;
     private Date dateFrom;
     private Date dateTo;
-    private List<User> users = new ArrayList<>(
-            Arrays.asList(
-                new User(5L,"Adolf"),
-                new User( 6L, "Peter"),
-                new User(12L, "Ulf")
-            ));
 
 
     public void setEntries(int entries) {
@@ -44,8 +40,10 @@ public class UserService {
     }
 
 
-    public UserService(UserRepository repo) {
+    public UserService(UserRepository repo, JwtTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
         this.repo = repo;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.authenticationManager = authenticationManager;
     }
 
     public void deleteUser(Long id){
@@ -55,6 +53,7 @@ public class UserService {
         repo.save(user);
     }
     public Iterable<User> getUsers() {
+        repo.save(new User("potato", "fried","potato@hotmail.com", "1234566", "bill", "1234", "9-6-2019", "8-6-2019", null));
         return repo.findAll();
 //        if (sorted) {
 //            users = users.stream().sorted().collect(Collectors.toList());
@@ -72,6 +71,13 @@ public class UserService {
         else{
             throw new NoSuchElementException();
         }
+    }
+
+    public String auth(String username, String password){
+
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        return jwtTokenProvider.createToken(username, repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles());
+
     }
 
 }

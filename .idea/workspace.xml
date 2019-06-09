@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15f0a1c2-cc41-4e29-8301-9f8d1173dd6a" name="Default Changelist" comment="" />
+    <list default="true" id="15f0a1c2-cc41-4e29-8301-9f8d1173dd6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/AuthenticatedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/configuration/APISecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/configuration/APISecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/filter/ExceptionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/filter/ExceptionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/filter/LargeRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/filter/LargeRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/swagger/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/swagger/service/UserService.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,10 +25,95 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/service/UserService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="119">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="375" column="3" lean-forward="true" selection-start-line="375" selection-start-column="3" selection-end-line="375" selection-end-column="3" />
+              <folding>
+                <element signature="e#1033#1069#0" />
+                <element signature="e#1873#1882#0" expanded="true" />
+                <element signature="e#2594#2644#0" />
+                <element signature="e#6136#6137#0" expanded="true" />
+                <element signature="e#6161#6162#0" expanded="true" />
+                <element signature="e#6214#6215#0" expanded="true" />
+                <element signature="e#6248#6249#0" expanded="true" />
+                <element signature="e#8393#8425#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/APISecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-260">
+              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/filter/ExceptionFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="27" column="51" lean-forward="true" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/CustomInstantDeserializer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/HomeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/JacksonConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/filter/JwtTokenFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="37" column="75" lean-forward="true" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -28,73 +122,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="64" column="38" lean-forward="true" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/Employee.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/ApiResponseMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/AccountsApiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/io/swagger/api/AccountsApiControllerIntegrationTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.13.RELEASE/spring-beans-4.3.13.RELEASE.jar!/org/springframework/beans/BeanUtils.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.13.RELEASE/spring-beans-4.3.13.RELEASE.jar!/org/springframework/beans/factory/support/ConstructorResolver.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2737">
-              <caret line="205" selection-start-line="205" selection-end-line="205" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.13.RELEASE/spring-beans-4.3.13.RELEASE.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11067">
-              <caret line="731" selection-start-line="731" selection-end-line="731" />
+            <state relative-caret-position="510">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -104,10 +135,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ø</find>
+      <find>accounts</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -116,26 +153,40 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/compiler.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/model/Employee.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/Swagger2SpringBoot.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/repository/ApiKeyRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/filter/ApiKeyAuthFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/configuration/APISecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/repository/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/swagger/model/ApiKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/swagger/model/Account.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApi.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/swagger/repository/TransactionRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/swagger/model/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/swagger/service/TransactionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApi.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/swagger/api/TransactionsApiControllerIntegrationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/model/Employee.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/filter/ApiKeyAuthFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/repository/JWTSecurityContextRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/repository/ApiKeyRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/JwtCookieRequestCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/security/JwtTokenProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/security/JwtConfigurer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/security/InvalidJwtAuthenticationException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/repository/UserRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/service/TransactionService.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/swagger/api/UsersApiControllerIntegrationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/security/CustomUserDetailsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/Swagger2SpringBoot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/security/Handler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/security/JwtTokenFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/filter/Filter.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/filter/JwtTokenFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/filter/LargeRequestFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/api/AuthenticatedController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/configuration/APISecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/swagger/filter/ExceptionFilter.java" />
       </list>
     </option>
   </component>
@@ -147,10 +198,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="120" />
-    <option name="y" value="-19" />
-    <option name="width" value="1750" />
-    <option name="height" value="885" />
+    <option name="x" value="947" />
+    <option name="y" value="-12" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
@@ -158,6 +209,169 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="api" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="configuration" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="filter" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="repository" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="security" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="service" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="api" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,62 +490,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="BankingAPI" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="swagger-spring" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="io" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="swagger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -381,7 +539,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="330b85d4-9382-493f-a58b-46b83c7d83d0" name="Default Changelist" comment="" />
+      <changelist id="15f0a1c2-cc41-4e29-8301-9f8d1173dd6a" name="Default Changelist" comment="" />
       <created>1558626039273</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -390,6 +548,12 @@
       <workItem from="1558679498368" duration="17381000" />
       <workItem from="1559038679574" duration="9937000" />
       <workItem from="1559078661845" duration="616000" />
+      <workItem from="1559079814658" duration="696000" />
+      <workItem from="1559121848134" duration="732000" />
+      <workItem from="1559129352958" duration="1343000" />
+      <workItem from="1559723813047" duration="5389000" />
+      <workItem from="1559994870830" duration="12925000" />
+      <workItem from="1560025580359" duration="22842000" />
     </task>
     <task id="LOCAL-00001" summary="changed server to 8080&#10;added service package">
       <created>1558626596722</created>
@@ -419,17 +583,45 @@
       <option name="project" value="LOCAL" />
       <updated>1559079176373</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="merge fix">
+      <created>1559079963413</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1559079963413</updated>
+    </task>
+    <task id="LOCAL-00006" summary="certificate applied, new port -&gt; 8443&#10;Filter created but not working">
+      <created>1559771896762</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1559771896763</updated>
+    </task>
+    <task id="LOCAL-00007" summary="authentication applied, authorization working">
+      <created>1560025531825</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1560025531825</updated>
+    </task>
+    <task id="LOCAL-00008" summary="bug fix">
+      <created>1560035401690</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1560035401690</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42854000" />
+    <option name="totallyTimeSpent" value="86781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23154363" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26040268" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -440,19 +632,19 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49463087" weight="0.3286119" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44192636" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49463087" weight="0.31444758" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.38101983" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.16572239" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3286119" />
       <window_info active="true" anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49932885" visible="true" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -466,6 +658,44 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Bean Validation" order="10" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26040268" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Learn" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49463087" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.44192636" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.16572239" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49932885" visible="true" weight="0.3286119" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Remote Host" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -476,22 +706,34 @@
     <MESSAGE value="service does not remember its values..." />
     <MESSAGE value="Working User and Transaction repositories added" />
     <MESSAGE value="Working User and Transaction repositories added. new User() &amp; new Transaction() displays error though" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working User and Transaction repositories added. new User() &amp; new Transaction() displays error though" />
+    <MESSAGE value="merge fix" />
+    <MESSAGE value="certificate applied, new port -&gt; 8443&#10;Filter created but not working" />
+    <MESSAGE value="authentication applied, authorization working" />
+    <MESSAGE value="bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/swagger/model/User.java</url>
+          <line>344</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="response" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/jre/lib/rt.jar!/sun/nio/ch/ServerSocketAdaptor.class" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/jre/lib/rt.jar!/sun/reflect/NativeConstructorAccessorImpl.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/AccountsApi.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="44" column="43" lean-forward="true" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/ApiOriginFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="170">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -502,124 +744,331 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/http/ResponseEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.13.RELEASE/spring-beans-4.3.13.RELEASE.jar!/org/springframework/beans/factory/support/SimpleInstantiationStrategy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.13.RELEASE/spring-beans-4.3.13.RELEASE.jar!/org/springframework/beans/factory/support/ConstructorResolver.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="205" selection-start-line="205" selection-end-line="205" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.13.RELEASE/spring-beans-4.3.13.RELEASE.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11067">
-          <caret line="731" selection-start-line="731" selection-end-line="731" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/text/SimpleDateFormat.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/io/swagger/api/AccountsApiControllerIntegrationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.13.RELEASE/spring-beans-4.3.13.RELEASE.jar!/org/springframework/beans/BeanUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/ApiResponseMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/AccountsApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
+        <state relative-caret-position="169">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/Comparators.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/filter/ApiKeyAuthFilter.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE.jar!/org/springframework/security/core/context/SecurityContextImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        <state relative-caret-position="-272">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="e#1211#1212#0" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/Boss.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/InlineResponse200.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="72" column="9" lean-forward="true" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/service/TransactionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+        <state relative-caret-position="510">
+          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/RFC3339DateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/filter/HttpPutFormContentFilter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/deployment.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/filter/HiddenHttpMethodFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/filter/CharacterEncodingFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardWrapperValve.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardContextValve.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/authenticator/AuthenticatorBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="317" selection-start-line="317" selection-end-line="317" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.swagger-codegen/VERSION">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardHostValve.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/valves/ErrorReportValve.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardEngineValve.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/connector/CoyoteAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="412" selection-start-line="412" selection-end-line="412" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/coyote/http11/Http11Processor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="492" selection-start-line="492" selection-end-line="492" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/coyote/AbstractProcessorLight.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/coyote/AbstractProtocol.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="839" selection-start-line="839" selection-end-line="839" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/tomcat/util/net/NioEndpoint.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="384" selection-start-line="384" selection-end-line="384" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/tomcat/util/net/SocketProcessorBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/repository/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/ApiOriginFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/NotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/security/JwtTokenProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="52" column="44" lean-forward="true" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.3.RELEASE/spring-security-web-4.2.3.RELEASE.jar!/org/springframework/security/web/authentication/logout/LogoutFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.3.RELEASE/spring-security-web-4.2.3.RELEASE.jar!/org/springframework/security/web/header/HeaderWriterFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.3.RELEASE/spring-security-web-4.2.3.RELEASE.jar!/org/springframework/security/web/context/SecurityContextPersistenceFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.3.RELEASE/spring-security-web-4.2.3.RELEASE.jar!/org/springframework/security/web/context/request/async/WebAsyncManagerIntegrationFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/filter/OncePerRequestFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/filter/DelegatingFilterProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/filter/RequestContextFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/filter/LargeRequestFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.3.RELEASE/spring-security-web-4.2.3.RELEASE.jar!/org/springframework/security/web/FilterChainProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/AuthenticatedController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="375" column="3" lean-forward="true" selection-start-line="375" selection-start-column="3" selection-end-line="375" selection-end-column="3" />
+          <folding>
+            <element signature="e#1033#1069#0" />
+            <element signature="e#1873#1882#0" expanded="true" />
+            <element signature="e#2594#2644#0" />
+            <element signature="e#6136#6137#0" expanded="true" />
+            <element signature="e#6161#6162#0" expanded="true" />
+            <element signature="e#6214#6215#0" expanded="true" />
+            <element signature="e#6248#6249#0" expanded="true" />
+            <element signature="e#8393#8425#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/CustomInstantDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        <state relative-caret-position="510">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/JacksonConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -630,193 +1079,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/JacksonConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.3.RELEASE/spring-security-config-4.2.3.RELEASE.jar!/org/springframework/security/config/DebugBeanDefinitionParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.3.RELEASE/spring-security-config-4.2.3.RELEASE.jar!/org/springframework/security/config/websocket/WebSocketMessageBrokerSecurityBeanDefinitionParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867">
-          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/CustomInstantDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/javax/servlet/http/HttpServletRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="83" column="44" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/Swagger2SpringBoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/ApiKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
-            <element signature="e#292#293#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/configuration/APISecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="-260">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/repository/ApiKeyRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/filter/JwtTokenFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="74" lean-forward="true" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+        <state relative-caret-position="205">
+          <caret line="37" column="75" lean-forward="true" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/Account.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/filter/ExceptionFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="64" column="38" lean-forward="true" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/repository/TransactionRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/service/TransactionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="50" column="47" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="59" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/UsersApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/api/TransactionsApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/io/swagger/api/UsersApiControllerIntegrationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/io/swagger/api/TransactionsApiControllerIntegrationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/swagger/model/Employee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="289">
+          <caret line="27" column="51" lean-forward="true" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
         </state>
       </provider>
     </entry>

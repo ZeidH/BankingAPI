@@ -9,6 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import static com.sun.activation.registries.LogSupport.log;
 
@@ -81,9 +83,18 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> usersLoginPost(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username,@NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password) {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<Map<Object,Object>> usersLoginPost(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username,@NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password) {
+        try {
+            String token = service.auth(username, password);
+            Map<Object, Object> key = new HashMap<>();
+            key.put("username", username);
+            key.put("token", token);
+            log.info("here");
+            return new ResponseEntity<Map<Object,Object>>(key, HttpStatus.OK);
+        } catch (AuthenticationException e) {
+            throw new BadCredentialsException("Invalid username/password supplied");
+        }
+
     }
 
 }

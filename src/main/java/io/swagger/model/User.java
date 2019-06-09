@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import java.util.Collection;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -8,13 +9,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * User
@@ -22,7 +29,9 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
-public class User   {
+@Data
+public class User implements UserDetails {
+  //region Declarations & Constructors
   @Id
   @SequenceGenerator(name = "userId_seq", initialValue = 10000001)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userId_seq")
@@ -56,6 +65,7 @@ public class User   {
   @JsonProperty("accounts")
   @Valid
   @OneToMany
+  @Null
   private List<Account> accounts = new ArrayList<Account>();
 
 public User(){}
@@ -68,19 +78,24 @@ public User(){}
     this.password = password;
     this.dateCreated = dateCreated;
     this.birthday = birthday;
+    roles.add("ROLE_EMPLOYEE");
     this.accounts = accounts;
   }
-// Temporary
-  public User(Long id, String firstName) {
-    this.id = null;
-    this.id = id;
-    this.firstName = firstName;
-  }
+//// Temporary
+//  public User(Long id, String firstName, String password) {
+//    this.id = null;
+//    this.id = id;
+//    this.firstName = firstName;
+//    this.password = password;
+//  }
+  //endregion
 
+  //region Generated Annotations and Getters/Setters
   /**
    * Get id
    * @return id
    **/
+
   @ApiModelProperty(example = "124254", required = true, value = "")
   @NotNull
 
@@ -92,6 +107,7 @@ public User(){}
     this.firstName = firstName;
     return this;
   }
+
   /**
    * Get firstName
    * @return firstName
@@ -167,35 +183,27 @@ public User(){}
     this.phone = phone;
   }
 
-  public User username(String username) {
-    this.username = username;
-    return this;
-  }
-
   /**
    * Get username
    * @return username
   **/
   @ApiModelProperty(example = "John-Doe", required = true, value = "")
   @NotNull
-
-  public String getUsername() {
-    return username;
+  public User username(String username) {
+    this.username = username;
+    return this;
   }
-
   public void setUsername(String username) {
     this.username = username;
   }
-
-  public User password(String password) {
-    this.password = password;
-    return this;
+  public String getUsername() {
+    return username;
   }
 
   /**
    * Get password
    * @return password
-  **/
+   **/
   @ApiModelProperty(example = "welkom21", required = true, value = "")
   @NotNull
 
@@ -206,18 +214,22 @@ public User(){}
   public void setPassword(String password) {
     this.password = password;
   }
-
-  public User dateCreated(String dateCreated) {
-    this.dateCreated = dateCreated;
+  public User password(String password) {
+    this.password = password;
     return this;
   }
 
   /**
    * Get dateCreated
    * @return dateCreated
-  **/
+   **/
   @ApiModelProperty(example = "12-05-2019 22:24:10", required = true, value = "")
   @NotNull
+
+  public User dateCreated(String dateCreated) {
+    this.dateCreated = dateCreated;
+    return this;
+  }
 
   public String getDateCreated() {
     return dateCreated;
@@ -235,7 +247,7 @@ public User(){}
   /**
    * Get birthday
    * @return birthday
-  **/
+   **/
   @ApiModelProperty(example = "27-11-1998", required = true, value = "")
   @NotNull
 
@@ -260,7 +272,7 @@ public User(){}
   /**
    * Array of account id's(IBAN)
    * @return accounts
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Array of account id's(IBAN)")
   @NotNull
 
@@ -283,14 +295,14 @@ public User(){}
     }
     User user = (User) o;
     return Objects.equals(this.firstName, user.firstName) &&
-        Objects.equals(this.lastName, user.lastName) &&
-        Objects.equals(this.email, user.email) &&
-        Objects.equals(this.phone, user.phone) &&
-        Objects.equals(this.username, user.username) &&
-        Objects.equals(this.password, user.password) &&
-        Objects.equals(this.dateCreated, user.dateCreated) &&
-        Objects.equals(this.birthday, user.birthday) &&
-        Objects.equals(this.accounts, user.accounts);
+            Objects.equals(this.lastName, user.lastName) &&
+            Objects.equals(this.email, user.email) &&
+            Objects.equals(this.phone, user.phone) &&
+            Objects.equals(this.username, user.username) &&
+            Objects.equals(this.password, user.password) &&
+            Objects.equals(this.dateCreated, user.dateCreated) &&
+            Objects.equals(this.birthday, user.birthday) &&
+            Objects.equals(this.accounts, user.accounts);
   }
 
   @Override
@@ -302,7 +314,7 @@ public User(){}
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
-    
+
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
@@ -325,5 +337,45 @@ public User(){}
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+  //endregion
+
+  // Make false
+  //region Implemented UserDetails
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
+
+  //endregion
+
+
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  @Builder.Default
+  private List<String> roles = new ArrayList<>();
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
+  }
+
+  public List<String> getRoles() {
+    return roles;
   }
 }
