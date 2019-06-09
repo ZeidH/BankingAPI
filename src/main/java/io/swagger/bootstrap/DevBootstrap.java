@@ -2,6 +2,7 @@ package io.swagger.bootstrap;
 
 
 import io.swagger.model.Account;
+import io.swagger.model.Iban;
 import io.swagger.model.VaultAccount;
 import io.swagger.repository.AccountRepository;
 import io.swagger.repository.TransactionRepository;
@@ -32,7 +33,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
 
-        Account vault = new Account().id(0).name("Bank").balance(new BigDecimal(0.0)).accountNumber("NL01INHO0000000001"); //maybe create accountNumber as a double?
+        Account vault = new VaultAccount().id(0).name("Bank").balance(new BigDecimal(0.0)).iban(new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"));
 
         accountRepository.save(vault);
 

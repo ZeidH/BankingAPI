@@ -6,6 +6,7 @@
 package io.swagger.api;
 
 import io.swagger.annotations.*;
+import io.swagger.model.Account;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,7 +57,7 @@ public interface AccountsApi {
     @RequestMapping(value = "/Accounts",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<Object>> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false) String type);
+    Iterable<Account> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false) String type);
 
 
     @ApiOperation(value = "Register a new account on the system", nickname = "registerAccount", notes = "Calling this allows you to insert a new account in db", response = Object.class, authorizations = {

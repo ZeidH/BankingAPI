@@ -2,9 +2,12 @@ package io.swagger.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
+import io.swagger.model.Account;
+import io.swagger.model.VaultAccount;
 import io.swagger.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @RestController
-@RequestMapping("/accounts")
 public class AccountsApiController implements AccountsApi {
 
     private AccountService accountService;
@@ -30,21 +32,21 @@ public class AccountsApiController implements AccountsApi {
 
     private final HttpServletRequest request;
 
-    public AccountsApiController(AccountService accountService, ObjectMapper objectMapper, HttpServletRequest request) {
+    @org.springframework.beans.factory.annotation.Autowired
+    public AccountsApiController(ObjectMapper objectMapper, HttpServletRequest request, AccountService accountService) {
         this.accountService = accountService;
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
-    @org.springframework.beans.factory.annotation.Autowired
-    public AccountsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
+    @Autowired
+    public void setProductService(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     public ResponseEntity<Void> deleteAccount(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Integer id) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     public ResponseEntity<Object> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id) {
@@ -53,15 +55,16 @@ public class AccountsApiController implements AccountsApi {
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
 
-    public ResponseEntity<List<Object>> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false) String type) {
+    public Iterable<Account> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false) String type) {
         String accept = request.getHeader("Accept");
-        accountService.getAccounts();
-        return new ResponseEntity<List<Object>>(HttpStatus.OK);
+        //accountService.registerAccount(new VaultAccount());
+        Iterable<Account> accountsList = accountService.getAccounts();
+        return accountsList;
     }
 
     public ResponseEntity<Object> registerAccount() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Object>(HttpStatus.OK);
     }
 
 }
