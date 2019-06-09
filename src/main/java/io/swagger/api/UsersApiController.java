@@ -89,6 +89,7 @@ public class UsersApiController implements UsersApi {
             Map<Object, Object> key = new HashMap<>();
             key.put("username", username);
             key.put("token", token);
+            log.info("here");
             return new ResponseEntity<Map<Object,Object>>(key, HttpStatus.OK);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username/password supplied");

@@ -18,19 +18,19 @@ public class ExceptionFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }
-
+// DELETE???
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        try {
+        //try {
             chain.doFilter(request, response);
-        } catch (Exception e) {
+       // } catch (Exception e) {
 
             // custom error response class used across my project
          //   ErrorResponse errorResponse = new ErrorResponse(e);
 
             //response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
            // response.getWriter().write(convertObjectToJson(errorResponse));
-        }
+        //}
     }
 
     @Override

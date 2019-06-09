@@ -25,7 +25,7 @@ public class LargeRequestFilter implements Filter {
         int size = request.getContentLength();
 
         //log.error("Request size: " + size);
-        if (size > 0) {
+        if (size > 1000) {
             //logger.severe("request with size " + size + " was rejected");
             throw new IllegalArgumentException("Request too large");
         } else {

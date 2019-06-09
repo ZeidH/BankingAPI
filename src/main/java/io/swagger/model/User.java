@@ -65,6 +65,7 @@ public class User implements UserDetails {
   @JsonProperty("accounts")
   @Valid
   @OneToMany
+  @Null
   private List<Account> accounts = new ArrayList<Account>();
 
 public User(){}
@@ -77,14 +78,16 @@ public User(){}
     this.password = password;
     this.dateCreated = dateCreated;
     this.birthday = birthday;
+    roles.add("ROLE_EMPLOYEE");
     this.accounts = accounts;
   }
-// Temporary
-  public User(Long id, String firstName) {
-    this.id = null;
-    this.id = id;
-    this.firstName = firstName;
-  }
+//// Temporary
+//  public User(Long id, String firstName, String password) {
+//    this.id = null;
+//    this.id = id;
+//    this.firstName = firstName;
+//    this.password = password;
+//  }
   //endregion
 
   //region Generated Annotations and Getters/Setters
@@ -337,25 +340,26 @@ public User(){}
   }
   //endregion
 
+  // Make false
   //region Implemented UserDetails
   @Override
   public boolean isAccountNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isEnabled() {
-    return false;
+    return true;
   }
 
   //endregion
