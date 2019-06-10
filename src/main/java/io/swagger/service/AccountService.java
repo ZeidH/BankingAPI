@@ -50,7 +50,7 @@ public class AccountService {
 
         String bankCode = codeToBase36(ibanNumber.BANK);
         String countryCode = codeToBase36(ibanNumber.getCountryCode().toString());
-        String arrangedCodes = bankCode + ibanNumber.getBban() + countryCode + ibanNumber.getCheckDigits();
+        String arrangedCodes = bankCode + ibanNumber.getIban() + countryCode + ibanNumber.getCheckDigits();
 
         Integer arrengedNumber = Integer.parseInt(arrangedCodes);
 

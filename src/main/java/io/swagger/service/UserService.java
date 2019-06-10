@@ -53,7 +53,6 @@ public class UserService {
         repo.save(user);
     }
     public Iterable<User> getUsers() {
-        repo.save(new User("potato", "fried","potato@hotmail.com", "1234566", "bill", "1234", "9-6-2019", "8-6-2019", null));
         return repo.findAll();
 //        if (sorted) {
 //            users = users.stream().sorted().collect(Collectors.toList());
