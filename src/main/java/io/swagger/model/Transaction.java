@@ -36,10 +36,28 @@ public class Transaction   {
   @JsonProperty("currency")
   private String currency = null;
 
+  @Valid
+  @OneToOne(cascade = {CascadeType.ALL})
   @JsonProperty("creator")
-  private String creator = null;
+  private Iban creator = null;
 
-  public Transaction(BigDecimal amount, String currency, String creator, CategoryEnum category, String sender, String receiver, String dateCreated, StatusEnum status) {
+  @JsonProperty("category")
+  private CategoryEnum category = null;
+
+  @Valid
+  @OneToOne(cascade = {CascadeType.ALL})
+  @JsonProperty("sender")
+  private Iban sender = null;
+
+  @Valid
+  @OneToOne(cascade = {CascadeType.ALL})
+  @JsonProperty("receiver")
+  private Iban receiver = null;
+
+  @JsonProperty("dateCreated")
+  private String dateCreated = null;
+
+  public Transaction(BigDecimal amount, String currency, Iban creator, CategoryEnum category, Iban sender, Iban receiver, String dateCreated, StatusEnum status) {
     this.amount = amount;
     this.currency = currency;
     this.creator = creator;
@@ -55,15 +73,15 @@ public class Transaction   {
    */
   public enum CategoryEnum {
     LIVING("Living"),
-    
+
     ENTERTAINMENT("Entertainment"),
-    
+
     FOOD("Food"),
-    
+
     TRANSPORT("Transport"),
-    
+
     SAVING("Saving"),
-    
+
     OTHER("Other");
 
     private String value;
@@ -88,17 +106,7 @@ public class Transaction   {
       return null;
     }
   }
-  @JsonProperty("category")
-  private CategoryEnum category = null;
 
-  @JsonProperty("sender")
-  private String sender = null;
-
-  @JsonProperty("receiver")
-  private String receiver = null;
-
-  @JsonProperty("dateCreated")
-  private String dateCreated = null;
 
   /**
    * Gets or Sets status
@@ -176,7 +184,7 @@ public class Transaction   {
     this.currency = currency;
   }
 
-  public Transaction creator(String creator) {
+  public Transaction creator(Iban creator) {
     this.creator = creator;
     return this;
   }
@@ -188,11 +196,11 @@ public class Transaction   {
   @ApiModelProperty(example = "NL02INGB0154356789", required = true, value = "")
   @NotNull
 
-  public String getCreator() {
+  public Iban getCreator() {
     return creator;
   }
 
-  public void setCreator(String creator) {
+  public void setCreator(Iban creator) {
     this.creator = creator;
   }
 
@@ -216,7 +224,7 @@ public class Transaction   {
     this.category = category;
   }
 
-  public Transaction sender(String sender) {
+  public Transaction sender(Iban sender) {
     this.sender = sender;
     return this;
   }
@@ -228,15 +236,15 @@ public class Transaction   {
   @ApiModelProperty(example = "NL02INGB0154356789", required = true, value = "")
   @NotNull
 
-  public String getSender() {
+  public Iban getSender() {
     return sender;
   }
 
-  public void setSender(String sender) {
+  public void setSender(Iban sender) {
     this.sender = sender;
   }
 
-  public Transaction receiver(String receiver) {
+  public Transaction receiver(Iban receiver) {
     this.receiver = receiver;
     return this;
   }
@@ -248,11 +256,11 @@ public class Transaction   {
   @ApiModelProperty(example = "NL02INGB0153457789", required = true, value = "")
   @NotNull
 
-  public String getReceiver() {
+  public Iban getReceiver() {
     return receiver;
   }
 
-  public void setReceiver(String receiver) {
+  public void setReceiver(Iban receiver) {
     this.receiver = receiver;
   }
 
