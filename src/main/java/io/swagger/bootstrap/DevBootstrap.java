@@ -1,9 +1,7 @@
 package io.swagger.bootstrap;
 
 
-import io.swagger.model.Account;
-import io.swagger.model.Iban;
-import io.swagger.model.VaultAccount;
+import io.swagger.model.*;
 import io.swagger.repository.AccountRepository;
 import io.swagger.repository.TransactionRepository;
 import io.swagger.repository.UserRepository;
@@ -12,6 +10,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
@@ -33,10 +33,23 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
 
-        Account vault = new VaultAccount().id(0).name("Bank").balance(new BigDecimal(0.0)).iban(new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"));
+//        Account vault = new VaultAccount().id(0).name("Bank").balance(new BigDecimal(0.0)).iban(new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"));
+//
+//        accountRepository.save(vault);
 
-        accountRepository.save(vault);
+        // TEST
+        Transaction transaction = new Transaction(new BigDecimal(5), "EUR", new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"), Transaction.CategoryEnum.LIVING, new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"), new Iban(0, Iban.CountryCodeEnum.NL, "0000000002"), "10-6-2019", Transaction.StatusEnum.PROCESSED);
+        List<Transaction> transactions = new ArrayList<Transaction>();
+        transactions.add(transaction);
+        transactionRepository.save(transaction);
 
+        Account account = new Account(0, new BigDecimal(0.0), "Bank", new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"), transactions);
+        List<Account> accounts = new ArrayList<Account>();
+        accounts.add(account);
+        accountRepository.save(account);
+
+        User user = new User("potato", "fried","potato@hotmail.com", "1234566", "bill", "1234", "9-6-2019", "8-6-2019", accounts);
+        userRepository.save(user);
 
     }
 }

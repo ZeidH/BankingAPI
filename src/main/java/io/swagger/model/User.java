@@ -65,7 +65,6 @@ public class User implements UserDetails {
   @JsonProperty("accounts")
   @Valid
   @OneToMany
-  @Null
   private List<Account> accounts = new ArrayList<Account>();
 
 public User(){}

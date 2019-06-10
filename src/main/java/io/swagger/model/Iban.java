@@ -26,9 +26,9 @@ public class Iban {
   public Iban() {
   }
 
-  public Iban(Integer id, CountryCodeEnum countryCode, String bban) {
+  public Iban(Integer id, CountryCodeEnum countryCode, String iban) {
     this.countryCode = countryCode;
-    this.bban = bban;
+    this.iban = iban;
 
     generateCheckDigits();
   }
@@ -88,8 +88,8 @@ public class Iban {
   @JsonProperty("checkDigits")
   private Double checkDigits = null;
 
-  @JsonProperty("bban")
-  private String bban = null;
+  @JsonProperty("iban")
+  private String iban = null;
 
   public Iban countryCode(CountryCodeEnum countryCode) {
     this.countryCode = countryCode;
@@ -141,7 +141,7 @@ public class Iban {
   }
 
   private void generateCheckDigits(){ //from https://www.ibantest.com/en/how-is-the-iban-check-digit-calculated
-    String arrangedCode = "" + codeToBase36(this.BANK) + "" + this.bban + "" + codeToBase36(this.countryCode.toString()) + "00";
+    String arrangedCode = "" + codeToBase36(this.BANK) + "" + this.iban + "" + codeToBase36(this.countryCode.toString()) + "00";
 
     Double arrengedCodeMod = Double.parseDouble(arrangedCode);
 
@@ -149,29 +149,29 @@ public class Iban {
   }
 
   public String getIbanCode(){
-    String IbanNumber = "" + this.getCountryCode() + "" + this.getCheckDigits() + this.BANK + this.getBban();
+    String IbanNumber = "" + this.getCountryCode() + "" + this.getCheckDigits() + this.BANK + this.getIban();
     return IbanNumber;
   }
 
 
-  public Iban bban(String bban) {
-    this.bban = bban;
+  public Iban iban(String iban) {
+    this.iban = iban;
     return this;
   }
 
   /**
-   * Get bban
-   * @return bban
+   * Get iban
+   * @return iban
   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
-  public String getBban() {
-    return bban;
+  public String getIban() {
+    return iban;
   }
 
-  public void setBban(String bban) {
-    this.bban = bban;
+  public void setIban(String iban) {
+    this.iban = iban;
   }
 
 
@@ -186,12 +186,12 @@ public class Iban {
     Iban iban = (Iban) o;
     return Objects.equals(this.countryCode, iban.countryCode) &&
         Objects.equals(this.checkDigits, iban.checkDigits) &&
-        Objects.equals(this.bban, iban.bban);
+        Objects.equals(this.iban, iban.iban);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countryCode, checkDigits, bban);
+    return Objects.hash(countryCode, checkDigits, iban);
   }
 
   @Override
@@ -201,7 +201,7 @@ public class Iban {
 
     sb.append("    countryCode: ").append(toIndentedString(countryCode)).append("\n");
     sb.append("    checkDigits: ").append(toIndentedString(checkDigits)).append("\n");
-    sb.append("    bban: ").append(toIndentedString(bban)).append("\n");
+    sb.append("    iban: ").append(toIndentedString(iban)).append("\n");
     sb.append("}");
     return sb.toString();
   }

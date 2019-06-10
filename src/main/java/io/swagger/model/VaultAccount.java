@@ -21,6 +21,7 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 public class VaultAccount extends Account  {
 
+  public VaultAccount(){}
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {

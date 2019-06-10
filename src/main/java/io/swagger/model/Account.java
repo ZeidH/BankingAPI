@@ -21,6 +21,15 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
 public class Account   {
+  public Account(Integer id, BigDecimal balance, String name, Iban iban, List<Transaction> transactions) {
+    this.id = id;
+    this.balance = balance;
+    this.name = name;
+    this.iban = iban;
+    this.transactions = transactions;
+  }
+  public Account(){}
+
   @JsonProperty("id")
   @Id
   private Integer id = null;
