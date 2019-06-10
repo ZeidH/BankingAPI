@@ -35,6 +35,7 @@ public class UsersApiController implements UsersApi {
     private final HttpServletRequest request;
 
     private final UserService service;
+
     @org.springframework.beans.factory.annotation.Autowired
     public UsersApiController(ObjectMapper objectMapper, HttpServletRequest request, UserService service) {
         this.objectMapper = objectMapper;
@@ -48,7 +49,11 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public Iterable<User> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = false) Integer id, @ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false, defaultValue = "false") Boolean sorted, @ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom, @ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo, @ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false, defaultValue = "0") Integer entries) {
+    public ResponseEntity<User> getUser(@ApiParam(value = "The ID of a specific User") @Valid @RequestParam(value = "id", required = true) Long id){
+        return new ResponseEntity<User>(service.getUser(id), HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<User>> getUsers(@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false, defaultValue = "false") Boolean sorted, @ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom, @ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo, @ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false, defaultValue = "0") Integer entries) {
         String accept = request.getHeader("Accept");
         service.setSorting(sorted);
         service.setEntries(entries);
@@ -65,19 +70,18 @@ public class UsersApiController implements UsersApi {
             service.setDateFrom(from);
             service.setDateTo(to);
         }
-
-        return service.getUsers();
-        //return new ResponseEntity<List<User>>(user, HttpStatus.OK);
+        return new ResponseEntity<List<User>>(service.getUsers(),HttpStatus.OK);
     }
 
     public ResponseEntity<InlineResponse200> registerUser(@ApiParam(value = "User object"  )  @Valid @RequestBody User user) {
         String accept = request.getHeader("Accept");
         service.registerUser(user);
-        return new ResponseEntity<InlineResponse200>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public ResponseEntity<Void> resetUserPassword(@ApiParam(value = "",required=true) @PathVariable("username") String username,@ApiParam(value = "",required=true) @PathVariable("birthday") String birthday,@ApiParam(value = "",required=true) @PathVariable("IBAN") String IBAN) {
         String accept = request.getHeader("Accept");
+       // service.resetPassword(username, birthday, IBAN);
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
