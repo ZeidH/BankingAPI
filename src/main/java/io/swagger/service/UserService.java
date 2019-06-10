@@ -52,16 +52,24 @@ public class UserService {
     public void registerUser(User user){
         repo.save(user);
     }
-    public Iterable<User> getUsers() {
-        return repo.findAll();
-//        if (sorted) {
-//            users = users.stream().sorted().collect(Collectors.toList());
-//        }
-//        if (entries > 0) {
-//            users = new ArrayList<>(users.subList(0, entries));
-//        }
-//        return users;
+
+    public List<User> getUsers() {
+        List<User> users = null;
+        if(dateFrom != null || dateTo != null){
+            users = repo.getUsersByDate(dateFrom, dateTo);
+        }else{
+            users = repo.findAll();
+        }
+
+        if (sorted) {
+            users = users.stream().sorted().collect(Collectors.toList());
+        }
+        if (entries > 0) {
+            users = new ArrayList<>(users.subList(0, entries));
+        }
+        return users;
     }
+
     public User getUser(Long id){
         User user = repo.findOne(id);
         if(user != null){
