@@ -37,7 +37,8 @@ public class Transaction   {
   private String currency = null;
 
   @Valid
-  @OneToOne(cascade = {CascadeType.ALL})
+  @ManyToOne
+  @JoinColumn(name = "creator")
   @JsonProperty("creator")
   private Iban creator = null;
 
@@ -45,12 +46,14 @@ public class Transaction   {
   private CategoryEnum category = null;
 
   @Valid
-  @OneToOne(cascade = {CascadeType.ALL})
+  @ManyToOne
+  @JoinColumn(name = "sender")
   @JsonProperty("sender")
   private Iban sender = null;
 
   @Valid
-  @OneToOne(cascade = {CascadeType.ALL})
+  @ManyToOne
+  @JoinColumn(name = "receiver")
   @JsonProperty("receiver")
   private Iban receiver = null;
 

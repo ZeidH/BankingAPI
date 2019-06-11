@@ -45,9 +45,10 @@ public class Account   {
   private String name = null;
 
   @Valid
-  @OneToOne(cascade = {CascadeType.ALL})
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "iban_account", referencedColumnName = "ibanCode")
   @JsonProperty("iban")
-  private Iban iban = new Iban();
+  private Iban iban = null;
 
   public Account iban(Iban iban) {
     this.iban = iban;

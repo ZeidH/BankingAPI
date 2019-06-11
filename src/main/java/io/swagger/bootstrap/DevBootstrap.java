@@ -37,18 +37,44 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 //
 //        accountRepository.save(vault);
 
-        // TEST
 
+        //---------------------------------VAULT-Maybe make it singleton?------------------------------------------------//
         Account vault = new VaultAccount().name("Bank").balance(new BigDecimal(0.0)).iban(new Iban().bban("0000000001"));
         vault.getIban().buildIban();
         accountRepository.save(vault);
+        // T---------------------------------------------------------------------------------------------//
 
-        // TEST
-        Transaction transaction = new Transaction(new BigDecimal(5), "EUR", new Iban().bban("0000000001"), Transaction.CategoryEnum.LIVING, new Iban().bban("0000000002"), new Iban().bban("0000000002"), "10-6-2019", Transaction.StatusEnum.PROCESSED);
+        /////////////////////BART/////////////////////////
+
+
+
+        Account accountBart = new CurrentAccount().name("Bart's Current Account").balance(new BigDecimal(100.0)).iban(new Iban());
+        accountBart.getIban().buildIban();
+        List<Account> accountsBart = new ArrayList<Account>();
+        accountsBart.add(accountBart);
+        accountRepository.save(accountBart);
+
+        User userBart = new User("Bart", "fried","potato@hotmail.com", "1234566", "bart", "1234", "9-6-2019", "8-6-2019", accountsBart);
+        userRepository.save(userBart);
+
+        /////////////////////LISA/////////////////////////
+
+        Account accountLisa = new CurrentAccount().name("Lisa's Current Account").balance(new BigDecimal(0.0)).iban(new Iban());
+        accountLisa.getIban().buildIban();
+        List<Account> accountsLisa = new ArrayList<Account>();
+        accountsLisa.add(accountLisa);
+        accountRepository.save(accountLisa);
+
+        User userLisa = new User("Lisa", "fried","potato@hotmail.com", "1234566", "lisa", "1234", "9-6-2019", "8-6-2019", accountsLisa);
+        userRepository.save(userLisa);
+
+        // TEST Bart sends Lisa
+        Transaction transaction = new Transaction(new BigDecimal(5), "EUR", accountBart.getIban(), Transaction.CategoryEnum.LIVING, accountBart.getIban(), accountLisa.getIban(), "10-6-2019", Transaction.StatusEnum.PROCESSED);
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.add(transaction);
         transactionRepository.save(transaction);
 
+        //TEST POTATO
         Account account = new CurrentAccount().name("Potato's Current Account").balance(new BigDecimal(0.0)).iban(new Iban());
         account.getIban().buildIban();
         List<Account> accounts = new ArrayList<Account>();
