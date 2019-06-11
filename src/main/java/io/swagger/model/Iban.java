@@ -38,7 +38,7 @@ public class Iban {
     if(bban == null){
       generateBban();
     }
-      generateCheckDigits();
+    generateCheckDigits();
     this.ibanCode = getIbanCode();
   }
 
@@ -107,7 +107,7 @@ public class Iban {
   /**
    * Get countryCode
    * @return countryCode
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -127,7 +127,7 @@ public class Iban {
   /**
    * Get checkDigits
    * @return checkDigits
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -155,29 +155,29 @@ public class Iban {
   }
 
   public String getIbanCode(){
-    String IbanNumber = "" + this.getCountryCode() + "" + this.getCheckDigits() + this.BANK + this.getIban();
+    String IbanNumber = "" + this.getCountryCode() + "" + this.getCheckDigits() + this.BANK + this.getBban();
     return IbanNumber;
   }
 
 
-  public Iban iban(String iban) {
-    this.iban = iban;
+  public Iban bban(String bban) {
+    this.bban = bban;
     return this;
   }
 
   /**
-   * Get iban
-   * @return iban
-  **/
+   * Get bban
+   * @return bban
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
-  public String getIban() {
-    return iban;
+  public String getBban() {
+    return bban;
   }
 
-  public void setIban(String iban) {
-    this.iban = iban;
+  public void setBban(String bban) {
+    this.bban = bban;
   }
 
 
@@ -191,13 +191,13 @@ public class Iban {
     }
     Iban iban = (Iban) o;
     return Objects.equals(this.countryCode, iban.countryCode) &&
-        Objects.equals(this.checkDigits, iban.checkDigits) &&
-        Objects.equals(this.iban, iban.iban);
+            Objects.equals(this.checkDigits, iban.checkDigits) &&
+            Objects.equals(this.bban, iban.bban);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countryCode, checkDigits, iban);
+    return Objects.hash(countryCode, checkDigits, bban);
   }
 
   @Override
@@ -207,7 +207,7 @@ public class Iban {
 
     sb.append("    countryCode: ").append(toIndentedString(countryCode)).append("\n");
     sb.append("    checkDigits: ").append(toIndentedString(checkDigits)).append("\n");
-    sb.append("    iban: ").append(toIndentedString(iban)).append("\n");
+    sb.append("    bban: ").append(toIndentedString(bban)).append("\n");
     sb.append("}");
     return sb.toString();
   }
