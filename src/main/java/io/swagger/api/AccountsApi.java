@@ -47,6 +47,18 @@ public interface AccountsApi {
         method = RequestMethod.GET)
     ResponseEntity<Account> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id);
 
+    /*
+    @ApiOperation(value = "calling an account2", nickname = "getAccountByIban", notes = "Calling this allows you to fetch an specific account data", response = Object.class, authorizations = {
+            @Authorization(value = "bearerAuth")    }, tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "the account data", response = Object.class),
+            @ApiResponse(code = 400, message = "bad input parameter"),
+            @ApiResponse(code = 403, message = "Forbidden") })
+    @RequestMapping(value = "/Accounts/{iban}",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<Account> getAccountByIban(@ApiParam(value = "the account iban",required=true) @PathVariable("iban") String iban);
+    */
 
     @ApiOperation(value = "Get all accounts available on the system", nickname = "getAllAccounts", notes = "Calling this allows you to fetch the accounts data, an input parameter \"savings\", \"currents\" or \"vault\" allows you to filter through savings or currents accounts", response = Object.class, responseContainer = "List", authorizations = {
         @Authorization(value = "bearerAuth")    }, tags={ "Account", })
@@ -69,6 +81,6 @@ public interface AccountsApi {
     @RequestMapping(value = "/Accounts",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Object> registerAccount(@RequestBody Account account);
+    ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestParam(value = "type", required = false) String type);
 
 }

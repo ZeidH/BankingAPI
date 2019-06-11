@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 @Entity
 public class SavingsAccount extends Account  {
   @JsonProperty("interestRate")
-  private BigDecimal interestRate = null;
+  private BigDecimal interestRate = new BigDecimal(0.1);
 
   public SavingsAccount interestRate(BigDecimal interestRate) {
     this.interestRate = interestRate;

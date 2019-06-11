@@ -27,9 +27,11 @@ public class Account   {
   @Id
   private Long id = null;
 
+  @Valid
   @JsonProperty("balance")
   private BigDecimal balance = null;
 
+  @Valid
   @JsonProperty("name")
   private String name = null;
 

@@ -1,9 +1,6 @@
 package io.swagger.service;
 
-import io.swagger.model.Account;
-import io.swagger.model.Iban;
-import io.swagger.model.SavingsAccount;
-import io.swagger.model.VaultAccount;
+import io.swagger.model.*;
 import io.swagger.repository.AccountRepository;
 import io.swagger.repository.IbanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +53,29 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
+    public Iterable<Account> getSavings() {
+        List<Account> accounts = new ArrayList<>();
+        for(Account acc : getAccounts()){
+            if(acc instanceof SavingsAccount){
+                accounts.add(acc);
+            }
+        }
+        return accounts;
+    }
+
+    public Iterable<Account> getCurrents() {
+        List<Account> accounts = new ArrayList<>();
+        for(Account acc : getAccounts()){
+            if(acc instanceof CurrentAccount){
+                accounts.add(acc);
+            }
+        }
+        return accounts;
+    }
+
     public void registerAccount(Account account) {
         do{
+            account.getIban().setBban(null);
             account.getIban().buildIban();
         }while(ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
 
@@ -70,6 +88,17 @@ public class AccountService {
 
     public Account getAccount(long id) {
         Account account = accountRepository.findOne(id);
+        if(account != null){
+            return account;
+        }
+        else{
+            throw new NoSuchElementException();
+        }
+    }
+
+    public Account getAccountByIban(String iban) {
+        long accountId = accountRepository.getAccountByIban(iban);
+        Account account = accountRepository.findOne(accountId);
         if(account != null){
             return account;
         }

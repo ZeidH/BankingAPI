@@ -35,10 +35,13 @@ public class Iban {
 
   public void buildIban(){
     this.countryCode = CountryCodeEnum.NL;
+    if(bban == null){
       generateBban();
+    }
       generateCheckDigits();
     this.ibanCode = getIbanCode();
   }
+
 
   private void generateBban(){
     Random random = new Random();

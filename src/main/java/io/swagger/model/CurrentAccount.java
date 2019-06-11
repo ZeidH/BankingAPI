@@ -22,10 +22,10 @@ import javax.validation.constraints.*;
 @Entity
 public class CurrentAccount extends Account  {
   @JsonProperty("transactionLimit")
-  private BigDecimal transactionLimit = null;
+  private BigDecimal transactionLimit = new BigDecimal(1000);
 
   @JsonProperty("dailyLimit")
-  private BigDecimal dailyLimit = null;
+  private BigDecimal dailyLimit = new BigDecimal(1000);
 
   public CurrentAccount transactionLimit(BigDecimal transactionLimit) {
     this.transactionLimit = transactionLimit;
