@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 @Entity
 @SequenceGenerator(name = "account_seq", initialValue = 1, allocationSize=1)
 public class Account   {
-  public Account(Integer id, BigDecimal balance, String name, Iban iban, List<Transaction> transactions) {
+  public Account(Long id, BigDecimal balance, String name, Iban iban, List<Transaction> transactions) {
     this.id = id;
     this.balance = balance;
     this.name = name;
