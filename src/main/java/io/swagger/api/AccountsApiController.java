@@ -3,6 +3,8 @@ package io.swagger.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import io.swagger.model.Account;
+import io.swagger.model.CurrentAccount;
+import io.swagger.model.Iban;
 import io.swagger.model.VaultAccount;
 import io.swagger.service.AccountService;
 import org.slf4j.Logger;
@@ -18,6 +20,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
@@ -49,10 +52,10 @@ public class AccountsApiController implements AccountsApi {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id) {
+    public ResponseEntity<Account> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id) {
         String accept = request.getHeader("Accept");
 
-        return new ResponseEntity<Object>(HttpStatus.OK);
+        return new ResponseEntity<Account>(accountService.getAccount(id), HttpStatus.OK);
     }
 
     public Iterable<Account> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false) String type) {
@@ -62,8 +65,9 @@ public class AccountsApiController implements AccountsApi {
         return accountsList;
     }
 
-    public ResponseEntity<Object> registerAccount() {
+    public ResponseEntity<Object> registerAccount(@RequestBody Account account) {
         String accept = request.getHeader("Accept");
+        accountService.registerAccount(account);
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
 

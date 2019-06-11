@@ -5,21 +5,50 @@ import io.swagger.model.Iban;
 import io.swagger.model.SavingsAccount;
 import io.swagger.model.VaultAccount;
 import io.swagger.repository.AccountRepository;
+import io.swagger.repository.IbanRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
 public class AccountService {
 
+    @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private IbanRepository ibanRepository;
+    private boolean sorted;
+    private int entries;
+    private Date dateFrom;
+    private Date dateTo;
 
-    public AccountService(AccountRepository accountRepository) {
+    //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
+
+    public void setEntries(int entries) {
+        this.entries = entries;
+    }
+
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public void setSorting(boolean sorted){
+        this.sorted = sorted;
+    }
+
+    public AccountService(AccountRepository accountRepository, IbanRepository ibanRepository) {
         this.accountRepository = accountRepository;
+        this.ibanRepository = ibanRepository;
     }
 
     public Iterable<Account> getAccounts() {
@@ -28,6 +57,10 @@ public class AccountService {
     }
 
     public void registerAccount(Account account) {
+        do{
+            account.getIban().buildIban();
+        }while(ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
+
         accountRepository.save(account);
     }
 
@@ -44,35 +77,5 @@ public class AccountService {
             throw new NoSuchElementException();
         }
     }
-
-    /*
-    public boolean validateIBAN(Iban ibanNumber){ //taken from wikipedia: https://en.wikipedia.org/wiki/International_Bank_Account_Number#Validating_the_IBAN
-
-        String bankCode = codeToBase36(ibanNumber.BANK);
-        String countryCode = codeToBase36(ibanNumber.getCountryCode().toString());
-        String arrangedCodes = bankCode + ibanNumber.getBban() + countryCode + ibanNumber.getCheckDigits();
-
-        Integer arrengedNumber = Integer.parseInt(arrangedCodes);
-
-        if(arrengedNumber % 97 == 1){
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-    public String codeToBase36(String bankCode){
-
-        String base36code = "";
-
-        for (char ch: bankCode.toCharArray()) {
-            BigInteger big = new BigInteger(String.valueOf(ch), 16);
-            base36code += big.toString(36);
-        }
-
-        return base36code;
-    }
-    */
 
 }

@@ -6,14 +6,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * Iban
@@ -26,32 +27,35 @@ public class Iban {
   public Iban() {
   }
 
-  public Iban(Integer id, CountryCodeEnum countryCode, String bban) {
-    this.countryCode = countryCode;
-    this.bban = bban;
-
-    generateCheckDigits();
-  }
-
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
-  @JsonProperty("id")
-  private Integer id = null;
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public Iban id(Integer id) {
-    this.id = id;
-    return this;
-  }
+  @JsonProperty("ibanCode")
+  private String ibanCode;
 
   public final String BANK = "INHO";
+
+  public void buildIban(){
+    this.countryCode = CountryCodeEnum.NL;
+      generateBban();
+      generateCheckDigits();
+    this.ibanCode = getIbanCode();
+  }
+
+  private void generateBban(){
+    Random random = new Random();
+    int length = 10;
+    String digits = "0123456789";
+    Random rnd = new Random();
+    List<String> result = new ArrayList<>();
+    Consumer<String> appendChar = s ->
+            result.add("" + s.charAt(rnd.nextInt(s.length())));
+    appendChar.accept(digits);
+    appendChar.accept(digits);
+    while (result.size() < length)
+      appendChar.accept(digits);
+    Collections.shuffle(result, rnd);
+    String randomBban = String.join("", result);
+    this.bban = randomBban;
+  }
 
   /**
    * Gets or Sets countryCode
@@ -86,8 +90,9 @@ public class Iban {
   private CountryCodeEnum countryCode = null;
 
   @JsonProperty("checkDigits")
-  private Double checkDigits = null;
+  private String checkDigits = null;
 
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
   @JsonProperty("bban")
   private String bban = null;
 
@@ -111,7 +116,7 @@ public class Iban {
     this.countryCode = countryCode;
   }
 
-  public Iban checkDigits(Double checkDigits) {
+  public Iban checkDigits(String checkDigits) {
     this.checkDigits = checkDigits;
     return this;
   }
@@ -123,29 +128,27 @@ public class Iban {
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
-  public Double getCheckDigits() {
+  public String getCheckDigits() {
     return checkDigits;
   }
 
-  private String codeToBase36(String code){
-
-    String base36code = "";
-
+  private static String codeToNumberBased(String code){
+    String baseCode = "";
     for (char ch: code.toCharArray()) {
-      byte[] bytes = String.valueOf(ch).getBytes(StandardCharsets.UTF_8);
-      String base36 = new BigInteger(1, bytes).toString(36);
-      base36code += base36;
-    }
 
-    return base36code;
+      baseCode += Character.getNumericValue(ch);
+    }
+    return baseCode;
   }
 
   private void generateCheckDigits(){ //from https://www.ibantest.com/en/how-is-the-iban-check-digit-calculated
-    String arrangedCode = "" + codeToBase36(this.BANK) + "" + this.bban + "" + codeToBase36(this.countryCode.toString()) + "00";
+    String arrangedCode = "" + codeToNumberBased(this.BANK) + "" + this.bban + "" + codeToNumberBased(this.countryCode.toString()) + "00";
 
-    Double arrengedCodeMod = Double.parseDouble(arrangedCode);
+    BigDecimal arrangedCodeNum = new BigDecimal(arrangedCode);
+    BigDecimal checkDigits = new BigDecimal(98).subtract(arrangedCodeNum.remainder(new BigDecimal(97)));
+    DecimalFormat df = new DecimalFormat("00");
+    this.checkDigits = df.format(checkDigits);
 
-    this.checkDigits = 98 - (arrengedCodeMod % 97);
   }
 
   public String getIbanCode(){

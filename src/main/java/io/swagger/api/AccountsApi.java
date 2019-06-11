@@ -45,7 +45,7 @@ public interface AccountsApi {
     @RequestMapping(value = "/Accounts/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id);
+    ResponseEntity<Account> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id);
 
 
     @ApiOperation(value = "Get all accounts available on the system", nickname = "getAllAccounts", notes = "Calling this allows you to fetch the accounts data, an input parameter \"savings\", \"currents\" or \"vault\" allows you to filter through savings or currents accounts", response = Object.class, responseContainer = "List", authorizations = {
@@ -69,6 +69,6 @@ public interface AccountsApi {
     @RequestMapping(value = "/Accounts",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Object> registerAccount();
+    ResponseEntity<Object> registerAccount(@RequestBody Account account);
 
 }
