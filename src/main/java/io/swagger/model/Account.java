@@ -20,6 +20,7 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
+@SequenceGenerator(name = "account_seq", initialValue = 1, allocationSize=1)
 public class Account   {
   public Account(Integer id, BigDecimal balance, String name, Iban iban, List<Transaction> transactions) {
     this.id = id;
@@ -31,19 +32,22 @@ public class Account   {
   public Account(){}
 
   @JsonProperty("id")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
   @Id
-  private Integer id = null;
+  private Long id = null;
 
+  @Valid
   @JsonProperty("balance")
   private BigDecimal balance = null;
 
+  @Valid
   @JsonProperty("name")
   private String name = null;
 
   @Valid
   @OneToOne(cascade = {CascadeType.ALL})
   @JsonProperty("iban")
-  private Iban iban = null;
+  private Iban iban = new Iban();
 
   public Account iban(Iban iban) {
     this.iban = iban;
@@ -70,7 +74,7 @@ public class Account   {
   @OneToMany
   private List<Transaction> transactions = new ArrayList<Transaction>();
 
-  public Account id(Integer id) {
+  public Account id(Long id) {
     this.id = id;
     return this;
   }
@@ -81,12 +85,8 @@ public class Account   {
   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
-  public Integer getId() {
+  public Long getId() {
     return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
   }
 
 

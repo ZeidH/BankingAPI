@@ -42,6 +42,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.add(transaction);
         transactionRepository.save(transaction);
+        Account vault = new VaultAccount().name("Bank").balance(new BigDecimal(0.0)).iban(new Iban().bban("0000000001"));
+        vault.getIban().buildIban();
+        accountRepository.save(vault);
 
         Account account = new Account(0, new BigDecimal(0.0), "Bank", new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"), transactions);
         List<Account> accounts = new ArrayList<Account>();

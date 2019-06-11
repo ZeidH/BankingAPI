@@ -9,6 +9,8 @@ import io.swagger.model.Account;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -17,9 +19,10 @@ import javax.validation.constraints.*;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
+@Entity
 public class SavingsAccount extends Account  {
   @JsonProperty("interestRate")
-  private BigDecimal interestRate = null;
+  private BigDecimal interestRate = new BigDecimal(0.1);
 
   public SavingsAccount interestRate(BigDecimal interestRate) {
     this.interestRate = interestRate;
