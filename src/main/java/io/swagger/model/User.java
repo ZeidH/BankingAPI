@@ -28,8 +28,8 @@ import static java.util.stream.Collectors.toList;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
-@Entity
 @Data
+@Entity
 public class User implements UserDetails {
   //region Declarations & Constructors
   @Id
