@@ -37,34 +37,15 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 // Fine tune these...
-                .antMatchers(HttpMethod.GET, "/me").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.GET, "/Users").permitAll()
-                .antMatchers(HttpMethod.POST, "/Users/Login").permitAll()
-                .antMatchers(HttpMethod.GET, "/Users/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.POST, "/Users/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.DELETE, "/Users/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.PUT, "/Users/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.POST, "/Users/Login/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.POST, "/Users/ID/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/Login").permitAll()
 
-                .antMatchers(HttpMethod.DELETE, "/Accounts/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.GET, "/Accounts/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.POST, "/Accounts/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.GET, "/Accounts/ID/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/Customer**").hasRole("CUSTOMER")
+                .antMatchers(HttpMethod.POST, "/Customer**").hasRole("CUSTOMER")
+                .antMatchers(HttpMethod.PUT, "/Customer**").hasRole("CUSTOMER")
 
-                .antMatchers(HttpMethod.GET, "/Transactions").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.POST, "/Transactions/**").hasRole("USER")
-                .antMatchers(HttpMethod.PUT, "/Transactions/ID/**").hasRole("USER")
-
-
-                // .antMatchers("/**").permitAll()
-//                .antMatchers(HttpMethod.GET, "/Users/Accounts/**").hasRole("USER")
-//                .antMatchers(HttpMethod.GET, "/Admin/Accounts/**").hasRole("EMPLOYEE")
-//                .antMatchers(HttpMethod.GET, "/v1/vehicles/**").permitAll()
-//                .antMatchers(HttpMethod.GET, "/Admin/Accounts/**").hasRole("EMPLOYEE")
-//                .antMatchers(HttpMethod.GET, "/Admin/Accounts/**").hasRole("EMPLOYEE")
-//                .antMatchers(HttpMethod.GET, "/Admin/Accounts/**").hasRole("EMPLOYEE")
-//                .antMatchers(HttpMethod.GET, "/Admin/Accounts/**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/Employee**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.GET, "/Employee**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.PUT, "/Employee**").hasRole("EMPLOYEE")
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));

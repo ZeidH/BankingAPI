@@ -29,7 +29,7 @@ public interface UsersApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 204, message = "User deleted"),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Users",
+    @RequestMapping(value = "/Employee/Users",
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteUser(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Long id);
 
@@ -40,17 +40,17 @@ public interface UsersApi {
             @ApiResponse(code = 200, message = "the user object", response = Object.class),
             @ApiResponse(code = 400, message = "bad input parameter"),
             @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Users/{id}",
+    @RequestMapping(value = "/Customer/Users/{id}",
             produces = { "application/json" },
             method = RequestMethod.GET)
     ResponseEntity<User> getUser(@ApiParam(value = "the user id",required=true) @PathVariable("id") Long id);
 
-    @ApiOperation(value = "Retreives user data", nickname = "getUser", notes = "", response = User.class, authorizations = {
+    @ApiOperation(value = "Retreives user data", nickname = "getUsers", notes = "", response = User.class, authorizations = {
         @Authorization(value = "bearerAuth")    }, tags={ "User", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "user is authenticated and data is returned.", response = User.class),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Users",
+    @RequestMapping(value = "/Employee/Users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<User>> getUsers(@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false) Boolean sorted,@ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom,@ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo,@ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false) Integer entries);
@@ -62,7 +62,7 @@ public interface UsersApi {
         @ApiResponse(code = 200, message = "successful registration", response = InlineResponse200.class),
         @ApiResponse(code = 401, message = "Invalid registration"),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Users",
+    @RequestMapping(value = "/Employee/Users",
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
@@ -73,7 +73,7 @@ public interface UsersApi {
         @Authorization(value = "bearerAuth")    }, tags={ "User", })
     @ApiResponses(value = { 
         @ApiResponse(code = 404, message = "User does not exist") })
-    @RequestMapping(value = "/Users",
+    @RequestMapping(value = "/Customer/Users",
         method = RequestMethod.PUT)
     ResponseEntity<Void> resetUserPassword(@ApiParam(value = "",required=true) @PathVariable("username") String username,@ApiParam(value = "",required=true) @PathVariable("birthday") String birthday,@ApiParam(value = "",required=true) @PathVariable("IBAN") String IBAN);
 
@@ -82,7 +82,7 @@ public interface UsersApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "successful login - Session started with a token that is shared with the user browser"),
         @ApiResponse(code = 401, message = "Invalid username/password supplied") })
-    @RequestMapping(value = "/Users/Login",
+    @RequestMapping(value = "/Login",
         method = RequestMethod.POST)
     ResponseEntity<Map<Object, Object>> usersLoginPost(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username, @NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password);
 
