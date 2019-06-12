@@ -31,7 +31,7 @@ public interface AccountsApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 204, message = "Account deleted"),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Accounts",
+    @RequestMapping(value = "/Employee/Accounts",
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteAccount(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Integer id);
 
@@ -42,7 +42,7 @@ public interface AccountsApi {
         @ApiResponse(code = 200, message = "the account data", response = Object.class),
         @ApiResponse(code = 400, message = "bad input parameter"),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Accounts/{id}",
+    @RequestMapping(value = "/Customer/Accounts/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Account> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id);
@@ -66,7 +66,7 @@ public interface AccountsApi {
         @ApiResponse(code = 200, message = "Accounts data", response = Object.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "bad input parameter"),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Accounts",
+    @RequestMapping(value = "/Employee/Accounts",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     Iterable<Account> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false) String type);
@@ -78,7 +78,7 @@ public interface AccountsApi {
         @ApiResponse(code = 200, message = "successful registration", response = Object.class),
         @ApiResponse(code = 401, message = "Invalid registration"),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Accounts",
+    @RequestMapping(value = "/Employee/Accounts",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestParam(value = "type", required = false) String type);
