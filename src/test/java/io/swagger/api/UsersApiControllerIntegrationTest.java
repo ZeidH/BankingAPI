@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.xml.ws.Response;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -30,13 +32,12 @@ public class UsersApiControllerIntegrationTest {
     }
 
     @Test
-    public void getUserTest() throws Exception {
-        Integer id = 56;
+    public void getUsersTest() throws Exception {
         Boolean sorted = true;
         String dateFrom = "dateFrom_example";
         String dateTo = "dateTo_example";
         Integer entries = 56;
-        Iterable<User> responseEntity = api.getUser(id, sorted, dateFrom, dateTo, entries);
+        ResponseEntity<List<User>> responseEntity = api.getUsers(sorted, dateFrom, dateTo, entries);
        // assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
@@ -60,7 +61,7 @@ public class UsersApiControllerIntegrationTest {
     public void usersLoginPostTest() throws Exception {
         String username = "username_example";
         String password = "password_example";
-        ResponseEntity<Void> responseEntity = api.usersLoginPost(username, password);
+        ResponseEntity<Map<Object,Object>> responseEntity = api.usersLoginPost(username, password);
         assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 

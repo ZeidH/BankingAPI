@@ -22,6 +22,15 @@ import javax.validation.constraints.*;
 @Entity
 @SequenceGenerator(name = "account_seq", initialValue = 1, allocationSize=1)
 public class Account   {
+  public Account(Long id, BigDecimal balance, String name, Iban iban, List<Transaction> transactions) {
+    this.id = id;
+    this.balance = balance;
+    this.name = name;
+    this.iban = iban;
+    this.transactions = transactions;
+  }
+  public Account(){}
+
   @JsonProperty("id")
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
   @Id
@@ -36,9 +45,10 @@ public class Account   {
   private String name = null;
 
   @Valid
-  @OneToOne(cascade = {CascadeType.ALL})
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "iban_account", referencedColumnName = "ibanCode")
   @JsonProperty("iban")
-  private Iban iban = new Iban();
+  private Iban iban = null;
 
   public Account iban(Iban iban) {
     this.iban = iban;

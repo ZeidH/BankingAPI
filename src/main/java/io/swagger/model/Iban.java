@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import ch.qos.logback.classic.db.names.ColumnName;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -21,6 +22,7 @@ import java.util.stream.Stream;
  */
 @Entity
 @Validated
+@Table(name = "iban")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-06-09T19:14:52.572Z[GMT]")
 public class Iban {
 
@@ -29,7 +31,12 @@ public class Iban {
 
   @Id
   @JsonProperty("ibanCode")
+  @Column(name = "ibanCode")
   private String ibanCode;
+
+  @OneToOne(mappedBy = "iban")
+  private Account account = null;
+
 
   public final String BANK = "INHO";
 
@@ -38,7 +45,7 @@ public class Iban {
     if(bban == null){
       generateBban();
     }
-      generateCheckDigits();
+    generateCheckDigits();
     this.ibanCode = getIbanCode();
   }
 
@@ -107,7 +114,7 @@ public class Iban {
   /**
    * Get countryCode
    * @return countryCode
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -127,7 +134,7 @@ public class Iban {
   /**
    * Get checkDigits
    * @return checkDigits
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -168,7 +175,7 @@ public class Iban {
   /**
    * Get bban
    * @return bban
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -191,8 +198,8 @@ public class Iban {
     }
     Iban iban = (Iban) o;
     return Objects.equals(this.countryCode, iban.countryCode) &&
-        Objects.equals(this.checkDigits, iban.checkDigits) &&
-        Objects.equals(this.bban, iban.bban);
+            Objects.equals(this.checkDigits, iban.checkDigits) &&
+            Objects.equals(this.bban, iban.bban);
   }
 
   @Override

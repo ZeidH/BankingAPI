@@ -1,9 +1,6 @@
 package io.swagger.service;
 
 import io.swagger.model.Transaction;
-import io.swagger.model.Transaction.StatusEnum;
-import io.swagger.model.Transaction.CategoryEnum;
-import io.swagger.repository.ApiKeyRepository;
 import io.swagger.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
