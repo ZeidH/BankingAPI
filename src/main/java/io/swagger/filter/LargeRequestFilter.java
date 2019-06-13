@@ -10,7 +10,7 @@ import java.io.IOException;
 
 @Log
 @Component
-@Order(3)
+@Order(2)
 public class LargeRequestFilter implements Filter {
     public static final int MAX_SIZE = 1;
     //private final Logger logger = Logger.getLogger(this.getClass().getName());

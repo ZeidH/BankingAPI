@@ -80,13 +80,6 @@ public User(){}
     roles.add("ROLE_EMPLOYEE");
     this.accounts = accounts;
   }
-//// Temporary
-//  public User(Long id, String firstName, String password) {
-//    this.id = null;
-//    this.id = id;
-//    this.firstName = firstName;
-//    this.password = password;
-//  }
   //endregion
 
   //region Generated Annotations and Getters/Setters
