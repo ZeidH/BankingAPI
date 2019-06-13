@@ -69,7 +69,7 @@ public interface AccountsApi {
     @RequestMapping(value = "/Employee/Accounts",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    Iterable<Account> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false) String type);
+    ResponseEntity<List<Account>> getAllAccounts(@ApiParam(value = "search criteria") @Valid @RequestParam(value = "", required = false) String search);
 
 
     @ApiOperation(value = "Register a new account on the system", nickname = "registerAccount", notes = "Calling this allows you to insert a new account in db", response = Object.class, authorizations = {

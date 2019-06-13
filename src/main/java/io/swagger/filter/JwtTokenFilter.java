@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Component
-@Order(2)
+@Order(1)
 public class JwtTokenFilter implements Filter {
 
     private JwtTokenProvider jwtTokenProvider;

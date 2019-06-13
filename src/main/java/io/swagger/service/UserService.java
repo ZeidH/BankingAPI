@@ -1,45 +1,28 @@
 package io.swagger.service;
 
-import io.swagger.model.Account;
+import io.swagger.QueryBuilder.*;
+import io.swagger.QueryBuilder.Specifications.UserSpecification;
 import io.swagger.model.User;
 import io.swagger.repository.UserRepository;
 import io.swagger.security.JwtTokenProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
-public class UserService {
+public class UserService extends AbstractService {
 
     private final UserRepository repo;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
-    private boolean sorted;
-    private int entries;
-    private Date dateFrom;
-    private Date dateTo;
-
-
-    public void setEntries(int entries) {
-        this.entries = entries;
-    }
-
-    public void setDateFrom(Date dateFrom) {
-        this.dateFrom = dateFrom;
-    }
-
-    public void setDateTo(Date dateTo) {
-        this.dateTo = dateTo;
-    }
-
-    public void setSorting(boolean sorted){
-        this.sorted = sorted;
-    }
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository repo, JwtTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
         this.repo = repo;
@@ -48,31 +31,21 @@ public class UserService {
     }
 
     public void deleteUser(Long id){
-        repo.delete(repo.findOne(id));
+        repo.delete(repo.getOne(id));
     }
     public void registerUser(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         repo.save(user);
     }
 
-    public List<User> getUsers() {
-        List<User> users = null;
-        if(dateFrom != null || dateTo != null){
-            users = repo.getUsersByDate(dateFrom, dateTo);
-        }else{
-            users = repo.findAll();
-        }
+    public List<User> getUsers(String search){
 
-        if (sorted) {
-            users = users.stream().sorted().collect(Collectors.toList());
-        }
-        if (entries > 0) {
-            users = new ArrayList<>(users.subList(0, entries));
-        }
-        return users;
+        Specification<User> spec = getBuilder(search).build(searchCriteria -> new UserSpecification((SpecSearchCriteria) searchCriteria));
+        return repo.findAll(spec);
     }
 
     public User getUser(Long id){
-        User user = repo.findOne(id);
+        User user = repo.getOne(id);
         if(user != null){
             return user;
         }
@@ -81,11 +54,12 @@ public class UserService {
         }
     }
 
-    public String auth(String username, String password){
-
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        return jwtTokenProvider.createToken(username, repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles());
-
+    public String auth(String username, String rawPassword) {
+        User user = repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("username " + username + "not found"));
+        if (passwordEncoder.matches(rawPassword, user.getPassword())) {
+            return jwtTokenProvider.createToken(username, user.getRoles());
+        }else{
+            throw new BadCredentialsException("Invalid password!");
+        }
     }
-
 }
