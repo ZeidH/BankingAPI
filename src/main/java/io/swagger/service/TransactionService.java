@@ -45,7 +45,7 @@ public class TransactionService {
         repo.save(transaction);
     }
 
-    public Iterable<Transaction> getTransaction() {
+    public List<Transaction> getTransaction() {
         return repo.findAll();
 //        if (sorted) {
 //            transactions = transactions.stream().sorted().collect(Collectors.toList());

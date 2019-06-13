@@ -41,7 +41,7 @@ public class TransactionsApiControllerIntegrationTest {
         Boolean sort = true;
         String currency = "currency_example";
         String status = "status_example";
-        Iterable<Transaction> responseEntity = api.getAllTransactions(me, id, dateFrom, dateTo, entries, category, sort, currency, status);
+        List<Transaction> responseEntity = api.getAllTransactions(id, dateFrom, dateTo, entries, category, sort, currency, status);
         //assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
