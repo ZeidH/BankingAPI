@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+<<<<<<< Updated upstream
+import java.math.BigInteger;
+=======
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,6 +25,14 @@ public class AccountService extends AbstractService {
     private AccountRepository accountRepository;
     @Autowired
     private IbanRepository ibanRepository;
+<<<<<<< Updated upstream
+    private boolean sorted;
+    private int entries;
+    private Date dateFrom;
+    private Date dateTo;
+=======
+    private BalanceBehaviour balanceBehaviour;
+>>>>>>> Stashed changes
 
     //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
 
@@ -83,6 +96,23 @@ public class AccountService extends AbstractService {
             throw new NoSuchElementException();
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    public void balanceUpdate(Iban sender, Iban receiver, BigDecimal amount){
+        Account senderAccount = getAccountByIban(sender.getIbanCode());
+        Account receiverAccount = getAccountByIban(receiver.getIbanCode());
+
+        this.balanceBehaviour = new BalanceDecrease();
+        senderAccount.setBalance(this.balanceBehaviour.updateBalance(senderAccount, amount));
+        accountRepository.save(senderAccount);
+
+        this.balanceBehaviour = new BalanceIncrease();
+        receiverAccount.setBalance(this.balanceBehaviour.updateBalance(senderAccount, amount));
+        accountRepository.save(receiverAccount);
+    }
+
+
     //endregion
 
 //    public void registerAccount(Account account) {
@@ -93,5 +123,6 @@ public class AccountService extends AbstractService {
 //
 //        accountRepository.save(account);
 //    }
+>>>>>>> Stashed changes
 
 }

@@ -43,7 +43,7 @@ public class AccountsApiController implements AccountsApi {
     }
 
     @Autowired
-    public void setProductService(AccountService accountService) {
+    public void setAccountService(AccountService accountService) {
         this.accountService = accountService;
     }
 

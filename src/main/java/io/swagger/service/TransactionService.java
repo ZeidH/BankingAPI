@@ -1,7 +1,11 @@
 package io.swagger.service;
 
+<<<<<<< Updated upstream
+=======
 import io.swagger.QueryBuilder.*;
 import io.swagger.QueryBuilder.Specifications.TransactionSpecification;
+import io.swagger.model.BalanceBehaviour;
+>>>>>>> Stashed changes
 import io.swagger.model.Process;
 import io.swagger.model.ProcessObserver;
 import io.swagger.model.Transaction;
@@ -19,11 +23,24 @@ import java.util.stream.Collectors;
 public class TransactionService extends AbstractService implements  TransactionObservable {
     @Autowired
     private TransactionRepository repo;
+<<<<<<< Updated upstream
+    private boolean sorted;
+    private int entries;
+    private Date dateFrom;
+    private Date dateTo;
+=======
+    private AccountService accountService;
+>>>>>>> Stashed changes
 
     private ExecutorService service = Executors.newCachedThreadPool();
 
     private VaultObserver vault;
     private ProcessObserver process;
+
+    @Autowired
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
 
@@ -33,8 +50,7 @@ public class TransactionService extends AbstractService implements  TransactionO
 
     public void createTransaction(Transaction transaction){
 
-        ProcessObserver process = new Process(vault, this, transaction);
-  //      process.updateBalance(transaction.getAmount());
+        accountService.balanceUpdate(transaction.getSender(), transaction.getReceiver(), transaction.getAmount());
         insertTransaction(transaction);
     }
 

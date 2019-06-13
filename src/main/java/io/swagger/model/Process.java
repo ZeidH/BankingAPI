@@ -20,12 +20,12 @@ public class Process implements ProcessObserver {
     }
 
     public void updateStatus(){
-        this.transactionObservable.updateStatus();
+        
     }
 
     @Override
-    public void updateBalance(BigDecimal balance) {
-        vault.updateBalance(balance);
+    public void updateVault(BigDecimal balance) {
+        vault.addBalance(balance);
         updateStatus();
     }
 
