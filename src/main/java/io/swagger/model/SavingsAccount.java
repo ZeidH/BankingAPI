@@ -11,6 +11,8 @@ import java.util.List;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -23,6 +25,15 @@ import javax.validation.constraints.*;
 public class SavingsAccount extends Account  {
   @JsonProperty("interestRate")
   private BigDecimal interestRate = new BigDecimal(0.1);
+
+  @OneToOne
+  @JsonProperty("ownerAccount")
+  private CurrentAccount ownerAccount;
+
+  public SavingsAccount(CurrentAccount ownerAccount) {
+    this.ownerAccount = ownerAccount;
+    this.iban = ownerAccount.getIban();
+  }
 
   public SavingsAccount interestRate(BigDecimal interestRate) {
     this.interestRate = interestRate;

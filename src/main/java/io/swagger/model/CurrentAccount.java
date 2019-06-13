@@ -27,6 +27,9 @@ public class CurrentAccount extends Account  {
   @JsonProperty("dailyLimit")
   private BigDecimal dailyLimit = new BigDecimal(1000);
 
+
+
+
   public CurrentAccount transactionLimit(BigDecimal transactionLimit) {
     this.transactionLimit = transactionLimit;
     return this;

@@ -3,10 +3,12 @@ package io.swagger.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import io.swagger.model.*;
+import io.swagger.model.requests.AccountRequest;
 import io.swagger.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -85,23 +87,22 @@ public class AccountsApiController implements AccountsApi {
     }
 
 
-    public ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestParam(name="type", required = true, defaultValue = "") String type) {
+    public ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody(required = false) AccountRequest account) {
         String accept = request.getHeader("Accept");
 
-        type = type.toLowerCase();
+        Account newAccount = new CurrentAccount();
 
-        Account newAccount;
-
-        if(type.equals("savings")){
-            newAccount = new SavingsAccount().balance(new BigDecimal(0.0)).name("PlaceHolder's Savings Account").iban(new Iban());
-        }else if(type.equals("current")){
-            newAccount = new CurrentAccount().balance(new BigDecimal(0.0)).name("PlaceHolder's Current Account").iban(new Iban());
+        if(account != null){
+            if(!account.getName().equals(null) || !account.getName().isEmpty()) newAccount.name(account.getName());
+            if(!account.getBalance().equals(null) || !account.getBalance().isEmpty()) newAccount.balance(new BigDecimal(account.getBalance()));
+            if(!account.getBban().equals(null) || !account.getBban().isEmpty()) newAccount.getIban().bban(account.getBban());
         }else{
-            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+            newAccount.name("Placeholder").balance(new BigDecimal(0));
         }
-
+        
         accountService.registerAccount(newAccount);
         return new ResponseEntity<Object>(HttpStatus.OK);
+
     }
 
 }

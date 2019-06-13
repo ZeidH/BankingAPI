@@ -54,6 +54,18 @@ public class AccountService extends AbstractService {
         return accounts;
     }
 
+    public void registerAccount(Account account) {
+        do{
+            account.getIban().buildIban();
+        }while(ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
+
+        accountRepository.save(account);
+    }
+
+    public void deleteAccount(long id) {
+        accountRepository.delete(accountRepository.findOne(id));
+    }
+
     public Account getAccount(long id) {
         Account account = accountRepository.getOne(id);
         if (account != null) {
@@ -64,9 +76,8 @@ public class AccountService extends AbstractService {
     }
 
     public Account getAccountByIban(String iban) {
-        long accountId = accountRepository.getAccountByIban(iban);
-        Account account = accountRepository.getOne(accountId);
-        if (account != null) {
+        Account account = accountRepository.getAccountByIban(iban);
+        if(account != null){
             return account;
         } else {
             throw new NoSuchElementException();

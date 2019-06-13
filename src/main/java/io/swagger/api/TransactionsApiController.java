@@ -5,6 +5,8 @@ import io.swagger.model.Body;
 import io.swagger.model.SavingsAccount;
 import io.swagger.model.Transaction;
 import io.swagger.model.User;
+import io.swagger.model.requests.TransactionRequest;
+import io.swagger.service.AccountService;
 import io.swagger.service.TransactionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
@@ -25,6 +27,8 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.Principal;
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
@@ -40,16 +44,32 @@ public class TransactionsApiController implements TransactionsApi {
 
     private final TransactionService service;
 
+    private final AccountService accountService;
+
     @org.springframework.beans.factory.annotation.Autowired
-    public TransactionsApiController(ObjectMapper objectMapper, HttpServletRequest request, TransactionService service) {
+    public TransactionsApiController(ObjectMapper objectMapper, HttpServletRequest request, TransactionService service, AccountService accountService) {
         this.objectMapper = objectMapper;
         this.request = request;
         this.service = service;
+        this.accountService = accountService;
     }
 
-    public ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody Transaction transaction) {
+    public ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody TransactionRequest transaction) {
         String accept = request.getHeader("Accept");
-        service.createTransaction(transaction);
+        Instant instant = Instant.now();
+
+        Transaction newTransaction = new Transaction();
+        System.out.println(transaction.getCreator().toString());
+        System.out.println(transaction.getSender().toString());
+        System.out.println(transaction.getReceiver().toString());
+        newTransaction.setCreator(accountService.getAccountByIban(transaction.getCreator()).getIban());
+        newTransaction.setSender(accountService.getAccountByIban(transaction.getSender()).getIban());
+        newTransaction.setReceiver(accountService.getAccountByIban(transaction.getReceiver()).getIban());
+        newTransaction.setAmount(new BigDecimal(transaction.getAmount()));
+        newTransaction.setDateCreated(instant.toString());
+        newTransaction.category(Transaction.CategoryEnum.OTHER).currency("EUR").status(Transaction.StatusEnum.PENDING);
+
+        service.createTransaction(newTransaction);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 

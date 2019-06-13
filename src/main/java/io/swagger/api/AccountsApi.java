@@ -7,6 +7,7 @@ package io.swagger.api;
 
 import io.swagger.annotations.*;
 import io.swagger.model.Account;
+import io.swagger.model.requests.AccountRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -79,8 +80,8 @@ public interface AccountsApi {
         @ApiResponse(code = 401, message = "Invalid registration"),
         @ApiResponse(code = 403, message = "Forbidden") })
     @RequestMapping(value = "/Employee/Accounts",
-        produces = { "application/json" }, 
+        produces = { "application/json" }, consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestParam(value = "type", required = false) String type);
+    ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account);
 
 }

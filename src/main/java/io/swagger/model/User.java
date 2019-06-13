@@ -359,7 +359,6 @@ public User(){}
 
 
   @ElementCollection(fetch = FetchType.EAGER)
-  @Builder.Default
   private List<String> roles = new ArrayList<>();
 
   @Override
