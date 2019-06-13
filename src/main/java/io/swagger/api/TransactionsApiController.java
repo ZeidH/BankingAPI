@@ -1,15 +1,16 @@
 package io.swagger.api;
 
-import io.swagger.AuthenticatedUser;
 import io.swagger.model.Body;
 import io.swagger.model.SavingsAccount;
 import io.swagger.model.Transaction;
 import io.swagger.model.User;
+import io.swagger.security.IAuthenticationFacade;
 import io.swagger.service.TransactionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -40,6 +41,9 @@ public class TransactionsApiController implements TransactionsApi {
 
     private final TransactionService service;
 
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
+
     @org.springframework.beans.factory.annotation.Autowired
     public TransactionsApiController(ObjectMapper objectMapper, HttpServletRequest request, TransactionService service) {
         this.objectMapper = objectMapper;
@@ -48,9 +52,8 @@ public class TransactionsApiController implements TransactionsApi {
     }
 
     public ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody Transaction transaction) {
-        String accept = request.getHeader("Accept");
         service.createTransaction(transaction);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     //Only for Employees
@@ -58,9 +61,11 @@ public class TransactionsApiController implements TransactionsApi {
         return new ResponseEntity<List<Transaction>>(service.getTransactions(search),HttpStatus.OK);
 
     }
-    public ResponseEntity<Void> updateTransactionStatus(Authentication user, @NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {
-// CHANGE
-        service.updateStatus(((User)user.getPrincipal()).getId(), newStatus);
+
+    // DELTE???
+    public ResponseEntity<Void> updateTransactionStatus(@NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {
+        Authentication authentication = authenticationFacade.getAuthentication();
+        String nanme = authentication.getName();
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 

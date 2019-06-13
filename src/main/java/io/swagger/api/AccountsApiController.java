@@ -101,7 +101,7 @@ public class AccountsApiController implements AccountsApi {
         }
 
         accountService.registerAccount(newAccount);
-        return new ResponseEntity<Object>(HttpStatus.OK);
+        return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
 }

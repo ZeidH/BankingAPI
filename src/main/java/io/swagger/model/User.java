@@ -30,6 +30,7 @@ import static java.util.stream.Collectors.toList;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
 @Data
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {
   //region Declarations & Constructors
   @Id
@@ -50,6 +51,7 @@ public class User implements UserDetails {
   @JsonProperty("phone")
   private String phone = null;
 
+  @Column(unique = true)
   @JsonProperty("username")
   private String username = null;
 

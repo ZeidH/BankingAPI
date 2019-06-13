@@ -1,13 +1,11 @@
-package io.swagger.api;
+package io.swagger.api.functionalTests;
 
-import io.swagger.AuthenticatedUser;
-import io.swagger.model.Body;
-import io.swagger.model.SavingsAccount;
-import io.swagger.model.Transaction;
+import io.swagger.api.TransactionsApi;
+import io.swagger.model.*;
 
+import java.math.BigDecimal;
 import java.util.*;
 
-import io.swagger.model.User;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +26,7 @@ public class TransactionsApiControllerIntegrationTest {
 
     @Test
     public void createTransactionTest() throws Exception {
-        Transaction body = new Transaction();
+        Transaction body = new Transaction(new BigDecimal("60.10"),"EUR", new Iban(), Transaction.CategoryEnum.ENTERTAINMENT, new Iban(), new Iban(), "12-05-2019 22:24:10", Transaction.StatusEnum.PROCESSED);
         ResponseEntity<Void> responseEntity = api.createTransaction(body);
         assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }

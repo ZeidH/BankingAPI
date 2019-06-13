@@ -60,32 +60,15 @@ public class UsersApiController implements UsersApi {
     public ResponseEntity<List<User>> getUsers(@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "search", required = false, defaultValue = "false") String search){
         return new ResponseEntity<List<User>>(service.getUsers(search),HttpStatus.OK);
     }
-//    public ResponseEntity<List<User>> getUsers(@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false, defaultValue = "false") Boolean sorted, @ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom, @ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo, @ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false, defaultValue = "0") Integer entries) {
-//        String accept = request.getHeader("Accept");
-//        service.setSorting(sorted);
-//        service.setEntries(entries);
-//        if(dateFrom != null || dateTo != null){
-//            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-//            Date from = null;
-//            Date to = null;
-//            try {
-//                from = format.parse(dateFrom);
-//                to = format.parse(dateTo);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//            service.setDateFrom(from);
-//            service.setDateTo(to);
-//        }
-//        return new ResponseEntity<List<User>>(service.getUsers(),HttpStatus.OK);
-//    }
 
     public ResponseEntity<InlineResponse200> registerUser(@ApiParam(value = "User object"  )  @Valid @RequestBody User user) {
         String accept = request.getHeader("Accept");
         service.registerUser(user);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+
+    //DELETE??
     public ResponseEntity<Void> resetUserPassword(@ApiParam(value = "",required=true) @PathVariable("username") String username,@ApiParam(value = "",required=true) @PathVariable("birthday") String birthday,@ApiParam(value = "",required=true) @PathVariable("IBAN") String IBAN) {
         String accept = request.getHeader("Accept");
        // service.resetPassword(username, birthday, IBAN);

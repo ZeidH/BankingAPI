@@ -5,7 +5,6 @@
  */
 package io.swagger.api;
 
-import io.swagger.AuthenticatedUser;
 import io.swagger.model.Body;
 import io.swagger.model.SavingsAccount;
 import io.swagger.model.Transaction;
@@ -65,7 +64,7 @@ public interface TransactionsApi {
     @RequestMapping(value = "/Customer/Transactions",
         consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<Void> updateTransactionStatus(Authentication user, @ApiParam(value = "newStatus",required=true) @PathVariable("newStatus") Transaction.StatusEnum newStatus);
+    ResponseEntity<Void> updateTransactionStatus(@ApiParam(value = "newStatus",required=true) @PathVariable("newStatus") Transaction.StatusEnum newStatus);
 
 
     // Add get all transactions? not only belong to account?
