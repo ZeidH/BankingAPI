@@ -20,7 +20,7 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
-@SequenceGenerator(name = "account_seq", initialValue = 1, allocationSize=1)
+@SequenceGenerator(name = "account_seq", initialValue = 0, allocationSize=1)
 public class Account   {
   public Account(Long id, BigDecimal balance, String name, Iban iban, List<Transaction> transactions) {
     this.id = id;
@@ -45,10 +45,10 @@ public class Account   {
   private String name = null;
 
   @Valid
-  @OneToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "iban_account", referencedColumnName = "ibanCode")
   @JsonProperty("iban")
-  private Iban iban = null;
+  protected Iban iban = null;
 
   public Account iban(Iban iban) {
     this.iban = iban;

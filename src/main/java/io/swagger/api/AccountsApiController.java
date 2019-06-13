@@ -3,6 +3,7 @@ package io.swagger.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import io.swagger.model.*;
+import io.swagger.model.requests.AccountRequest;
 import io.swagger.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,15 +83,15 @@ public class AccountsApiController implements AccountsApi {
     }
 
 
-    public ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestParam(name="type", required = true, defaultValue = "") String type) {
+    public ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account) {
         String accept = request.getHeader("Accept");
-
+        /*
         type = type.toLowerCase();
 
         Account newAccount;
 
         if(type.equals("savings")){
-            newAccount = new SavingsAccount().balance(new BigDecimal(0.0)).name("PlaceHolder's Savings Account").iban(new Iban());
+            newAccount = new CurrentAccount().balance(new BigDecimal(0.0)).name("PlaceHolder's Savings Account").iban(new Iban());
         }else if(type.equals("current")){
             newAccount = new CurrentAccount().balance(new BigDecimal(0.0)).name("PlaceHolder's Current Account").iban(new Iban());
         }else{
@@ -98,7 +99,9 @@ public class AccountsApiController implements AccountsApi {
         }
 
         accountService.registerAccount(newAccount);
-        return new ResponseEntity<Object>(HttpStatus.OK);
+        return new ResponseEntity<Object>(HttpStatus.OK); */
+
+        return null;
     }
 
 }

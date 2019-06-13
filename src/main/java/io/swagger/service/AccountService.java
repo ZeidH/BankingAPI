@@ -97,8 +97,7 @@ public class AccountService {
     }
 
     public Account getAccountByIban(String iban) {
-        long accountId = accountRepository.getAccountByIban(iban);
-        Account account = accountRepository.findOne(accountId);
+        Account account = accountRepository.getAccountByIban(iban);
         if(account != null){
             return account;
         }

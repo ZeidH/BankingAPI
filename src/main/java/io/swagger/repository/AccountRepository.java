@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
-    @Query("select a.iban from Account a where a.iban = ?1")
-    public int getAccountByIban(String ibanCode);
+    @Query("select a from Account a where a.iban.ibanCode = ?1")
+    public Account getAccountByIban(String ibanCode);
 }
