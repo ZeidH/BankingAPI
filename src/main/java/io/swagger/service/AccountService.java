@@ -75,7 +75,6 @@ public class AccountService {
 
     public void registerAccount(Account account) {
         do{
-            account.getIban().setBban(null);
             account.getIban().buildIban();
         }while(ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
 

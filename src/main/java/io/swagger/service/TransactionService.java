@@ -53,7 +53,7 @@ public class TransactionService implements TransactionObservable {
     public void createTransaction(Transaction transaction){
 
         ProcessObserver process = new Process(vault, this, transaction);
-        process.updateBalance(transaction.getAmount());
+  //      process.updateBalance(transaction.getAmount());
         insertTransaction(transaction);
     }
 

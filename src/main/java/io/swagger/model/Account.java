@@ -48,7 +48,7 @@ public class Account   {
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "iban_account", referencedColumnName = "ibanCode")
   @JsonProperty("iban")
-  protected Iban iban = null;
+  protected Iban iban = new Iban();
 
   public Account iban(Iban iban) {
     this.iban = iban;

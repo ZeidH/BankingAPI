@@ -9,6 +9,7 @@ import io.swagger.model.Body;
 import io.swagger.model.SavingsAccount;
 import io.swagger.model.Transaction;
 import io.swagger.annotations.*;
+import io.swagger.model.requests.TransactionRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,7 @@ public interface TransactionsApi {
     @RequestMapping(value = "/Customer/Transactions",
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody Transaction transaction);
+    ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody TransactionRequest transaction);
 
 
     @ApiOperation(value = "Get all transactions that belongs to the Account", nickname = "getAllTransactions", notes = "By using this, you will receive all transactions made in the saved history of the Account.", response = Transaction.class, responseContainer = "List", authorizations = {

@@ -80,7 +80,7 @@ public interface AccountsApi {
         @ApiResponse(code = 401, message = "Invalid registration"),
         @ApiResponse(code = 403, message = "Forbidden") })
     @RequestMapping(value = "/Employee/Accounts",
-        produces = { "application/json" }, 
+        produces = { "application/json" }, consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account);
 
