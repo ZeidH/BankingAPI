@@ -1,5 +1,6 @@
-package io.swagger.api;
+package io.swagger.api.functionalTests;
 
+import io.swagger.api.UsersApi;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.User;
 

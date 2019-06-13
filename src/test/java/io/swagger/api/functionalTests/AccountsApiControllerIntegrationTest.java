@@ -1,8 +1,9 @@
-package io.swagger.api;
+package io.swagger.api.functionalTests;
 
 
 import java.util.*;
 
+import io.swagger.api.AccountsApi;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
