@@ -66,21 +66,24 @@ public class AccountsApiController implements AccountsApi {
         return new ResponseEntity<Account>(accountService.getAccountByIban(iban), HttpStatus.OK);
     }*/
 
-    public Iterable<Account> getAllAccounts(@ApiParam(value = "type of accounts to be filter") @Valid @RequestParam(value = "type", required = false, defaultValue = "") String type) {
-        String accept = request.getHeader("Accept");
+    public ResponseEntity<List<Account>> getAllAccounts(@ApiParam(value = "search criteria") @Valid @RequestParam(value = "type", required = false, defaultValue = "") String search) {
+        return new ResponseEntity<List<Account>>(accountService.getAccounts(search),HttpStatus.OK);
 
-        type = type.toLowerCase();
 
-        Iterable<Account> accountsList;
-
-        if(type.equals("currents")){
-            accountsList = accountService.getCurrents();
-        }else if(type.equals("savings")){
-            accountsList = accountService.getSavings();
-        }else{
-            accountsList = accountService.getAccounts();
-        }
-        return accountsList;
+        //        String accept = request.getHeader("Accept");
+//
+//        type = type.toLowerCase();
+//
+//        Iterable<Account> accountsList;
+//
+//        if(type.equals("currents")){
+//            accountsList = accountService.getCurrents();
+//        }else if(type.equals("savings")){
+//            accountsList = accountService.getSavings();
+//        }else{
+//            accountsList = accountService.getAccounts();
+//        }
+//        return accountsList;
     }
 
 

@@ -33,11 +33,8 @@ public class UsersApiControllerIntegrationTest {
 
     @Test
     public void getUsersTest() throws Exception {
-        Boolean sorted = true;
-        String dateFrom = "dateFrom_example";
-        String dateTo = "dateTo_example";
-        Integer entries = 56;
-        ResponseEntity<List<User>> responseEntity = api.getUsers(sorted, dateFrom, dateTo, entries);
+        String search = "";
+        ResponseEntity<List<User>> responseEntity = api.getUsers(search);
        // assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 

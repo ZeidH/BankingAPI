@@ -53,7 +53,7 @@ public interface UsersApi {
     @RequestMapping(value = "/Employee/Users",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<User>> getUsers(@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "sorted", required = false) Boolean sorted,@ApiParam(value = "Date from") @Valid @RequestParam(value = "dateFrom", required = false) String dateFrom,@ApiParam(value = "Date to") @Valid @RequestParam(value = "dateTo", required = false) String dateTo,@ApiParam(value = "Maximum number of entries returned") @Valid @RequestParam(value = "entries", required = false) Integer entries);
+    ResponseEntity<List<User>> getUsers(@ApiParam(value = "Acending Alphabetic order is true") @Valid @RequestParam(value = "search", required = false) String search);
 
 
     @ApiOperation(value = "Registers user to the system", nickname = "registerUser", notes = "Registers user", response = InlineResponse200.class, authorizations = {
