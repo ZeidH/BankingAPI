@@ -1,6 +1,8 @@
 package io.swagger.api.unitTests;
 
 import io.swagger.api.TransactionsApiController;
+import io.swagger.configuration.APISecurityConfig;
+import io.swagger.configuration.ApplicationContextProvider;
 import io.swagger.model.Iban;
 import io.swagger.model.Transaction;
 import io.swagger.service.TransactionService;
@@ -9,7 +11,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -25,11 +29,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(TransactionsApiController.class)
+@SpringBootTest
+//@ContextConfiguration(classes= ApplicationContextProvider.class)
 public class TransactionControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
     @MockBean
     private TransactionService service;
     protected List<Transaction> transactions = new ArrayList<>();

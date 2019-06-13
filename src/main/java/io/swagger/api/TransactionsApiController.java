@@ -19,6 +19,8 @@ import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.context.annotation.*;
+
 
 import javax.transaction.Status;
 import javax.validation.constraints.*;
@@ -57,10 +59,16 @@ public class TransactionsApiController implements TransactionsApi {
     }
 
     //Only for Employees
-    public ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "The ID of a specific Transaction") @Valid @RequestParam(value = "search", required = false, defaultValue = "false") String search) {
+    public ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "Search Parameters") @Valid @RequestParam(value = "search", required = false, defaultValue = "false") String search) {
         return new ResponseEntity<List<Transaction>>(service.getTransactions(search),HttpStatus.OK);
-
     }
+//    public ResponseEntity<List<Transaction>> getAllAuthorizedTransactions(){
+//        Authentication authentication = authenticationFacade.getAuthentication();
+//        String name = authentication.getName();
+//        List<Transaction> list = service.getTransactionsByUserId();
+//
+//        return new ResponseEntity<List<Transaction>>(list,HttpStatus.OK);
+//    }
 
     // DELTE???
     public ResponseEntity<Void> updateTransactionStatus(@NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {

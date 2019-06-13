@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.Map;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @RestController
-public class AccountsApiController implements AccountsApi {
+public class
+AccountsApiController implements AccountsApi {
 
     private AccountService accountService;
 

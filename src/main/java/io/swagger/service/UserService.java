@@ -1,5 +1,6 @@
 package io.swagger.service;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import io.swagger.QueryBuilder.*;
 import io.swagger.QueryBuilder.Specifications.UserSpecification;
 import io.swagger.model.User;
@@ -30,26 +31,25 @@ public class UserService extends AbstractService {
         this.authenticationManager = authenticationManager;
     }
 
-    public void deleteUser(Long id){
+    public void deleteUser(Long id) {
         repo.delete(repo.getOne(id));
     }
-    public void registerUser(User user){
+
+    public void registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         repo.save(user);
     }
 
-    public List<User> getUsers(String search){
-
+    public List<User> getUsers(String search) {
         Specification<User> spec = getBuilder(search).build(searchCriteria -> new UserSpecification((SpecSearchCriteria) searchCriteria));
         return repo.findAll(spec);
     }
 
-    public User getUser(Long id){
+    public User getUser(Long id) {
         User user = repo.getOne(id);
-        if(user != null){
+        if (user != null) {
             return user;
-        }
-        else{
+        } else {
             throw new NoSuchElementException();
         }
     }
@@ -58,7 +58,7 @@ public class UserService extends AbstractService {
         User user = repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("username " + username + "not found"));
         if (passwordEncoder.matches(rawPassword, user.getPassword())) {
             return jwtTokenProvider.createToken(username, user.getRoles());
-        }else{
+        } else {
             throw new BadCredentialsException("Invalid password!");
         }
     }

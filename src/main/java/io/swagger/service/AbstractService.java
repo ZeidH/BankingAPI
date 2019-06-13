@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public abstract class AbstractService {
 
-    public GenericSpecificationsBuilder getBuilder(String search) {
+    public <T> GenericSpecificationsBuilder getBuilder(T search) {
         GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")
                 .join(SearchOperation.SIMPLE_OPERATION_SET);

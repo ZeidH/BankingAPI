@@ -22,7 +22,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@ComponentScan(basePackages = { "io.swagger.security" })
+//@ComponentScan(basePackages = { "io.swagger.security" })
 @EnableWebSecurity
 public class APISecurityConfig extends WebSecurityConfigurerAdapter {
 
