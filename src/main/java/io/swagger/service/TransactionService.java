@@ -16,8 +16,7 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 @Service
-public class TransactionService extends AbstractService {
-public class TransactionService implements TransactionObservable {
+public class TransactionService extends AbstractService implements  TransactionObservable {
     @Autowired
     private TransactionRepository repo;
 
@@ -32,7 +31,6 @@ public class TransactionService implements TransactionObservable {
         this.repo = repo;
     }
 
-    public void createTransaction(Transaction transaction) {
     public void createTransaction(Transaction transaction){
 
         ProcessObserver process = new Process(vault, this, transaction);

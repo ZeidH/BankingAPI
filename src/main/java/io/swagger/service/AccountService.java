@@ -63,7 +63,7 @@ public class AccountService extends AbstractService {
     }
 
     public void deleteAccount(long id) {
-        accountRepository.delete(accountRepository.findOne(id));
+        accountRepository.delete(accountRepository.getOne(id));
     }
 
     public Account getAccount(long id) {
@@ -85,17 +85,13 @@ public class AccountService extends AbstractService {
     }
     //endregion
 
-    public void registerAccount(Account account) {
-        do {
-            account.getIban().setBban(null);
-            account.getIban().buildIban();
-        } while (ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
-
-        accountRepository.save(account);
-    }
-
-    public void deleteAccount(long id) {
-        accountRepository.delete(accountRepository.getOne(id));
-    }
+//    public void registerAccount(Account account) {
+//        do {
+//            account.getIban().setBban(null);
+//            account.getIban().buildIban();
+//        } while (ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
+//
+//        accountRepository.save(account);
+//    }
 
 }
