@@ -8,7 +8,6 @@ public class SpecSearchCriteria {
     private boolean orPredicate;
 
     public SpecSearchCriteria() {
-
     }
 
     public SpecSearchCriteria(final String key, final SearchOperation operation, final Object value) {

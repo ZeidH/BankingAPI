@@ -23,15 +23,11 @@ import java.util.concurrent.Executors;
 public class TransactionService extends AbstractService{
 
     @Autowired
-    private TransactionRepository repo;
-    @Autowired
     private AccountService accountService;
     @Autowired
     private VaultService vaultService;
 
     private ExecutorService service = Executors.newCachedThreadPool();
-
-    //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
 
 
     public TransactionService(UserRepository userRepo, TransactionRepository tranRepo, AccountRepository accoRepo, IbanRepository ibanRepo) {
@@ -49,26 +45,22 @@ public class TransactionService extends AbstractService{
                     if(transaction.getReceiver().BANK != "INHO") vaultService.substractBalance(transaction.getAmount());
                     accountService.balanceUpdate(transaction);
                     transaction.setStatus(Transaction.StatusEnum.PROCESSED);
-                    repo.save(transaction);
+                    tranRepo.save(transaction);
 
                 }catch(Exception e){
                     transaction.setStatus(Transaction.StatusEnum.FAILED);
                 }
-
             }
         });
-
     }
 
-
-
     public void insertTransaction(Transaction transaction){
-        repo.save(transaction);
+        tranRepo.save(transaction);
     }
 
     public List<Transaction> getTransactions(String search) {
         Specification<Transaction> spec = getBuilder(search).build(searchCriteria -> new TransactionSpecification((SpecSearchCriteria) searchCriteria));
-        return repo.findAll(spec);
+        return tranRepo.findAll(spec);
     }
 
 
@@ -76,11 +68,11 @@ public class TransactionService extends AbstractService{
     public void updateStatus(Long id, Transaction.StatusEnum status) {
         Transaction transaction = getTransaction(id);
         transaction.setStatus(status);
-        repo.save(transaction);
+        tranRepo.save(transaction);
     }
 
     public Transaction getTransaction(Long id){
-        return repo.getOne(id);
+        return tranRepo.getOne(id);
     }
 
     public boolean notSendingFromSavingsToThirdParty(Iban sender, Iban receiver){
@@ -93,13 +85,7 @@ public class TransactionService extends AbstractService{
         return true;
     }
 
-
-    //    public Transaction getTransaction(int id){
-//        for(Transaction transaction : transactions){
-//            if(transaction.getId() == id){
-//                return transaction;
-//            }
-//        }
-//        throw new NoSuchElementException();
-//    }
+    public List<Transaction> getTransactionsFromAccount(Long id) {
+        return accoRepo.getOne(id).getTransactions();
+    }
 }

@@ -17,5 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
     List<User> getUsersByDate(Date from, Date to);
 
     Optional<User> findByUsername(String username);
+    User getUserByUsername(String username);
 
 }

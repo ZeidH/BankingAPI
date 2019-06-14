@@ -75,9 +75,6 @@ public class Transaction   {
     this.status = status;
   }
 
-  /**
-   * Experimental - Default is Other
-   */
   public enum CategoryEnum {
     LIVING("Living"),
 
@@ -115,9 +112,6 @@ public class Transaction   {
   }
 
 
-  /**
-   * Gets or Sets status
-   */
   public enum StatusEnum {
     PENDING("pending"),
 
@@ -155,10 +149,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Get amount
-   * @return amount
-   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -176,10 +166,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Get currency
-   * @return currency
-   **/
   @ApiModelProperty(example = "EUR", required = true, value = "")
   @NotNull
 
@@ -196,10 +182,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Get creator
-   * @return creator
-   **/
   @ApiModelProperty(example = "NL02INGB0154356789", required = true, value = "")
   @NotNull
 
@@ -216,10 +198,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Experimental - Default is Other
-   * @return category
-   **/
   @ApiModelProperty(required = true, value = "Experimental - Default is Other")
   @NotNull
 
@@ -236,10 +214,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Get sender
-   * @return sender
-   **/
   @ApiModelProperty(example = "NL02INGB0154356789", required = true, value = "")
   @NotNull
 
@@ -256,10 +230,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Get receiver
-   * @return receiver
-   **/
   @ApiModelProperty(example = "NL02INGB0153457789", required = true, value = "")
   @NotNull
 
@@ -276,10 +246,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Get dateCreated
-   * @return dateCreated
-   **/
   @ApiModelProperty(example = "12-05-2019 22:24:10", required = true, value = "")
   @NotNull
 
@@ -296,10 +262,6 @@ public class Transaction   {
     return this;
   }
 
-  /**
-   * Get status
-   * @return status
-   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -310,7 +272,6 @@ public class Transaction   {
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {

@@ -13,7 +13,6 @@ import java.io.IOException;
 @Order(2)
 public class LargeRequestFilter implements Filter {
     public static final int MAX_SIZE = 1;
-    //private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -24,9 +23,7 @@ public class LargeRequestFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         int size = request.getContentLength();
 
-        //log.error("Request size: " + size);
         if (size > 2000) {
-            //logger.severe("request with size " + size + " was rejected");
             throw new IllegalArgumentException("Request too large");
         } else {
             chain.doFilter(request, response);

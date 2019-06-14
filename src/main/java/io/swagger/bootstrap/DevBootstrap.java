@@ -37,16 +37,12 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
 
-//        Account vault = new VaultAccount().id(0).name("Bank").balance(new BigDecimal(0.0)).iban(new Iban(0, Iban.CountryCodeEnum.NL, "0000000001"));
-//
-//        accountRepository.save(vault);
 
-
-        //---------------------------------VAULT-Maybe make it singleton?------------------------------------------------//
+        //---------------------------------VAULT----------------------------------------------------------//
         Account vault = new VaultAccount().name("Bank").balance(new BigDecimal(0.0)).iban(new Iban().bban("0000000001")).status(Account.AccountStatusEnum.OPEN);
         vault.getIban().buildIban();
         accountRepository.save(vault);
-        // T---------------------------------------------------------------------------------------------//
+        // ----------------------------------------------------------------------------------------------//
 
         /////////////////////BART/////////////////////////
 
@@ -78,7 +74,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         transactions.add(transaction);
         transactionRepository.save(transaction);
 
-        //TEST POTATO
+        //TEST Bill
         Account account = new CurrentAccount().name("Potato's Current Account").balance(new BigDecimal(0.0)).iban(new Iban());
         account.getIban().buildIban();
         List<Account> accounts = new ArrayList<Account>();

@@ -62,6 +62,7 @@ public class TransactionsApiController implements TransactionsApi {
         this.accountService = accountService;
     }
 
+
     public ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody TransactionRequest transaction) {
         String accept = request.getHeader("Accept");
 
@@ -94,19 +95,16 @@ public class TransactionsApiController implements TransactionsApi {
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
+    public ResponseEntity<List<Transaction>> getAllAuthorizedTransactions(@ApiParam(value = "account Id") @Valid @RequestParam(value = "accountId", required = true) Long id){
+        List<Transaction> transactions = service.getTransactionsFromAccount(id);
+        return new ResponseEntity<List<Transaction>>(transactions,HttpStatus.OK);
+    }
+
     //Only for Employees
     public ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "Search Parameters") @Valid @RequestParam(value = "search", required = false, defaultValue = "false") String search) {
         return new ResponseEntity<List<Transaction>>(service.getTransactions(search),HttpStatus.OK);
     }
-//    public ResponseEntity<List<Transaction>> getAllAuthorizedTransactions(){
-//        Authentication authentication = authenticationFacade.getAuthentication();
-//        String name = authentication.getName();
-//        List<Transaction> list = service.getTransactionsByUserId();
-//
-//        return new ResponseEntity<List<Transaction>>(list,HttpStatus.OK);
-//    }
 
-    // DELTE???
     public ResponseEntity<Void> updateTransactionStatus(@NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {
         Authentication authentication = authenticationFacade.getAuthentication();
         String nanme = authentication.getName();

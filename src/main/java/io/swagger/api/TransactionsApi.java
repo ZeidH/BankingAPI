@@ -43,13 +43,13 @@ public interface TransactionsApi {
     ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody TransactionRequest transaction);
 
 
-    @ApiOperation(value = "Get all transactions that belongs to the Account", nickname = "getAllTransactions", notes = "By using this, you will receive all transactions made in the saved history of the Account.", response = Transaction.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get all transactions", nickname = "getAllTransactions", notes = "By using this, you will receive all transactions made in the saved history of the Account.", response = Transaction.class, responseContainer = "List", authorizations = {
         @Authorization(value = "bearerAuth")    }, tags={ "Transaction", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Transaction data, including amount, sender, receiver and date time.", response = Transaction.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Missing parameter info"),
         @ApiResponse(code = 403, message = "Forbidden") })
-    @RequestMapping(value = "/Customer/Transactions",
+    @RequestMapping(value = "/Employee/Transactions",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "The ID of a specific Transaction") @Valid @RequestParam(value = "search", required = false) String search);
@@ -68,5 +68,15 @@ public interface TransactionsApi {
     ResponseEntity<Void> updateTransactionStatus(@ApiParam(value = "newStatus",required=true) @PathVariable("newStatus") Transaction.StatusEnum newStatus);
 
 
-    // Add get all transactions? not only belong to account?
+    @ApiOperation(value = "Get all transactions that belong to a user account", nickname = "getAllAuthorizedTransactions", notes = "By using this, you will receive all transactions made in the saved history of the Account.", response = Transaction.class, responseContainer = "List", authorizations = {
+            @Authorization(value = "bearerAuth")    }, tags={ "Transaction", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Transaction data, including amount, sender, receiver and date time.", response = Transaction.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Missing parameter info"),
+            @ApiResponse(code = 403, message = "Forbidden") })
+    @RequestMapping(value = "/Customer/Transactions",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    ResponseEntity<List<Transaction>> getAllAuthorizedTransactions(@ApiParam(value = "account Id") @Valid @RequestParam(value = "accountId", required = true, defaultValue = "false") Long id);
+
 }

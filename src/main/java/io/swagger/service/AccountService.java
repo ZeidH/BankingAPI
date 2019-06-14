@@ -43,7 +43,6 @@ public class AccountService extends AbstractService {
         return accountRepository.findAll(spec);
     }
 
-    //region might not be needed cause of getAccounts
     public Iterable<Account> getSavings() {
         List<Account> accounts = new ArrayList<>();
         for (Account acc : accountRepository.findAll()) {
@@ -170,7 +169,5 @@ public class AccountService extends AbstractService {
 
         vault.addBalance(amount);
     }
-
-    //endregion
 
 }
