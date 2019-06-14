@@ -41,8 +41,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 //
 //        accountRepository.save(vault);
 
+
         //---------------------------------VAULT-Maybe make it singleton?------------------------------------------------//
-        Account vault = new VaultAccount().name("Bank").balance(new BigDecimal(0.0)).iban(new Iban().bban("0000000001"));
+        Account vault = new VaultAccount().name("Bank").balance(new BigDecimal(0.0)).iban(new Iban().bban("0000000001")).status(Account.AccountStatusEnum.OPEN);
         vault.getIban().buildIban();
         accountRepository.save(vault);
         // T---------------------------------------------------------------------------------------------//
@@ -51,7 +52,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
 
 
-        Account accountBart = new CurrentAccount().name("Bart's Current Account").balance(new BigDecimal(100.0)).iban(new Iban());
+        Account accountBart = new CurrentAccount().name("Bart's Current Account").balance(new BigDecimal(100.0)).iban(new Iban()).status(Account.AccountStatusEnum.OPEN);
         accountBart.getIban().buildIban();
         List<Account> accountsBart = new ArrayList<Account>();
         accountsBart.add(accountBart);

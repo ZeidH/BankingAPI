@@ -28,25 +28,36 @@ import java.util.Map;
 public interface AccountsApi {
 
     @ApiOperation(value = "deletes savings or current of account, not to be used with vault", nickname = "deleteAccount", notes = "", authorizations = {
-        @Authorization(value = "bearerAuth")    }, tags={ "Account", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 204, message = "Account deleted"),
-        @ApiResponse(code = 403, message = "Forbidden") })
+            @Authorization(value = "bearerAuth")    }, tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Account deleted"),
+            @ApiResponse(code = 403, message = "Forbidden") })
     @RequestMapping(value = "/Employee/Accounts",
-        method = RequestMethod.DELETE)
+            method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteAccount(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Integer id);
 
 
     @ApiOperation(value = "calling an account", nickname = "getAccount", notes = "Calling this allows you to fetch an specific account data", response = Object.class, authorizations = {
-        @Authorization(value = "bearerAuth")    }, tags={ "Account", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "the account data", response = Object.class),
-        @ApiResponse(code = 400, message = "bad input parameter"),
-        @ApiResponse(code = 403, message = "Forbidden") })
+            @Authorization(value = "bearerAuth")    }, tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "the account data", response = Object.class),
+            @ApiResponse(code = 400, message = "bad input parameter"),
+            @ApiResponse(code = 403, message = "Forbidden") })
     @RequestMapping(value = "/Customer/Accounts/{id}",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
+            produces = { "application/json" },
+            method = RequestMethod.GET)
     ResponseEntity<Account> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id);
+
+    @ApiOperation(value = "create savings account", nickname = "createSavingsAccount", notes = "Calling this allows you to create a savings account from the iban of an already existing account", response = Object.class, authorizations = {
+            @Authorization(value = "bearerAuth")    }, tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "the account data", response = Object.class),
+            @ApiResponse(code = 400, message = "bad input parameter"),
+            @ApiResponse(code = 403, message = "Forbidden") })
+    @RequestMapping(value = "/Employee/Accounts/Savings}",
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Account> createSavingsAccount(@ApiParam(value = "the account iban",required=true) @Valid @RequestParam(name="iban", required = true) String iban);
 
     /*
     @ApiOperation(value = "calling an account2", nickname = "getAccountByIban", notes = "Calling this allows you to fetch an specific account data", response = Object.class, authorizations = {
@@ -62,26 +73,58 @@ public interface AccountsApi {
     */
 
     @ApiOperation(value = "Get all accounts available on the system", nickname = "getAllAccounts", notes = "Calling this allows you to fetch the accounts data, an input parameter \"savings\", \"currents\" or \"vault\" allows you to filter through savings or currents accounts", response = Object.class, responseContainer = "List", authorizations = {
-        @Authorization(value = "bearerAuth")    }, tags={ "Account", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Accounts data", response = Object.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "bad input parameter"),
-        @ApiResponse(code = 403, message = "Forbidden") })
+            @Authorization(value = "bearerAuth")    }, tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Accounts data", response = Object.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "bad input parameter"),
+            @ApiResponse(code = 403, message = "Forbidden") })
     @RequestMapping(value = "/Employee/Accounts",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
+            produces = { "application/json" },
+            method = RequestMethod.GET)
     ResponseEntity<List<Account>> getAllAccounts(@ApiParam(value = "search criteria") @Valid @RequestParam(value = "", required = false) String search);
 
 
     @ApiOperation(value = "Register a new account on the system", nickname = "registerAccount", notes = "Calling this allows you to insert a new account in db", response = Object.class, authorizations = {
-        @Authorization(value = "bearerAuth")    }, tags={ "Account", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful registration", response = Object.class),
-        @ApiResponse(code = 401, message = "Invalid registration"),
-        @ApiResponse(code = 403, message = "Forbidden") })
+            @Authorization(value = "bearerAuth")    }, tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "successful registration", response = Object.class),
+            @ApiResponse(code = 401, message = "Invalid registration"),
+            @ApiResponse(code = 403, message = "Forbidden") })
     @RequestMapping(value = "/Employee/Accounts",
-        produces = { "application/json" }, consumes = { "application/json" },
-        method = RequestMethod.POST)
-    ResponseEntity<Long> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account);
+            produces = { "application/json" }, consumes = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account);
+
+    @ApiOperation(value = "sets an accounts status to Close", nickname = "closeAccount", notes = "", tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Account closed"),
+            @ApiResponse(code = 403, message = "Forbidden") })
+    @RequestMapping(value = "/Employee/Accounts",
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> setAccountStatus(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Long id);
+
+    @ApiOperation(value = "withdraw money from atm", nickname = "withdrawal", notes = "", authorizations = {
+            @Authorization(value = "bearerAuth")    }, tags={ "Transaction", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Invalid ID supplied"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Transaction not found"),
+            @ApiResponse(code = 405, message = "Validation exception") })
+    @RequestMapping(value = "/Customer/Accounts/Withdrawal",
+            consumes = { "application/json" },
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> withDrawal(@Valid @RequestParam(value = "iban", required = true) String iban, @Valid @RequestParam(value = "amount", required = true) String amount);
+
+    @ApiOperation(value = "insert money to atm", nickname = "insertBalance", notes = "", authorizations = {
+            @Authorization(value = "bearerAuth")    }, tags={ "Transaction", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Invalid ID supplied"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Transaction not found"),
+            @ApiResponse(code = 405, message = "Validation exception") })
+    @RequestMapping(value = "/Customer/Accounts/InsertBalance",
+            consumes = { "application/json" },
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> insertBalance(@Valid @RequestParam(value = "iban", required = true) String iban, @Valid @RequestParam(value = "amount", required = true) String amount);
 
 }

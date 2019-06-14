@@ -3,6 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -30,6 +31,50 @@ public class Account   {
     this.transactions = transactions;
   }
   public Account(){}
+
+  @JsonProperty("status")
+  private AccountStatusEnum status = null;
+
+  public AccountStatusEnum getStatus() {
+    return status;
+  }
+
+  public Account status(AccountStatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  public void setStatus(AccountStatusEnum status) {
+    this.status = status;
+  }
+
+  public enum AccountStatusEnum {
+    OPEN("OPEN"),
+
+    ClOSED("CLOSED");
+
+    private String value;
+
+    AccountStatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static AccountStatusEnum fromValue(String text) {
+      for (AccountStatusEnum b : AccountStatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
 
   @JsonProperty("id")
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
@@ -83,7 +128,7 @@ public class Account   {
   /**
    * Get id
    * @return id
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
   public Long getId() {
@@ -94,7 +139,7 @@ public class Account   {
   /**
    * Get accountNumber
    * @return accountNumber
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -107,7 +152,7 @@ public class Account   {
   /**
    * Get balance
    * @return balance
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -128,7 +173,7 @@ public class Account   {
   /**
    * Get name
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -156,7 +201,7 @@ public class Account   {
   /**
    * Array of transactions ids
    * @return transactions
-  **/
+   **/
   @ApiModelProperty(value = "Array of transactions ids")
 
   public List<Transaction> getTransactions() {
@@ -178,10 +223,10 @@ public class Account   {
     }
     Account account = (Account) o;
     return Objects.equals(this.id, account.id) &&
-        Objects.equals(this.iban, account.iban) &&
-        Objects.equals(this.balance, account.balance) &&
-        Objects.equals(this.name, account.name) &&
-        Objects.equals(this.transactions, account.transactions);
+            Objects.equals(this.iban, account.iban) &&
+            Objects.equals(this.balance, account.balance) &&
+            Objects.equals(this.name, account.name) &&
+            Objects.equals(this.transactions, account.transactions);
   }
 
   @Override

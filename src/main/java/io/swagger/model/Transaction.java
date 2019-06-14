@@ -29,6 +29,10 @@ public class Transaction   {
   @JsonProperty("id")
   private Long id = null;
 
+  public Long getId() {
+    return id;
+  }
+
   @JsonProperty("amount")
   private BigDecimal amount = null;
 
@@ -116,9 +120,9 @@ public class Transaction   {
    */
   public enum StatusEnum {
     PENDING("pending"),
-    
+
     FAILED("failed"),
-    
+
     PROCESSED("processed");
 
     private String value;
@@ -154,7 +158,7 @@ public class Transaction   {
   /**
    * Get amount
    * @return amount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -175,7 +179,7 @@ public class Transaction   {
   /**
    * Get currency
    * @return currency
-  **/
+   **/
   @ApiModelProperty(example = "EUR", required = true, value = "")
   @NotNull
 
@@ -195,7 +199,7 @@ public class Transaction   {
   /**
    * Get creator
    * @return creator
-  **/
+   **/
   @ApiModelProperty(example = "NL02INGB0154356789", required = true, value = "")
   @NotNull
 
@@ -215,7 +219,7 @@ public class Transaction   {
   /**
    * Experimental - Default is Other
    * @return category
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Experimental - Default is Other")
   @NotNull
 
@@ -235,7 +239,7 @@ public class Transaction   {
   /**
    * Get sender
    * @return sender
-  **/
+   **/
   @ApiModelProperty(example = "NL02INGB0154356789", required = true, value = "")
   @NotNull
 
@@ -255,7 +259,7 @@ public class Transaction   {
   /**
    * Get receiver
    * @return receiver
-  **/
+   **/
   @ApiModelProperty(example = "NL02INGB0153457789", required = true, value = "")
   @NotNull
 
@@ -275,7 +279,7 @@ public class Transaction   {
   /**
    * Get dateCreated
    * @return dateCreated
-  **/
+   **/
   @ApiModelProperty(example = "12-05-2019 22:24:10", required = true, value = "")
   @NotNull
 
@@ -295,7 +299,7 @@ public class Transaction   {
   /**
    * Get status
    * @return status
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
@@ -318,13 +322,13 @@ public class Transaction   {
     }
     Transaction transaction = (Transaction) o;
     return Objects.equals(this.amount, transaction.amount) &&
-        Objects.equals(this.currency, transaction.currency) &&
-        Objects.equals(this.creator, transaction.creator) &&
-        Objects.equals(this.category, transaction.category) &&
-        Objects.equals(this.sender, transaction.sender) &&
-        Objects.equals(this.receiver, transaction.receiver) &&
-        Objects.equals(this.dateCreated, transaction.dateCreated) &&
-        Objects.equals(this.status, transaction.status);
+            Objects.equals(this.currency, transaction.currency) &&
+            Objects.equals(this.creator, transaction.creator) &&
+            Objects.equals(this.category, transaction.category) &&
+            Objects.equals(this.sender, transaction.sender) &&
+            Objects.equals(this.receiver, transaction.receiver) &&
+            Objects.equals(this.dateCreated, transaction.dateCreated) &&
+            Objects.equals(this.status, transaction.status);
   }
 
   @Override
@@ -336,7 +340,7 @@ public class Transaction   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Transaction {\n");
-    
+
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    creator: ").append(toIndentedString(creator)).append("\n");
