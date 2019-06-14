@@ -82,14 +82,6 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
-    //DELETE??
-    public ResponseEntity<Void> resetUserPassword(@ApiParam(value = "",required=true) @PathVariable("username") String username,@ApiParam(value = "",required=true) @PathVariable("birthday") String birthday,@ApiParam(value = "",required=true) @PathVariable("IBAN") String IBAN) {
-        String accept = request.getHeader("Accept");
-       // service.resetPassword(username, birthday, IBAN);
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
     public ResponseEntity<Map<Object,Object>> usersLoginPost(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username,@NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password) {
         try {
             String token = service.auth(username, password);

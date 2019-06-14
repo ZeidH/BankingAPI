@@ -83,19 +83,17 @@ public class TransactionsApiController implements TransactionsApi {
     public ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "Search Parameters") @Valid @RequestParam(value = "search", required = false, defaultValue = "false") String search) {
         return new ResponseEntity<List<Transaction>>(service.getTransactions(search),HttpStatus.OK);
     }
-//    public ResponseEntity<List<Transaction>> getAllAuthorizedTransactions(){
-//        Authentication authentication = authenticationFacade.getAuthentication();
-//        String name = authentication.getName();
-//        List<Transaction> list = service.getTransactionsByUserId();
-//
-//        return new ResponseEntity<List<Transaction>>(list,HttpStatus.OK);
-//    }
+
 
     // DELTE???
     public ResponseEntity<Void> updateTransactionStatus(@NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {
         Authentication authentication = authenticationFacade.getAuthentication();
         String nanme = authentication.getName();
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<Transaction>> getAllAuthorizedTransactions(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Long id) {
+        return new ResponseEntity<List<Transaction>>(service.getAuthenticatedTransactions(id), HttpStatus.OK);
     }
 
 }

@@ -7,12 +7,14 @@ import io.swagger.model.User;
 import java.util.*;
 
 import io.swagger.model.requests.UserRequest;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.xml.ws.Response;
@@ -27,42 +29,39 @@ public class UsersApiControllerIntegrationTest {
     @Autowired
     private UsersApi api;
 
+    private UserRequest userRequest;
+
+    @Before
+    public void setUp() throws Exception {
+        userRequest = new UserRequest("Bart", "fried","potato@hotmail.com", "1234566", "bart3", "1234", "9-6-2019", "8-6-2019");
+    }
+
     @Test
     public void deleteUserTest() throws Exception {
-        Long id = 56L;
+        Long id = 10000001L;
         ResponseEntity<Void> responseEntity = api.deleteUser(id);
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
     public void getUsersTest() throws Exception {
         String search = "";
         ResponseEntity<List<User>> responseEntity = api.getUsers(search);
-       // assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
-    }
-
-//    @Test
-//    public void registerUserTest() throws Exception {
-//        UserRequest body = new UserRequest();
-//        ResponseEntity<InlineResponse200> responseEntity = api.registerUser(body);
-//        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
-//    }
-
-    @Test
-    public void resetUserPasswordTest() throws Exception {
-        String username = "username_example";
-        String birthday = "birthday_example";
-        String IBAN = "IBAN_example";
-        ResponseEntity<Void> responseEntity = api.resetUserPassword(username, birthday, IBAN);
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
+    public void registerUserTest() throws Exception {
+        ResponseEntity<InlineResponse200> responseEntity = api.registerUser(userRequest);
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+    }
+
+
+    @Test(expected = BadCredentialsException.class)
     public void usersLoginPostTest() throws Exception {
         String username = "username_example";
         String password = "password_example";
         ResponseEntity<Map<Object,Object>> responseEntity = api.usersLoginPost(username, password);
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
 }

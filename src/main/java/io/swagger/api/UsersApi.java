@@ -70,15 +70,6 @@ public interface UsersApi {
     ResponseEntity<InlineResponse200> registerUser(@ApiParam(value = "User object"  )  @Valid @RequestBody UserRequest body);
 
 
-    @ApiOperation(value = "Change password", nickname = "resetUserPassword", notes = "Change password of the user, an reset password procedure will be started, link in the user accounts email.", authorizations = {
-        @Authorization(value = "bearerAuth")    }, tags={ "User", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 404, message = "User does not exist") })
-    @RequestMapping(value = "/Customer/Users",
-        method = RequestMethod.PUT)
-    ResponseEntity<Void> resetUserPassword(@ApiParam(value = "",required=true) @PathVariable("username") String username,@ApiParam(value = "",required=true) @PathVariable("birthday") String birthday,@ApiParam(value = "",required=true) @PathVariable("IBAN") String IBAN);
-
-
     @ApiOperation(value = "Logs user into the system", nickname = "usersLoginPost", notes = "Authorizes user creditentals", tags={ "User", })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "successful login - Session started with a token that is shared with the user browser"),
