@@ -124,4 +124,17 @@ public class AccountsApiController implements AccountsApi {
         return new ResponseEntity<Account>(HttpStatus.OK);
 
     }
+
+    @Override
+    public ResponseEntity<Void> withDrawal(@Valid @RequestParam String iban, @Valid @RequestParam(defaultValue = "0") String amount) {
+        accountService.withdrawal(iban, new BigDecimal(amount));
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Void> insertBalance(@Valid @RequestParam String iban, @Valid @RequestParam(defaultValue = "0") String amount) {
+        accountService.insertBalance(iban, new BigDecimal(amount));
+        return null;
+    }
+
 }

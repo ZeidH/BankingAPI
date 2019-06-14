@@ -148,6 +148,30 @@ public class AccountService extends AbstractService {
         return false;
     }
 
+    public void withdrawal(String iban, BigDecimal amount){
+        Account account = getAccountByIban(iban);
+
+        BigDecimal newBalance = account.getBalance().subtract(amount);
+
+        account.setBalance(newBalance);
+
+        accountRepository.save(account);
+
+        vault.substractBalance(amount);
+    }
+
+    public void insertBalance(String iban, BigDecimal amount){
+        Account account = getAccountByIban(iban);
+
+        BigDecimal newBalance = account.getBalance().add(amount);
+
+        account.setBalance(newBalance);
+
+        accountRepository.save(account);
+
+        vault.addBalance(amount);
+    }
+
     //endregion
 
 //    public void registerAccount(Account account) {
