@@ -82,6 +82,6 @@ public interface AccountsApi {
     @RequestMapping(value = "/Employee/Accounts",
         produces = { "application/json" }, consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account);
+    ResponseEntity<Long> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account);
 
 }

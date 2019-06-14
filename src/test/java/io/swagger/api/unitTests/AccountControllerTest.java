@@ -27,7 +27,7 @@ public class AccountControllerTest extends TransactionControllerTest {
 
     @Override
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         super.setUp();
         Account bart = new CurrentAccount().name("Bart's Current Account").balance(new BigDecimal(100.0)).iban(new Iban());
         bart.getIban().buildIban();

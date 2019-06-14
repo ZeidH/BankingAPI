@@ -41,7 +41,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 //
 //        accountRepository.save(vault);
 
-
         //---------------------------------VAULT-Maybe make it singleton?------------------------------------------------//
         Account vault = new VaultAccount().name("Bank").balance(new BigDecimal(0.0)).iban(new Iban().bban("0000000001"));
         vault.getIban().buildIban();
