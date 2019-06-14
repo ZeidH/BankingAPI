@@ -5,15 +5,6 @@ public class TransactionRequest {
     private String creator;
     private String sender;
     private String receiver;
-    private String category;
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public String getAmount() {
         return amount;

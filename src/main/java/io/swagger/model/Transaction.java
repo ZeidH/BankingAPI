@@ -29,10 +29,6 @@ public class Transaction   {
   @JsonProperty("id")
   private Long id = null;
 
-  public Long getId() {
-    return id;
-  }
-
   @JsonProperty("amount")
   private BigDecimal amount = null;
 

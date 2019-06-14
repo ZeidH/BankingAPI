@@ -24,13 +24,13 @@ import javax.validation.constraints.*;
 @Entity
 public class SavingsAccount extends Account  {
   @JsonProperty("interestRate")
-  private BigDecimal interestRate = new BigDecimal(0.10);
+  private BigDecimal interestRate = new BigDecimal(0.1);
 
   @OneToOne
   @JsonProperty("ownerAccount")
-  private Account ownerAccount;
+  private CurrentAccount ownerAccount;
 
-  public SavingsAccount(Account ownerAccount) {
+  public SavingsAccount(CurrentAccount ownerAccount) {
     this.ownerAccount = ownerAccount;
     this.iban = ownerAccount.getIban();
   }

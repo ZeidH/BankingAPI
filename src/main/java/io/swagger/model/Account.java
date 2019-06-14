@@ -3,7 +3,6 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
@@ -31,50 +30,6 @@ public class Account   {
     this.transactions = transactions;
   }
   public Account(){}
-
-  @JsonProperty("status")
-  private AccountStatusEnum status = null;
-
-  public AccountStatusEnum getStatus() {
-    return status;
-  }
-
-  public Account status(AccountStatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-  public void setStatus(AccountStatusEnum status) {
-    this.status = status;
-  }
-
-  public enum AccountStatusEnum {
-    OPEN("OPEN"),
-
-    ClOSED("CLOSED");
-
-    private String value;
-
-    AccountStatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AccountStatusEnum fromValue(String text) {
-      for (AccountStatusEnum b : AccountStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
 
   @JsonProperty("id")
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
