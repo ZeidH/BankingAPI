@@ -48,6 +48,17 @@ public interface AccountsApi {
         method = RequestMethod.GET)
     ResponseEntity<Account> getAccount(@ApiParam(value = "the account id",required=true) @PathVariable("id") Integer id);
 
+    @ApiOperation(value = "create savings account", nickname = "createSavingsAccount", notes = "Calling this allows you to create a savings account from the iban of an already existing account", response = Object.class, authorizations = {
+            @Authorization(value = "bearerAuth")    }, tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "the account data", response = Object.class),
+            @ApiResponse(code = 400, message = "bad input parameter"),
+            @ApiResponse(code = 403, message = "Forbidden") })
+    @RequestMapping(value = "/Employee/Accounts/Savings}",
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Account> createSavingsAccount(@ApiParam(value = "the account iban",required=true) @Valid @RequestParam(name="iban", required = true) String iban);
+
     /*
     @ApiOperation(value = "calling an account2", nickname = "getAccountByIban", notes = "Calling this allows you to fetch an specific account data", response = Object.class, authorizations = {
             @Authorization(value = "bearerAuth")    }, tags={ "Account", })
@@ -83,5 +94,13 @@ public interface AccountsApi {
         produces = { "application/json" }, consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody AccountRequest account);
+
+    @ApiOperation(value = "sets an accounts status to Close", nickname = "closeAccount", notes = "", tags={ "Account", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Account closed"),
+            @ApiResponse(code = 403, message = "Forbidden") })
+    @RequestMapping(value = "/Accounts",
+            method = RequestMethod.PUT)
+    ResponseEntity<Void> setAccountStatus(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Long id);
 
 }

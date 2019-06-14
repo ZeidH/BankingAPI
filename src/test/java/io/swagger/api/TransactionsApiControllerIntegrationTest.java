@@ -8,6 +8,7 @@ import io.swagger.model.Transaction;
 import java.util.*;
 
 import io.swagger.model.User;
+import io.swagger.model.requests.TransactionRequest;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,9 +29,9 @@ public class TransactionsApiControllerIntegrationTest {
 
     @Test
     public void createTransactionTest() throws Exception {
-        Transaction body = new Transaction();
-        //ResponseEntity<Void> responseEntity = api.createTransaction(body);
-      //  assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        TransactionRequest body = new TransactionRequest();
+        ResponseEntity<Void> responseEntity = api.createTransaction(body);
+        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
     @Test

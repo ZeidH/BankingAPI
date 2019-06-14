@@ -10,13 +10,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-<<<<<<< Updated upstream
-import java.math.BigInteger;
-=======
->>>>>>> Stashed changes
+import java.security.AccessControlContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Service
 public class AccountService extends AbstractService {
@@ -25,14 +24,13 @@ public class AccountService extends AbstractService {
     private AccountRepository accountRepository;
     @Autowired
     private IbanRepository ibanRepository;
-<<<<<<< Updated upstream
-    private boolean sorted;
-    private int entries;
-    private Date dateFrom;
-    private Date dateTo;
-=======
+
     private BalanceBehaviour balanceBehaviour;
->>>>>>> Stashed changes
+
+    private ExecutorService service = Executors.newCachedThreadPool();
+
+    @Autowired
+    private VaultService vault;
 
     //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
 
@@ -57,6 +55,7 @@ public class AccountService extends AbstractService {
         return accounts;
     }
 
+
     public Iterable<Account> getCurrents() {
         List<Account> accounts = new ArrayList<>();
         for (Account acc : accountRepository.findAll()) {
@@ -72,12 +71,30 @@ public class AccountService extends AbstractService {
             account.getIban().buildIban();
         }while(ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
 
+        account.setStatus(Account.AccountStatusEnum.OPEN);
+
+        vault.addBalance(account.getBalance());
+        accountRepository.save(account);
+    }
+
+    public void registerSavingsAccount(Account account){
         accountRepository.save(account);
     }
 
     public void deleteAccount(long id) {
         accountRepository.delete(accountRepository.getOne(id));
     }
+
+    public void updateAccountStatus(Long id) {
+        Account account = accountRepository.getOne(id);
+        if (account.getStatus() == Account.AccountStatusEnum.OPEN){
+            account.setStatus(Account.AccountStatusEnum.ClOSED);
+        }else{
+            account.setStatus(Account.AccountStatusEnum.OPEN);
+        }
+        accountRepository.save(account);
+    }
+
 
     public Account getAccount(long id) {
         Account account = accountRepository.getOne(id);
@@ -96,22 +113,40 @@ public class AccountService extends AbstractService {
             throw new NoSuchElementException();
         }
     }
-<<<<<<< Updated upstream
-=======
 
-    public void balanceUpdate(Iban sender, Iban receiver, BigDecimal amount){
-        Account senderAccount = getAccountByIban(sender.getIbanCode());
-        Account receiverAccount = getAccountByIban(receiver.getIbanCode());
+    public void balanceUpdate(Transaction transaction){
+        Account senderAccount = getAccountByIban(transaction.getSender().getIbanCode());
+        Account receiverAccount = getAccountByIban(transaction.getReceiver().getIbanCode());
 
         this.balanceBehaviour = new BalanceDecrease();
-        senderAccount.setBalance(this.balanceBehaviour.updateBalance(senderAccount, amount));
+        senderAccount.setBalance(this.balanceBehaviour.updateBalance(senderAccount, transaction.getAmount()));
         accountRepository.save(senderAccount);
 
         this.balanceBehaviour = new BalanceIncrease();
-        receiverAccount.setBalance(this.balanceBehaviour.updateBalance(senderAccount, amount));
+        receiverAccount.setBalance(this.balanceBehaviour.updateBalance(senderAccount, transaction.getAmount()));
         accountRepository.save(receiverAccount);
     }
 
+    public boolean bothAccountsActive(Transaction transaction){
+
+        Account senderAccount = getAccountByIban(transaction.getSender().getIbanCode());
+        Account receiverAccount = getAccountByIban(transaction.getReceiver().getIbanCode());
+
+        if(senderAccount.getStatus() == Account.AccountStatusEnum.ClOSED || receiverAccount.getStatus() == Account.AccountStatusEnum.ClOSED) return false;
+
+        return true;
+
+    }
+
+    public boolean sufficientFunds(Transaction transaction){
+
+        Account senderAccount = getAccountByIban(transaction.getSender().getIbanCode());
+        Account receiverAccount = getAccountByIban(transaction.getReceiver().getIbanCode());
+
+        if(senderAccount.getBalance().compareTo(transaction.getAmount()) == 1) return true;
+
+        return false;
+    }
 
     //endregion
 
@@ -123,6 +158,5 @@ public class AccountService extends AbstractService {
 //
 //        accountRepository.save(account);
 //    }
->>>>>>> Stashed changes
 
 }

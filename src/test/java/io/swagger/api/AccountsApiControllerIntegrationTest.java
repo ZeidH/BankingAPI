@@ -3,6 +3,8 @@ package io.swagger.api;
 
 import java.util.*;
 
+import io.swagger.model.Account;
+import io.swagger.model.requests.AccountRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,22 +32,23 @@ public class AccountsApiControllerIntegrationTest {
 
     @Test
     public void getAccountTest() throws Exception {
-        Integer id = 56;
-      //  ResponseEntity<Object> responseEntity = api.getAccount(id);
-      //  assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        Integer id = 2;
+       ResponseEntity<Account> responseEntity = api.getAccount(id);
+       assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
     @Test
     public void getAllAccountsTest() throws Exception {
-        String type = "type_example";
-       // ResponseEntity<List<Object>> responseEntity = api.getAllAccounts(type);
-        // assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        String search = "";
+        ResponseEntity<List<Account>> responseEntity = api.getAllAccounts(search);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
     public void registerAccountTest() throws Exception {
-        //ResponseEntity<Object> responseEntity = api.registerAccount(@RequestBody AccountsApi account);
-       // assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+        AccountRequest account = new AccountRequest();
+        ResponseEntity<Object> responseEntity = api.registerAccount(account);
+       assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
 }

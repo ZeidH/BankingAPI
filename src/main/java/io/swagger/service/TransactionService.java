@@ -1,46 +1,31 @@
 package io.swagger.service;
 
-<<<<<<< Updated upstream
-=======
 import io.swagger.QueryBuilder.*;
 import io.swagger.QueryBuilder.Specifications.TransactionSpecification;
-import io.swagger.model.BalanceBehaviour;
->>>>>>> Stashed changes
-import io.swagger.model.Process;
-import io.swagger.model.ProcessObserver;
-import io.swagger.model.Transaction;
+
+import io.swagger.model.*;
 import io.swagger.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
+
 
 @Service
-public class TransactionService extends AbstractService implements  TransactionObservable {
+public class TransactionService extends AbstractService{
+
     @Autowired
     private TransactionRepository repo;
-<<<<<<< Updated upstream
-    private boolean sorted;
-    private int entries;
-    private Date dateFrom;
-    private Date dateTo;
-=======
+    @Autowired
     private AccountService accountService;
->>>>>>> Stashed changes
+    @Autowired
+    private VaultService vaultService;
 
     private ExecutorService service = Executors.newCachedThreadPool();
-
-    private VaultObserver vault;
-    private ProcessObserver process;
-
-    @Autowired
-    public void setAccountService(AccountService accountService) {
-        this.accountService = accountService;
-    }
 
     //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
 
@@ -50,8 +35,30 @@ public class TransactionService extends AbstractService implements  TransactionO
 
     public void createTransaction(Transaction transaction){
 
-        accountService.balanceUpdate(transaction.getSender(), transaction.getReceiver(), transaction.getAmount());
         insertTransaction(transaction);
+
+        service.execute(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    if(transaction.getReceiver().BANK != "INHO") vaultService.substractBalance(transaction.getAmount());
+                    accountService.balanceUpdate(transaction);
+                    transaction.setStatus(Transaction.StatusEnum.PROCESSED);
+                    repo.save(transaction);
+
+                }catch(Exception e){
+                    transaction.setStatus(Transaction.StatusEnum.FAILED);
+                }
+
+            }
+        });
+
+    }
+
+    public void createOneWayTransaction(Transaction transaction){
+
+
+
     }
 
     public void insertTransaction(Transaction transaction){
@@ -63,25 +70,28 @@ public class TransactionService extends AbstractService implements  TransactionO
         return repo.findAll(spec);
     }
 
+
+    @Transactional
     public void updateStatus(Long id, Transaction.StatusEnum status) {
-        Transaction transaction = repo.getOne(id);
+        Transaction transaction = getTransaction(id);
         transaction.setStatus(status);
         repo.save(transaction);
     }
-    @Override
-    public void updateStatus() {
 
+    public Transaction getTransaction(Long id){
+        return repo.getOne(id);
     }
 
-    @Override
-    public void registerVault(VaultObserver vault) {
-        this.vault = vault;
+    public boolean notSendingFromSavingsToThirdParty(Iban sender, Iban receiver){
+
+        Account senderAccount = accountService.getAccountByIban(sender.getIbanCode());
+        Account receiverAccount = accountService.getAccountByIban(receiver.getIbanCode());
+
+        if(senderAccount.getClass().equals(SavingsAccount.class) && (receiverAccount.getIban().getIbanCode() != senderAccount.getIban().getIbanCode())) return false;
+
+        return true;
     }
 
-    @Override
-    public void registerProcess(ProcessObserver processObserver) {
-        this.process = processObserver;
-    }
 
     //    public Transaction getTransaction(int id){
 //        for(Transaction transaction : transactions){
