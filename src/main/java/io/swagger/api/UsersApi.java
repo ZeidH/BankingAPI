@@ -8,6 +8,7 @@ package io.swagger.api;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.User;
 import io.swagger.annotations.*;
+import io.swagger.model.requests.UserRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,7 +67,7 @@ public interface UsersApi {
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<InlineResponse200> registerUser(@ApiParam(value = "User object"  )  @Valid @RequestBody User body);
+    ResponseEntity<InlineResponse200> registerUser(@ApiParam(value = "User object"  )  @Valid @RequestBody UserRequest body);
 
 
     @ApiOperation(value = "Change password", nickname = "resetUserPassword", notes = "Change password of the user, an reset password procedure will be started, link in the user accounts email.", authorizations = {

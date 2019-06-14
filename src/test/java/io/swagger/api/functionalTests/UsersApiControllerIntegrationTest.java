@@ -6,6 +6,7 @@ import io.swagger.model.User;
 
 import java.util.*;
 
+import io.swagger.model.requests.UserRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UsersApiControllerIntegrationTest {
+
 
     @Autowired
     private UsersApi api;
@@ -39,12 +41,12 @@ public class UsersApiControllerIntegrationTest {
        // assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
     }
 
-    @Test
-    public void registerUserTest() throws Exception {
-        User body = new User();
-        ResponseEntity<InlineResponse200> responseEntity = api.registerUser(body);
-        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
-    }
+//    @Test
+//    public void registerUserTest() throws Exception {
+//        UserRequest body = new UserRequest();
+//        ResponseEntity<InlineResponse200> responseEntity = api.registerUser(body);
+//        assertEquals(HttpStatus.NOT_IMPLEMENTED, responseEntity.getStatusCode());
+//    }
 
     @Test
     public void resetUserPasswordTest() throws Exception {

@@ -5,7 +5,11 @@ import io.swagger.QueryBuilder.Specifications.TransactionSpecification;
 import io.swagger.model.Process;
 import io.swagger.model.ProcessObserver;
 import io.swagger.model.Transaction;
+import io.swagger.model.User;
+import io.swagger.repository.AccountRepository;
+import io.swagger.repository.IbanRepository;
 import io.swagger.repository.TransactionRepository;
+import io.swagger.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -18,8 +22,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class TransactionService extends AbstractService implements  TransactionObservable {
-    @Autowired
-    private TransactionRepository repo;
 
     private ExecutorService service = Executors.newCachedThreadPool();
 
@@ -28,8 +30,8 @@ public class TransactionService extends AbstractService implements  TransactionO
 
     //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
 
-    public TransactionService(TransactionRepository repo) {
-        this.repo = repo;
+    public TransactionService(UserRepository userRepo, TransactionRepository tranRepo, AccountRepository accoRepo, IbanRepository ibanRepo) {
+        super( userRepo,  tranRepo,  accoRepo,  ibanRepo);
     }
 
     public void createTransaction(Transaction transaction){
@@ -40,18 +42,21 @@ public class TransactionService extends AbstractService implements  TransactionO
     }
 
     public void insertTransaction(Transaction transaction){
-        repo.save(transaction);
+        tranRepo.save(transaction);
     }
 
     public List<Transaction> getTransactions(String search) {
         Specification<Transaction> spec = getBuilder(search).build(searchCriteria -> new TransactionSpecification((SpecSearchCriteria) searchCriteria));
-        return repo.findAll(spec);
+        return tranRepo.findAll(spec);
+    }
+    public List<Transaction> getAuthenticatedTransactions(long accountId){
+        return accoRepo.getOne(accountId).getTransactions();
     }
 
     public void updateStatus(Long id, Transaction.StatusEnum status) {
-        Transaction transaction = repo.getOne(id);
+        Transaction transaction = tranRepo.getOne(id);
         transaction.setStatus(status);
-        repo.save(transaction);
+        tranRepo.save(transaction);
     }
     @Override
     public void updateStatus() {
@@ -68,12 +73,4 @@ public class TransactionService extends AbstractService implements  TransactionO
         this.process = processObserver;
     }
 
-    //    public Transaction getTransaction(int id){
-//        for(Transaction transaction : transactions){
-//            if(transaction.getId() == id){
-//                return transaction;
-//            }
-//        }
-//        throw new NoSuchElementException();
-//    }
 }

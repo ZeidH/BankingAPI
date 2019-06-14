@@ -5,6 +5,8 @@ import io.swagger.QueryBuilder.SpecSearchCriteria;
 import io.swagger.model.*;
 import io.swagger.repository.AccountRepository;
 import io.swagger.repository.IbanRepository;
+import io.swagger.repository.TransactionRepository;
+import io.swagger.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -16,27 +18,22 @@ import java.util.NoSuchElementException;
 @Service
 public class AccountService extends AbstractService {
 
-    @Autowired
-    private AccountRepository accountRepository;
-    @Autowired
-    private IbanRepository ibanRepository;
 
     //new Transaction(new BigDecimal("60.10"),"EUR", "NL02INGB0154356789", CategoryEnum.ENTERTAINMENT, "NL02INGB0154356789", "NL02INGB0153457789", "12-05-2019 22:24:10", StatusEnum.PROCESSED)
 
-    public AccountService(AccountRepository accountRepository, IbanRepository ibanRepository) {
-        this.accountRepository = accountRepository;
-        this.ibanRepository = ibanRepository;
+    public AccountService(UserRepository userRepo, TransactionRepository tranRepo, AccountRepository accoRepo, IbanRepository ibanRepo) {
+        super( userRepo,  tranRepo,  accoRepo,  ibanRepo);
     }
 
     public List<Account> getAccounts(String search) {
         Specification<Account> spec = getBuilder(search).build(searchCriteria -> new AccountSpecification((SpecSearchCriteria) searchCriteria));
-        return accountRepository.findAll(spec);
+        return accoRepo.findAll(spec);
     }
 
     //region might not be needed cause of getAccounts
     public Iterable<Account> getSavings() {
         List<Account> accounts = new ArrayList<>();
-        for (Account acc : accountRepository.findAll()) {
+        for (Account acc : accoRepo.findAll()) {
             if (acc instanceof SavingsAccount) {
                 accounts.add(acc);
             }
@@ -46,7 +43,7 @@ public class AccountService extends AbstractService {
 
     public Iterable<Account> getCurrents() {
         List<Account> accounts = new ArrayList<>();
-        for (Account acc : accountRepository.findAll()) {
+        for (Account acc : accoRepo.findAll()) {
             if (acc instanceof CurrentAccount) {
                 accounts.add(acc);
             }
@@ -54,20 +51,21 @@ public class AccountService extends AbstractService {
         return accounts;
     }
 
-    public void registerAccount(Account account) {
+    public long registerAccount(Account account) {
         do{
             account.getIban().buildIban();
-        }while(ibanRepository.existsByIbanCode(account.getIban().getIbanCode()));
+        }while(ibanRepo.existsByIbanCode(account.getIban().getIbanCode()));
 
-        accountRepository.save(account);
+        accoRepo.save(account);
+        return account.getId();
     }
 
     public void deleteAccount(long id) {
-        accountRepository.delete(accountRepository.getOne(id));
+        accoRepo.delete(accoRepo.getOne(id));
     }
 
     public Account getAccount(long id) {
-        Account account = accountRepository.getOne(id);
+        Account account = accoRepo.getOne(id);
         if (account != null) {
             return account;
         } else {
@@ -76,7 +74,7 @@ public class AccountService extends AbstractService {
     }
 
     public Account getAccountByIban(String iban) {
-        Account account = accountRepository.getAccountByIban(iban);
+        Account account = accoRepo.getAccountByIban(iban);
         if(account != null){
             return account;
         } else {

@@ -88,7 +88,7 @@ AccountsApiController implements AccountsApi {
     }
 
 
-    public ResponseEntity<Object> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody(required = false) AccountRequest account) {
+    public ResponseEntity<Long> registerAccount(@ApiParam(value = "type of accounts to be created") @Valid @RequestBody(required = false) AccountRequest account) {
         String accept = request.getHeader("Accept");
 
         Account newAccount = new CurrentAccount();
@@ -101,8 +101,8 @@ AccountsApiController implements AccountsApi {
             newAccount.name("Placeholder").balance(new BigDecimal(0));
         }
         
-        accountService.registerAccount(newAccount);
-        return new ResponseEntity<Object>(HttpStatus.CREATED);
+        Long id = accountService.registerAccount(newAccount);
+        return new ResponseEntity<Long>(HttpStatus.CREATED);
     }
 
 }

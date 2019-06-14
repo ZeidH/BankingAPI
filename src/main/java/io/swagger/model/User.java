@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.sun.istack.Nullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -66,6 +67,7 @@ public class User implements UserDetails {
 
   @JsonProperty("accounts")
   @Valid
+  @Nullable
   @OneToMany
   private List<Account> accounts = new ArrayList<Account>();
 
@@ -81,6 +83,17 @@ public User(){}
     this.birthday = birthday;
     roles.add("ROLE_EMPLOYEE");
     this.accounts = accounts;
+  }
+  public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.phone = phone;
+    this.username = username;
+    this.password = password;
+    this.dateCreated = dateCreated;
+    this.birthday = birthday;
+    roles.add("ROLE_EMPLOYEE");
   }
   //endregion
 
