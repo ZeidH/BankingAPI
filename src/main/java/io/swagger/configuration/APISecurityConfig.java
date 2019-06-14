@@ -22,7 +22,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@ComponentScan(basePackages = { "io.swagger.security" })
+//@ComponentScan(basePackages = { "io.swagger.security" })
 @EnableWebSecurity
 public class APISecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -59,9 +59,8 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/Customer**").hasRole("CUSTOMER")
                 .antMatchers(HttpMethod.PUT, "/Customer**").hasRole("CUSTOMER")
 
-                .antMatchers(HttpMethod.POST, "/Employee/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/Employee/**").permitAll()
-//                .antMatchers(HttpMethod.GET, "/Employee**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/Employee**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.GET, "/Employee**").hasRole("EMPLOYEE")
                 .antMatchers(HttpMethod.PUT, "/Employee**").hasRole("EMPLOYEE")
                 .anyRequest().authenticated()
                 .and()

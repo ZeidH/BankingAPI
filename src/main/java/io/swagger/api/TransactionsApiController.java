@@ -1,17 +1,18 @@
 package io.swagger.api;
 
-import io.swagger.AuthenticatedUser;
 import io.swagger.model.Body;
 import io.swagger.model.SavingsAccount;
 import io.swagger.model.Transaction;
 import io.swagger.model.User;
 import io.swagger.model.requests.TransactionRequest;
 import io.swagger.service.AccountService;
+import io.swagger.security.IAuthenticationFacade;
 import io.swagger.service.TransactionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -20,9 +21,10 @@ import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.context.annotation.*;
+
 
 import javax.transaction.Status;
-import javax.transaction.Transactional;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +37,6 @@ import java.util.Map;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @RestController
-@Transactional
 public class TransactionsApiController implements TransactionsApi {
 
     private static final Logger log = LoggerFactory.getLogger(TransactionsApiController.class);
@@ -45,6 +46,9 @@ public class TransactionsApiController implements TransactionsApi {
     private final HttpServletRequest request;
 
     private final TransactionService service;
+
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
 
     private final AccountService accountService;
 
@@ -58,45 +62,38 @@ public class TransactionsApiController implements TransactionsApi {
 
     public ResponseEntity<Void> createTransaction(@ApiParam(value = "Saving accounts whose interest gonna update" ,required=true )  @Valid @RequestBody TransactionRequest transaction) {
         String accept = request.getHeader("Accept");
-
-
-        if(transaction.getSender() == transaction.getReceiver()) return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-
         Instant instant = Instant.now();
 
         Transaction newTransaction = new Transaction();
-
-        try{
-            newTransaction.setCreator(accountService.getAccountByIban(transaction.getCreator()).getIban());
-            newTransaction.setSender(accountService.getAccountByIban(transaction.getSender()).getIban());
-            newTransaction.setReceiver(accountService.getAccountByIban(transaction.getReceiver()).getIban());
-        }catch(Exception e){
-            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-        }
-
+        System.out.println(transaction.getCreator().toString());
+        System.out.println(transaction.getSender().toString());
+        System.out.println(transaction.getReceiver().toString());
+        newTransaction.setCreator(accountService.getAccountByIban(transaction.getCreator()).getIban());
+        newTransaction.setSender(accountService.getAccountByIban(transaction.getSender()).getIban());
+        newTransaction.setReceiver(accountService.getAccountByIban(transaction.getReceiver()).getIban());
         newTransaction.setAmount(new BigDecimal(transaction.getAmount()));
         newTransaction.setDateCreated(instant.toString());
-        newTransaction.setCategory(Transaction.CategoryEnum.fromValue(transaction.getCategory()));
         newTransaction.category(Transaction.CategoryEnum.OTHER).currency("EUR").status(Transaction.StatusEnum.PENDING);
 
-        if(!service.notSendingFromSavingsToThirdParty(newTransaction.getSender(), newTransaction.getReceiver())) return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-        if(!accountService.bothAccountsActive(newTransaction)) return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-        if(!accountService.sufficientFunds(newTransaction)) return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-
-
         service.createTransaction(newTransaction);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     //Only for Employees
-    public ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "The ID of a specific Transaction") @Valid @RequestParam(value = "search", required = false, defaultValue = "false") String search) {
+    public ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "Search Parameters") @Valid @RequestParam(value = "search", required = false, defaultValue = "false") String search) {
         return new ResponseEntity<List<Transaction>>(service.getTransactions(search),HttpStatus.OK);
-
     }
-    public ResponseEntity<Void> updateTransactionStatus(Authentication user, @NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {
-// CHANGE
-        service.updateStatus(((User)user.getPrincipal()).getId(), newStatus);
+
+
+    // DELTE???
+    public ResponseEntity<Void> updateTransactionStatus(@NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {
+        Authentication authentication = authenticationFacade.getAuthentication();
+        String nanme = authentication.getName();
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<Transaction>> getAllAuthorizedTransactions(@NotNull @ApiParam(value = "The ID of the Account", required = true) @Valid @RequestParam(value = "id", required = true) Long id) {
+        return new ResponseEntity<List<Transaction>>(service.getAuthenticatedTransactions(id), HttpStatus.OK);
     }
 
 }

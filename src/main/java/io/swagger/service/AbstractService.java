@@ -3,6 +3,11 @@ package io.swagger.service;
 import com.google.common.base.Joiner;
 import io.swagger.QueryBuilder.*;
 import io.swagger.model.Account;
+import io.swagger.model.Transaction;
+import io.swagger.repository.AccountRepository;
+import io.swagger.repository.IbanRepository;
+import io.swagger.repository.TransactionRepository;
+import io.swagger.repository.UserRepository;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
@@ -11,7 +16,19 @@ import java.util.regex.Pattern;
 
 public abstract class AbstractService {
 
-    public GenericSpecificationsBuilder getBuilder(String search) {
+    protected final UserRepository userRepo;
+    protected final TransactionRepository tranRepo;
+    protected final AccountRepository accoRepo;
+    protected final IbanRepository ibanRepo;
+
+    public AbstractService(UserRepository userRepo, TransactionRepository tranRepo, AccountRepository accoRepo, IbanRepository ibanRepo) {
+        this.userRepo = userRepo;
+        this.tranRepo = tranRepo;
+        this.accoRepo = accoRepo;
+        this.ibanRepo = ibanRepo;
+    }
+
+    public <T> GenericSpecificationsBuilder getBuilder(T search) {
         GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")
                 .join(SearchOperation.SIMPLE_OPERATION_SET);

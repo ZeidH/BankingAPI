@@ -22,17 +22,12 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-05-19T16:39:42.654Z[GMT]")
 @Entity
-@NoArgsConstructor
 public class Transaction   {
   @Id
   @SequenceGenerator(name = "transId_seq", initialValue = 10000001)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transId_seq")
   @JsonProperty("id")
   private Long id = null;
-
-  public Long getId() {
-    return id;
-  }
 
   @JsonProperty("amount")
   private BigDecimal amount = null;
@@ -64,6 +59,7 @@ public class Transaction   {
   @JsonProperty("dateCreated")
   private String dateCreated = null;
 
+  public Transaction(){}
   public Transaction(BigDecimal amount, String currency, Iban creator, CategoryEnum category, Iban sender, Iban receiver, String dateCreated, StatusEnum status) {
     this.amount = amount;
     this.currency = currency;
