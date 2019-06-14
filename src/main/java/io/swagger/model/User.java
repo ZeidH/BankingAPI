@@ -1,14 +1,12 @@
 package io.swagger.model;
 
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.sun.istack.Nullable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 import lombok.Builder;
 import lombok.Data;
@@ -72,7 +70,7 @@ public class User implements UserDetails {
   private List<Account> accounts = new ArrayList<Account>();
 
 public User(){}
-  public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, List<Account> accounts) {
+  public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, List<Account> accounts, String[] assignedRoles) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -81,10 +79,10 @@ public User(){}
     this.password = password;
     this.dateCreated = dateCreated;
     this.birthday = birthday;
-    roles.add("ROLE_EMPLOYEE");
     this.accounts = accounts;
+    Arrays.stream(assignedRoles).forEach(role -> roles.add(role));
   }
-  public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
+  public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, String[] assignedRoles) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -93,7 +91,7 @@ public User(){}
     this.password = password;
     this.dateCreated = dateCreated;
     this.birthday = birthday;
-    roles.add("ROLE_EMPLOYEE");
+    Arrays.stream(assignedRoles).forEach(role -> roles.add(role));
   }
   //endregion
 

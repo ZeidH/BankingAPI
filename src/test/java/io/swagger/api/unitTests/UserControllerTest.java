@@ -50,7 +50,7 @@ public class UserControllerTest extends AccountControllerTest{
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        user = new User("Bart", "fried","potato@hotmail.com", "1234566", "bart2", "1111", "9-6-2019", "8-6-2019");
+        user = new User("Bart", "fried","potato@hotmail.com", "1234566", "bart2", "1111", "9-6-2019", "8-6-2019",new String[]{"ROLE_EMPLOYEE"});
         service.registerUser(user);
 
     }

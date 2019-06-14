@@ -55,19 +55,6 @@ public interface TransactionsApi {
     ResponseEntity<List<Transaction>> getAllTransactions(@ApiParam(value = "The ID of a specific Transaction") @Valid @RequestParam(value = "search", required = false) String search);
 
 
-    @ApiOperation(value = "Update the status of the transaction", nickname = "updateTransactionStatus", notes = "", authorizations = {
-        @Authorization(value = "bearerAuth")    }, tags={ "Transaction", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 400, message = "Invalid ID supplied"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Transaction not found"),
-        @ApiResponse(code = 405, message = "Validation exception") })
-    @RequestMapping(value = "/Customer/Transactions",
-        consumes = { "application/json" },
-        method = RequestMethod.PUT)
-    ResponseEntity<Void> updateTransactionStatus(@ApiParam(value = "newStatus",required=true) @PathVariable("newStatus") Transaction.StatusEnum newStatus);
-
-
     @ApiOperation(value = "Get all transactions that belong to a user account", nickname = "getAllAuthorizedTransactions", notes = "By using this, you will receive all transactions made in the saved history of the Account.", response = Transaction.class, responseContainer = "List", authorizations = {
             @Authorization(value = "bearerAuth")    }, tags={ "Transaction", })
     @ApiResponses(value = {

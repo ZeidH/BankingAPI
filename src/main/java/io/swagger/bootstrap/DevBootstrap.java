@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -54,7 +55,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         accountsBart.add(accountBart);
         accountRepository.save(accountBart);
 
-        User userBart = new User("Bart", "fried","potato@hotmail.com", "1234566", "bart", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019", accountsBart);
+        User userBart = new User("Bart", "fried","potato@hotmail.com", "1234566", "bart", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019", accountsBart,new String[]{"ROLE_CUSTOMER"});
         userRepository.save(userBart);
 
         /////////////////////LISA/////////////////////////
@@ -65,7 +66,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         accountsLisa.add(accountLisa);
         accountRepository.save(accountLisa);
 
-        User userLisa = new User("Lisa", "fried","potato@hotmail.com", "1234566", "lisa", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019", accountsLisa);
+        User userLisa = new User("Lisa", "fried","potato@hotmail.com", "1234566", "lisa", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019", accountsLisa, new String[]{"ROLE_EMPLOYEE"});
         userRepository.save(userLisa);
 
         // TEST Bart sends Lisa
@@ -82,7 +83,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         accountRepository.save(account);
 
 
-        User user = new User("potato", "fried","potato@hotmail.com", "1234566", "bill", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019", accounts);
+        User user = new User("potato", "fried","potato@hotmail.com", "1234566", "bill", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019", accounts,new String[]{"ROLE_EMPLOYEE"});
 
         userRepository.save(user);
 

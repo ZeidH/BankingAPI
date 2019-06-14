@@ -105,10 +105,5 @@ public class TransactionsApiController implements TransactionsApi {
         return new ResponseEntity<List<Transaction>>(service.getTransactions(search),HttpStatus.OK);
     }
 
-    public ResponseEntity<Void> updateTransactionStatus(@NotNull @ApiParam(value = "newStatus", required = true) @Valid @RequestParam(value = "newStatus", required = false) Transaction.StatusEnum newStatus) {
-        Authentication authentication = authenticationFacade.getAuthentication();
-        String nanme = authentication.getName();
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
 
 }
