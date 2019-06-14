@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import io.swagger.model.*;
 import io.swagger.model.requests.AccountRequest;
+import io.swagger.repository.IbanRepository;
 import io.swagger.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ public class
 AccountsApiController implements AccountsApi {
 
     private AccountService accountService;
+    private IbanRepository ibanRepository;
 
     private static final Logger log = LoggerFactory.getLogger(AccountsApiController.class);
 
@@ -37,14 +39,15 @@ AccountsApiController implements AccountsApi {
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public AccountsApiController(ObjectMapper objectMapper, HttpServletRequest request, AccountService accountService) {
+    public AccountsApiController(ObjectMapper objectMapper, HttpServletRequest request, AccountService accountService, IbanRepository ibanRepository) {
         this.accountService = accountService;
         this.objectMapper = objectMapper;
         this.request = request;
+        this.ibanRepository = ibanRepository;
     }
 
     @Autowired
-    public void setProductService(AccountService accountService) {
+    public void setAccountService(AccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -93,16 +96,45 @@ AccountsApiController implements AccountsApi {
 
         Account newAccount = new CurrentAccount();
 
-        if(account != null){
+        if(account == null){
+            newAccount.name("Placeholder").balance(new BigDecimal(0));
+        }else{
             if(!account.getName().equals(null) || !account.getName().isEmpty()) newAccount.name(account.getName());
             if(!account.getBalance().equals(null) || !account.getBalance().isEmpty()) newAccount.balance(new BigDecimal(account.getBalance()));
-            if(!account.getBban().equals(null) || !account.getBban().isEmpty()) newAccount.getIban().bban(account.getBban());
-        }else{
-            newAccount.name("Placeholder").balance(new BigDecimal(0));
         }
         
         accountService.registerAccount(newAccount);
         return new ResponseEntity<Object>(HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<Void> setAccountStatus(@NotNull @Valid Long id) {
+        accountService.updateAccountStatus(id);
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Account> createSavingsAccount(@Valid String iban) {
+        if(ibanRepository.existsByIbanCode(iban)){
+            Account owner = accountService.getAccountByIban(iban);
+            Account savings = new SavingsAccount(owner);
+            accountService.registerAccount(savings);
+            return new ResponseEntity<Account>(HttpStatus.OK);
+        }
+        return new ResponseEntity<Account>(HttpStatus.OK);
+
+    }
+
+    @Override
+    public ResponseEntity<Void> withDrawal(@Valid @RequestParam String iban, @Valid @RequestParam(defaultValue = "0") String amount) {
+        accountService.withdrawal(iban, new BigDecimal(amount));
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<Void> insertBalance(@Valid @RequestParam String iban, @Valid @RequestParam(defaultValue = "0") String amount) {
+        accountService.insertBalance(iban, new BigDecimal(amount));
+        return null;
     }
 
 }
