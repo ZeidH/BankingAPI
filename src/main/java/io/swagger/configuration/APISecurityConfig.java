@@ -54,13 +54,16 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // Fine tune these...
                 .antMatchers(HttpMethod.POST, "/Login").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/Login").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/Customer/**").hasRole("CUSTOMER")
                 .antMatchers(HttpMethod.POST, "/Customer/**").hasRole("CUSTOMER")
                 .antMatchers(HttpMethod.PUT, "/Customer/**").hasRole("CUSTOMER")
 
                 .antMatchers(HttpMethod.POST, "/Employee/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.GET, "/Employee/**").hasRole("EMPLOYEE")
+          //      .antMatchers(HttpMethod.GET, "/Employee/**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.GET, "/Employee/**").permitAll()
+
                 .antMatchers(HttpMethod.PUT, "/Employee/**").hasRole("EMPLOYEE")
                 .anyRequest().authenticated()
                 .and()

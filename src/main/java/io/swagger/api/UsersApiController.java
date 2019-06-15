@@ -100,4 +100,8 @@ public class UsersApiController implements UsersApi {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    public ResponseEntity<Void> validateRequest(){
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
 }
