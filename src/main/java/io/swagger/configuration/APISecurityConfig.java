@@ -55,13 +55,13 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
                 // Fine tune these...
                 .antMatchers(HttpMethod.POST, "/Login").permitAll()
 
-                .antMatchers(HttpMethod.GET, "/Customer**").hasRole("CUSTOMER")
-                .antMatchers(HttpMethod.POST, "/Customer**").hasRole("CUSTOMER")
-                .antMatchers(HttpMethod.PUT, "/Customer**").hasRole("CUSTOMER")
+                .antMatchers(HttpMethod.GET, "/Customer/**").hasRole("CUSTOMER")
+                .antMatchers(HttpMethod.POST, "/Customer/**").hasRole("CUSTOMER")
+                .antMatchers(HttpMethod.PUT, "/Customer/**").hasRole("CUSTOMER")
 
-                .antMatchers(HttpMethod.POST, "/Employee**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.GET, "/Employee**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.PUT, "/Employee**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.POST, "/Employee/**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.GET, "/Employee/**").hasRole("EMPLOYEE")
+                .antMatchers(HttpMethod.PUT, "/Employee/**").hasRole("EMPLOYEE")
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
