@@ -136,5 +136,9 @@ AccountsApiController implements AccountsApi {
         accountService.insertBalance(iban, new BigDecimal(amount));
         return null;
     }
+    @RequestMapping(value = "/Employee/Accounts", method = RequestMethod.OPTIONS)
+    public ResponseEntity<Void> validateRequest(){
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

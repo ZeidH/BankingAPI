@@ -9,7 +9,7 @@ public class UserRequest {
     private String password = null;
     private String dateCreated = null;
     private String birthday = null;
-
+public UserRequest(){}
     public UserRequest(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
         this.firstName = firstName;
         this.lastName = lastName;
