@@ -46,16 +46,15 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
 
         //@formatter:off
         http
+                .cors()
+                .and()
                 .httpBasic().disable()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
 
-                // Fine tune these...
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/Login").permitAll()
-//                .antMatchers(HttpMethod.OPTIONS, "/Login").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/Customer/**").hasRole("CUSTOMER")
                 .antMatchers(HttpMethod.POST, "/Customer/**").hasRole("CUSTOMER")

@@ -29,11 +29,5 @@ public class AuthenticatedController {
         );
         return ok(model);
     }
-
-    @RequestMapping(value = "/me", method = RequestMethod.OPTIONS)
-    public ResponseEntity<Void> validateRequest(){
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
 }
 
