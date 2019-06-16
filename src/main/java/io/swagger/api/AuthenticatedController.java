@@ -1,10 +1,13 @@
 package io.swagger.api;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -12,7 +15,7 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
 import static org.springframework.http.ResponseEntity.ok;
-// TO BE DELETED
+
 @RestController()
 public class AuthenticatedController {
     @GetMapping("/me")
@@ -26,5 +29,11 @@ public class AuthenticatedController {
         );
         return ok(model);
     }
+
+    @RequestMapping(value = "/me", method = RequestMethod.OPTIONS)
+    public ResponseEntity<Void> validateRequest(){
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
 
