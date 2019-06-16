@@ -77,4 +77,12 @@ public interface UsersApi {
     @RequestMapping(value = "/Login",
         method = RequestMethod.POST)
     ResponseEntity<Map<Object, Object>> usersLoginPost(@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username, @NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password);
+
+    @ApiOperation(value = "Validates a request to POST", nickname = "validateRequest", notes = "Validation of POST rquests", tags={ "User", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 201, message = "OK") })
+    @RequestMapping(value = "/Login",
+            method = RequestMethod.OPTIONS)
+    ResponseEntity<Void> validateRequest();
 }

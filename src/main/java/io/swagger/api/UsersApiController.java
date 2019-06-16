@@ -99,4 +99,8 @@ public class UsersApiController implements UsersApi {
         service.attachAccount(userId, accountId);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    public ResponseEntity<Void> validateRequest(){
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }
