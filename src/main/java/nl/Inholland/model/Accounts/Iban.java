@@ -23,8 +23,9 @@ public class Iban {
     @Column(name = "ibanCode")
     private String ibanCode;
 
-    @OneToOne(mappedBy = "iban")
-    private Account account;
+    // Causes infinite loopie
+//    @OneToOne(mappedBy = "iban")
+//    private Account account;
 
     public final String BANK = "INHO";
     private CountryCodeEnum countryCode;
