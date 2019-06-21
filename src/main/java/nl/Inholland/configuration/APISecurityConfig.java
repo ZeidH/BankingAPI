@@ -65,8 +65,6 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
 
 
                 .antMatchers(HttpMethod.PUT, "/Employee/**").hasRole("EMPLOYEE")
-                .and()
-                .addFilter(filter).authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));

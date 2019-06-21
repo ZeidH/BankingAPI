@@ -20,6 +20,6 @@ public class Employee extends User{
         super(firstName, lastName, email, phone, username, password, dateCreated, birthday);
     }
     protected void addAuthority(){
-        this.roles.add("ROLE_CUSTOMER");
+        this.roles.add("ROLE_EMPLOYEE");
     }
 }
