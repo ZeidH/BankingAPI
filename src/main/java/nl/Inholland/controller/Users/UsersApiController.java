@@ -11,8 +11,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.Media;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,13 +77,13 @@ public class UsersApiController {
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/Login", method = RequestMethod.POST)
+    @RequestMapping(value = "/Login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
-    public ResponseEntity<Map<Object,Object>> usersLoginPost(@RequestParam(value = "username", required = true) String username, @RequestParam(value = "password", required = true) String password) {
+    public ResponseEntity<Map<Object,Object>> authenticate(@RequestParam Map<String,String> param) {
         try {
-            String token = service.auth(username, password);
+            String token = service.auth(param.get("username"), param.get("password"));
             Map<Object, Object> key = new HashMap<>();
-            key.put("username", username);
+            key.put("username", param.get("username").toString());
             key.put("token", token);
             return new ResponseEntity<Map<Object,Object>>(key, HttpStatus.OK);
         } catch (AuthenticationException e) {
@@ -97,7 +99,7 @@ public class UsersApiController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Void> validateRequest(){
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
+//  //  public ResponseEntity<Void> validateRequest(){
+//        return new ResponseEntity<Void>(HttpStatus.OK);
+//    }
 }
