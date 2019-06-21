@@ -34,7 +34,7 @@ public class TransactionsApiController {
     @RequestMapping(value = "/Customer/Transactions", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Void> createTransaction(@RequestBody TransactionRequest transaction) {
-
+        /*
         if(transaction.getSender() == transaction.getReceiver()) return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 
         Instant instant = Instant.now();
@@ -62,6 +62,8 @@ public class TransactionsApiController {
 
 
         service.createTransaction(newTransaction);
+
+         */
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 

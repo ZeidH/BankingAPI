@@ -3,15 +3,12 @@ package nl.Inholland.service;
 import nl.Inholland.QueryBuilder.SpecSearchCriteria;
 import nl.Inholland.QueryBuilder.Specifications.TransactionSpecification;
 import nl.Inholland.enumerations.StatusEnum;
-import nl.Inholland.model.Accounts.Account;
 import nl.Inholland.model.Accounts.Iban;
-import nl.Inholland.model.Accounts.SavingsAccount;
 import nl.Inholland.model.Transactions.Transaction;
 import nl.Inholland.repository.AccountRepository;
 import nl.Inholland.repository.IbanRepository;
 import nl.Inholland.repository.TransactionRepository;
 import nl.Inholland.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,12 +18,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Service
-public class TransactionService extends AbstractService{
+public class TransactionService extends AbstractService {
 
-    @Autowired
-    private AccountService accountService;
-    @Autowired
-    private VaultService vaultService;
 
     private ExecutorService service = Executors.newCachedThreadPool();
 
@@ -35,7 +28,7 @@ public class TransactionService extends AbstractService{
     }
 
     public void createTransaction(Transaction transaction){
-
+        /*
         insertTransaction(transaction);
 
         service.execute(new Runnable() {
@@ -51,7 +44,7 @@ public class TransactionService extends AbstractService{
                     transaction.setStatus(StatusEnum.FAILED);
                 }
             }
-        });
+        });*/
     }
 
     public void insertTransaction(Transaction transaction){
@@ -76,12 +69,12 @@ public class TransactionService extends AbstractService{
     }
 
     public boolean notSendingFromSavingsToThirdParty(Iban sender, Iban receiver){
-
+        /*
         Account senderAccount = accountService.getAccountByIban(sender.getIbanCode());
         Account receiverAccount = accountService.getAccountByIban(receiver.getIbanCode());
 
         if(senderAccount.getClass().equals(SavingsAccount.class) && (receiverAccount.getIban().getIbanCode() != senderAccount.getIban().getIbanCode())) return false;
-
+        */
         return true;
     }
 

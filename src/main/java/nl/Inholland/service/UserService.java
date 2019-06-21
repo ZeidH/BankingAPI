@@ -27,7 +27,7 @@ public class UserService extends AbstractService {
     private PasswordEncoder passwordEncoder;
 
 
-    public UserService(UserRepository userRepo, TransactionRepository tranRepo, AccountRepository accoRepo, IbanRepository ibanRepo,JwtTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
+    public UserService(UserRepository userRepo, TransactionRepository tranRepo, AccountRepository accoRepo, IbanRepository ibanRepo, JwtTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
         super(userRepo, tranRepo, accoRepo, ibanRepo);
         this.jwtTokenProvider = jwtTokenProvider;
         this.authenticationManager = authenticationManager;
@@ -65,12 +65,12 @@ public class UserService extends AbstractService {
         }
     }
 
+    /*
     public void attachAccount(long userId, long accountId) {
         userRepo.save(
                 userRepo.getOne(userId)
                         .addAccountsItem(
                                 accoRepo.getOne(accountId)));
     }
-
-
+    */
 }

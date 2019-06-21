@@ -64,10 +64,10 @@ public class AccountsApiController {
 
         if(account == null){
             newAccount.setName("Placeholder");
-            newAccount.setBalance(new BigDecimal(0));
+        //    newAccount.setBalance(new BigDecimal(0));
         }else{
             if(!account.getName().equals(null) || !account.getName().isEmpty()) newAccount.setName(account.getName());
-            if(!account.getBalance().equals(null) || !account.getBalance().isEmpty()) newAccount.setBalance(new BigDecimal(account.getBalance()));
+        //    if(!account.getBalance().equals(null) || !account.getBalance().isEmpty()) newAccount.setBalance(new BigDecimal(account.getBalance()));
         }
 
         accountService.registerAccount(newAccount);
@@ -89,8 +89,8 @@ public class AccountsApiController {
         // MOVE TO SERVICE > REPOSITORIES NOT ALLOWED IN CONTROLLER
         if(ibanRepository.existsByIbanCode(iban)){
             Account owner = accountService.getAccountByIban(iban);
-            Account savings = new SavingsAccount(owner);
-            accountService.registerAccount(savings);
+    //        Account savings = new SavingsAccount(owner);
+        //    accountService.registerAccount(savings);
             return new ResponseEntity<Account>(HttpStatus.OK);
         }
         return new ResponseEntity<Account>(HttpStatus.OK);
@@ -100,14 +100,14 @@ public class AccountsApiController {
     @RequestMapping(value = "/Customer/Accounts/Withdraw", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity<Void> withDrawal(@RequestParam String iban, @RequestParam(defaultValue = "0") String amount) {
-        accountService.withdrawal(iban, new BigDecimal(amount));
+  //      accountService.withdrawal(iban, new BigDecimal(amount));
         return null;
     }
 
     @RequestMapping(value = "/Customer/Accounts/Insert", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity<Void> insertBalance(@RequestParam String iban, @RequestParam(defaultValue = "0") String amount) {
-        accountService.insertBalance(iban, new BigDecimal(amount));
+    //    accountService.insertBalance(iban, new BigDecimal(amount));
         return null;
     }
 

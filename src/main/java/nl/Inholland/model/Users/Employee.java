@@ -12,9 +12,10 @@ import java.util.List;
 @Entity
 public class Employee extends User{
 
+    /*
     public Employee(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday, List<Account> accounts) {
         super(firstName, lastName, email, phone, username, password, dateCreated, birthday, accounts);
-    }
+    }*/
 
     public Employee(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
         super(firstName, lastName, email, phone, username, password, dateCreated, birthday);

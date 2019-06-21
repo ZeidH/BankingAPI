@@ -2,8 +2,11 @@ package nl.Inholland.model.Users;
 
 import com.sun.istack.Nullable;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import nl.Inholland.model.Accounts.Account;
+import nl.Inholland.model.Accounts.Iban;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +23,8 @@ import static java.util.stream.Collectors.toList;
 @Data
 @NoArgsConstructor
 @Table(uniqueConstraints =  {@UniqueConstraint(columnNames = {"username"})})
+@Getter
+@Setter
 public abstract class User implements UserDetails {
 
     @Id
@@ -38,8 +43,8 @@ public abstract class User implements UserDetails {
 
 
     @Nullable
-    @OneToMany
-    private List<Account> accounts = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Iban> ibanList = new ArrayList<>();
 
     public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
         this.firstName = firstName;
@@ -52,6 +57,8 @@ public abstract class User implements UserDetails {
         this.birthday = birthday;
         addAuthority();
     }
+
+    /*
 
     public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday,List<Account> accounts) {
         this.firstName = firstName;
@@ -70,6 +77,9 @@ public abstract class User implements UserDetails {
         this.accounts.add(accountsItem);
         return this;
     }
+
+     */
+
     abstract void addAuthority();
 
     @ElementCollection(fetch = FetchType.EAGER)

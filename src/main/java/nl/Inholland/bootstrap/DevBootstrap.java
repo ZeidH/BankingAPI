@@ -46,6 +46,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
 
+        /*
 
         //---------------------------------VAULT----------------------------------------------------------//
         Account vault = new VaultAccount("Bank", new BigDecimal(0.0), new Iban("0000000001"), AccountStatusEnum.OPEN);
@@ -92,6 +93,8 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         User user = new Employee("potato", "fried","heyo1989@hotmail.com", "1234566", "bill", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019", accountsBill);
 
         userRepository.save(user);
+
+         */
 
     }
 }
