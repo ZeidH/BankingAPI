@@ -3,15 +3,16 @@ package nl.Inholland.service;
 import nl.Inholland.QueryBuilder.SpecSearchCriteria;
 import nl.Inholland.QueryBuilder.Specifications.AccountSpecification;
 import nl.Inholland.enumerations.AccountStatusEnum;
-import nl.Inholland.model.Accounts.Account;
+import nl.Inholland.model.Accounts.*;
 import nl.Inholland.model.Transactions.Transaction;
-import nl.Inholland.repository.AccountRepository;
-import nl.Inholland.repository.IbanRepository;
-import nl.Inholland.repository.TransactionRepository;
-import nl.Inholland.repository.UserRepository;
+import nl.Inholland.model.requests.AccountRequest;
+import nl.Inholland.repository.*;
+import org.hibernate.boot.spi.InFlightMetadataCollector;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
@@ -20,6 +21,10 @@ import java.util.concurrent.Executors;
 @Service
 public class AccountService extends AbstractService {
 
+    private AccountFactory accountFactory;
+
+    @Autowired
+    private BalanceRepository balanceRepository;
 
     private ExecutorService service = Executors.newCachedThreadPool();
 
@@ -32,17 +37,42 @@ public class AccountService extends AbstractService {
         return accoRepo.findAll(spec);
     }
 
-    public void registerAccount(Account account) {
-        /*
-        do{
-            account.getIban().buildIban();
-        }while(ibanRepo.existsByIbanCode(account.getIban().getIbanCode()));
+    public void createAccount(AccountRequest request) throws Exception{
 
-        account.setStatus(AccountStatusEnum.OPEN);
+        Account newAccount;
 
-        vault.addBalance(account.getBalance());
-        accoRepo.save(account);*/
+        // ADD CONCURRENCY
+
+        switch (request.getType().toLowerCase()){
+            case "current":
+                accountFactory = new CurrentAccountFactory();
+                break;
+            case "savings":
+                accountFactory = new SavingsAccountFactory();
+                break;
+            default:
+                throw new Exception();
+        }
+
+        newAccount = accountFactory.createAccount(request);
+
+        Iban relatedIban = ibanRepo.getOne(request.getIban());
+
+        relatedIban.setAccount(newAccount);
+
+        accoRepo.save(newAccount);
+
+        //System.out.println(newAccount.getBalance().getAm);
+
+
+
+        ibanRepo.save(relatedIban);
+
+
+     //   vault.increaseBalance(new BigDecimal(request.getBalance()));
     }
+
+
     public void deleteAccount(long id) {
         accoRepo.delete(accoRepo.getOne(id));
     }

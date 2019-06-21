@@ -3,10 +3,7 @@ package nl.Inholland.service;
 import com.google.common.base.Joiner;
 import nl.Inholland.QueryBuilder.GenericSpecificationsBuilder;
 import nl.Inholland.QueryBuilder.SearchOperation;
-import nl.Inholland.repository.AccountRepository;
-import nl.Inholland.repository.IbanRepository;
-import nl.Inholland.repository.TransactionRepository;
-import nl.Inholland.repository.UserRepository;
+import nl.Inholland.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +17,7 @@ public abstract class AbstractService implements VaultSubject {
     protected final TransactionRepository tranRepo;
     protected final AccountRepository accoRepo;
     protected final IbanRepository ibanRepo;
+
 
     protected VaultObserver vault;
 

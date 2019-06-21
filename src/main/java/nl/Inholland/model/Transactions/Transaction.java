@@ -48,4 +48,8 @@ public abstract class Transaction {
         this.status = status;
         this.dateCreated = dateCreated;
     }
+
+    public void addAccount(Account account){
+        accounts.add(account);
+    }
 }

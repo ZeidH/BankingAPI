@@ -8,6 +8,8 @@ import nl.Inholland.repository.TransactionRepository;
 import nl.Inholland.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class VaultService extends AbstractService implements VaultObserver {
 
@@ -18,13 +20,14 @@ public class VaultService extends AbstractService implements VaultObserver {
         super.registerVault(this);
     }
 
-    @Override
-    public void increaseBalance() {
 
+    @Override
+    public void increaseBalance(BigDecimal amount) {
+        accoRepo.getOne(vault.getId());
     }
 
     @Override
-    public void decreaseBalance() {
+    public void decreaseBalance(BigDecimal amount) {
 
     }
 }

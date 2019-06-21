@@ -12,19 +12,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(uniqueConstraints =  {@UniqueConstraint(columnNames = {"username"})})
-@Getter
-@Setter
+@Table(uniqueConstraints =  {@UniqueConstraint(columnNames = {"username"})}, name = "Users")
 public abstract class User implements UserDetails {
 
     @Id
@@ -43,7 +38,7 @@ public abstract class User implements UserDetails {
 
 
     @Nullable
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Iban> ibanList = new ArrayList<>();
 
     public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
@@ -56,6 +51,10 @@ public abstract class User implements UserDetails {
         this.dateCreated = dateCreated;
         this.birthday = birthday;
         addAuthority();
+    }
+
+    public void addIban(Iban iban){
+        ibanList.add(iban);
     }
 
     /*

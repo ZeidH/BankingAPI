@@ -23,4 +23,20 @@ public class TransactionFlow extends Transaction{
     @ManyToOne
     @JoinColumn(name = "receiver")
     private Iban receiver;
+
+    public Iban getSender() {
+        return sender;
+    }
+
+    public void setSender(Iban sender) {
+        this.sender = sender;
+    }
+
+    public Iban getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(Iban receiver) {
+        this.receiver = receiver;
+    }
 }

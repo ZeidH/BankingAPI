@@ -22,12 +22,9 @@ public class TransactionsApiController {
 
     private final TransactionService service;
 
-    private final AccountService accountService;
-
     @Autowired
-    public TransactionsApiController(TransactionService service, AccountService accountService) {
+    public TransactionsApiController(TransactionService service) {
         this.service = service;
-        this.accountService = accountService;
     }
 
 

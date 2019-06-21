@@ -3,8 +3,12 @@ package nl.Inholland.service;
 import nl.Inholland.QueryBuilder.SpecSearchCriteria;
 import nl.Inholland.QueryBuilder.Specifications.TransactionSpecification;
 import nl.Inholland.enumerations.StatusEnum;
+import nl.Inholland.model.Accounts.Account;
+import nl.Inholland.model.Accounts.CurrentAccountFactory;
 import nl.Inholland.model.Accounts.Iban;
-import nl.Inholland.model.Transactions.Transaction;
+import nl.Inholland.model.Accounts.SavingsAccountFactory;
+import nl.Inholland.model.Transactions.*;
+import nl.Inholland.model.requests.TransactionRequest;
 import nl.Inholland.repository.AccountRepository;
 import nl.Inholland.repository.IbanRepository;
 import nl.Inholland.repository.TransactionRepository;
@@ -13,6 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,6 +25,7 @@ import java.util.concurrent.Executors;
 @Service
 public class TransactionService extends AbstractService {
 
+    private TransactionFactory transactionFactory;
 
     private ExecutorService service = Executors.newCachedThreadPool();
 
@@ -27,29 +33,38 @@ public class TransactionService extends AbstractService {
         super(userRepo, tranRepo, accoRepo, ibanRepo);
     }
 
-    public void createTransaction(Transaction transaction){
-        /*
-        insertTransaction(transaction);
+    public void createTransaction(TransactionRequest request) throws Exception{
 
-        service.execute(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    if(transaction.getReceiver().BANK != "INHO") vaultService.substractBalance(transaction.getAmount());
-                    accountService.balanceUpdate(transaction);
-                    transaction.setStatus(StatusEnum.PROCESSED);
-                    tranRepo.save(transaction);
+        Transaction newTransaction;
 
-                }catch(Exception e){
-                    transaction.setStatus(StatusEnum.FAILED);
-                }
-            }
-        });*/
+        Iban creator = ibanRepo.getOne(request.getCreator());
+
+        // ADD CONCURRENCY
+
+        switch (request.getType().toLowerCase()){
+            case "flow":
+
+                Iban sender = ibanRepo.getOne(request.getSender());
+                Iban receiver = ibanRepo.getOne(request.getReceiver());
+
+                transactionFactory = new TransactionFlowFactory(creator, sender, receiver);
+                break;
+            case "withdrawal":
+                transactionFactory = new WithdrawalFactory(creator);
+                break;
+            case "deposit":
+                transactionFactory = new DepositFactory(creator);
+                break;
+            default:
+                throw new Exception();
+        }
+
+        newTransaction = transactionFactory.createTransaction(request);
+
+        tranRepo.save(newTransaction);
+
     }
 
-    public void insertTransaction(Transaction transaction){
-        tranRepo.save(transaction);
-    }
 
     public List<Transaction> getTransactions(String search) {
         Specification<Transaction> spec = getBuilder(search).build(searchCriteria -> new TransactionSpecification((SpecSearchCriteria) searchCriteria));

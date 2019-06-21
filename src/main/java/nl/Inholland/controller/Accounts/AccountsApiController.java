@@ -23,12 +23,10 @@ import java.util.List;
 public class AccountsApiController {
 
     private AccountService accountService;
-    private IbanRepository ibanRepository;
 
     @Autowired
-    public AccountsApiController(AccountService accountService, IbanRepository ibanRepository) {
+    public AccountsApiController(AccountService accountService) {
         this.accountService = accountService;
-        this.ibanRepository = ibanRepository;
     }
 
     @Autowired
@@ -60,24 +58,19 @@ public class AccountsApiController {
     @RequestMapping(value = "/Employee/Accounts", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Object> registerAccount(@RequestBody(required = true) AccountRequest account) {
-        Account newAccount = new CurrentAccount();
-
-        if(account == null){
-            newAccount.setName("Placeholder");
-        //    newAccount.setBalance(new BigDecimal(0));
-        }else{
-            if(!account.getName().equals(null) || !account.getName().isEmpty()) newAccount.setName(account.getName());
-        //    if(!account.getBalance().equals(null) || !account.getBalance().isEmpty()) newAccount.setBalance(new BigDecimal(account.getBalance()));
+        try{
+            accountService.createAccount(account);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
-
-        accountService.registerAccount(newAccount);
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/Employee/Accounts/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity<Void> setAccountStatus(@PathVariable("id") Long id) {
-        accountService.updateAccountStatus(id);
+
         return null;
     }
 
@@ -85,14 +78,6 @@ public class AccountsApiController {
     @ResponseBody
     public ResponseEntity<Account> createSavingsAccount(@RequestParam() String iban) {
 
-
-        // MOVE TO SERVICE > REPOSITORIES NOT ALLOWED IN CONTROLLER
-        if(ibanRepository.existsByIbanCode(iban)){
-            Account owner = accountService.getAccountByIban(iban);
-    //        Account savings = new SavingsAccount(owner);
-        //    accountService.registerAccount(savings);
-            return new ResponseEntity<Account>(HttpStatus.OK);
-        }
         return new ResponseEntity<Account>(HttpStatus.OK);
 
     }

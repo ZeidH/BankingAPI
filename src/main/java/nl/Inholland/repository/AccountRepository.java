@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long>, JpaSpecificationExecutor<Account>{
-    @Query("select a from Account a where a.iban.ibanCode = ?1")
-    public Account getAccountByIban(String ibanCode);
+  /*  @Query("select a from Account a where a.iban.ibanCode = ?1")
+    public Account getAccountByIban(String ibanCode); */
 }
