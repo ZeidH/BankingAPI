@@ -22,11 +22,6 @@ public class Iban {
     @Setter(AccessLevel.NONE)
     private String ibanCode;
 
-    @OneToOne
-    @JoinColumn(name = "account", nullable = true)
-    private Account account;
-
-
     private CountryCodeEnum countryCode;
 
     private String checkDigits;

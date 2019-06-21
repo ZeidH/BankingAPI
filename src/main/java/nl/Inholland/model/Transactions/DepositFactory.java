@@ -22,7 +22,6 @@ public class DepositFactory implements TransactionFactory {
         transaction.setAmount(new BigDecimal(request.getAmount()));
         transaction.setStatus(StatusEnum.PENDING);
 
-        transaction.addAccount(creator.getAccount());
 
         return transaction;
     }

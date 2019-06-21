@@ -30,9 +30,6 @@ public class TransactionFlowFactory implements TransactionFactory {
         transaction.setSender(sender);
         transaction.setReceiver(receiver);
 
-        transaction.addAccount(sender.getAccount());
-        transaction.addAccount(receiver.getAccount());
-        transaction.addAccount(creator.getAccount());
 
         return transaction;
     }

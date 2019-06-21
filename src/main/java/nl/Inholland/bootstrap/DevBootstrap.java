@@ -50,7 +50,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
         Iban bartIban = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO, "0000000001");
-        Iban lisaIban = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO);
+        Iban lisaIban = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO, "0000000002");
 
 
 
@@ -68,7 +68,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         userRepository.save(userBart);
         userRepository.save(userLisa);
-
 
 
 

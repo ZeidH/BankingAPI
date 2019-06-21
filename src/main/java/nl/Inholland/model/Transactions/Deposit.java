@@ -15,11 +15,9 @@ import java.math.BigDecimal;
 @Data
 public class Deposit extends Transaction{
 
-    @ManyToOne
-    @JoinColumn(name = "sender")
-    private CurrentAccount account;
 
-    @ManyToOne
-    @JoinColumn(name = "receiver")
-    private BigDecimal amount;
+  //  private CurrentAccount account;
+
+
+   // private BigDecimal amount;
 }

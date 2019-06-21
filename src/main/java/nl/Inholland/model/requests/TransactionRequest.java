@@ -9,8 +9,8 @@ import nl.Inholland.enumerations.CategoryEnum;
 public class TransactionRequest {
     private String amount;
     private String creator;
-    private String sender = null;
-    private String receiver = null;
+    private String sender;
+    private String receiver;
     private String category = "OTHER";
     private String type;
 

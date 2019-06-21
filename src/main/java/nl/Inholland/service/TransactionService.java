@@ -61,7 +61,17 @@ public class TransactionService extends AbstractService {
 
         newTransaction = transactionFactory.createTransaction(request);
 
+        if(newTransaction.equals(null)) System.out.println("aqui");
+
+
         tranRepo.save(newTransaction);
+       // attachTransactionToAccount(creator.getAccount(), newTransaction);
+    }
+
+    private void attachTransactionToAccount(Account account, Transaction transaction){
+        Account accountToUpdate = accoRepo.getOne(account.getId());
+        accountToUpdate.addTransaction(transaction);
+        accoRepo.save(account);
 
     }
 

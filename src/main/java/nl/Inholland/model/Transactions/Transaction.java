@@ -27,14 +27,14 @@ public abstract class Transaction {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transId_seq")
     @Column(name = "transaction_id")
     private Long id;
+
+
     private BigDecimal amount;
     private String currency;
     private CategoryEnum category;
     private StatusEnum status;
     private String dateCreated;
 
-    @ManyToMany(mappedBy = "transactions")
-    private List<Account> accounts;
 
     @ManyToOne
     @JoinColumn(name = "creator")
@@ -49,7 +49,4 @@ public abstract class Transaction {
         this.dateCreated = dateCreated;
     }
 
-    public void addAccount(Account account){
-        accounts.add(account);
-    }
 }

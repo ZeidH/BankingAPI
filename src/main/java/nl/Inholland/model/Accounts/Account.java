@@ -28,6 +28,10 @@ public abstract class Account {
     protected String name;
     protected AccountStatusEnum status;
 
+    @OneToOne
+    @JoinColumn(name = "iban", nullable = false)
+    private Iban iban;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     protected Balance balance;
@@ -38,5 +42,9 @@ public abstract class Account {
             joinColumns = @JoinColumn(name = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "transaction_id"))
     protected List<Transaction> transactions = new ArrayList<>();
+
+    public void addTransaction(Transaction transaction){
+        transactions.add(transaction);
+    }
 
 }

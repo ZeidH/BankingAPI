@@ -58,13 +58,11 @@ public class AccountService extends AbstractService {
 
         Iban relatedIban = ibanRepo.getOne(request.getIban());
 
-        relatedIban.setAccount(newAccount);
+        newAccount.setIban(relatedIban);
 
         accoRepo.save(newAccount);
 
         //System.out.println(newAccount.getBalance().getAm);
-
-
 
         ibanRepo.save(relatedIban);
 
