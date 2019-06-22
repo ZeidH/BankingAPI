@@ -36,6 +36,8 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private CurrentAccountFactory currentAccountFactory;
+
     @Autowired
     public DevBootstrap(AccountService accountService, TransactionService transactionService) {
         this.accountService = accountService;
@@ -60,16 +62,14 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         User userLisa = new Customer("Lisa", "fried","potato@hotmail.com", "1234566", "lisa", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");
 
-        userBart.addIban(bartIban);
-        userLisa.addIban(lisaIban);
+        userBart.addIban(AccountType.Current, bartIban);
+        userLisa.addIban(AccountType.Current, lisaIban);
 
 
 
 
         userRepository.save(userBart);
         userRepository.save(userLisa);
-
-
 
 
         User employee = new Employee("Bart", "fried","potato@hotmail.com", "1234566", "bart", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");

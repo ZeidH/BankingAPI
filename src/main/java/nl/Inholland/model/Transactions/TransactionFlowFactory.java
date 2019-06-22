@@ -2,17 +2,18 @@ package nl.Inholland.model.Transactions;
 
 import nl.Inholland.enumerations.StatusEnum;
 import nl.Inholland.model.Accounts.Iban;
+import nl.Inholland.model.Users.User;
 import nl.Inholland.model.requests.TransactionRequest;
 
 import java.math.BigDecimal;
 
 public class TransactionFlowFactory implements TransactionFactory {
 
-    private Iban creator;
+    private User creator;
     private Iban sender;
     private Iban receiver;
 
-    public TransactionFlowFactory(Iban creator, Iban sender, Iban receiver) {
+    public TransactionFlowFactory(User creator, Iban sender, Iban receiver) {
         this.creator = creator;
         this.sender = sender;
         this.receiver = receiver;

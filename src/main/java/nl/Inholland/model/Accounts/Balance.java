@@ -26,4 +26,16 @@ public class Balance {
     public Balance(BigDecimal amount) {
         this.amount = amount;
     }
+
+    public void increaseBalance(BigDecimal quant){
+        BigDecimal newAmount = amount.add(quant);
+        setAmount(newAmount);
+    }
+
+    public void decreaseBalance(BigDecimal quant){
+        BigDecimal newAmount = amount.subtract(quant);
+        setAmount(newAmount);
+    }
+
+
 }

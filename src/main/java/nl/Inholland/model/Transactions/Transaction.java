@@ -9,6 +9,7 @@ import nl.Inholland.enumerations.CategoryEnum;
 import nl.Inholland.enumerations.StatusEnum;
 import nl.Inholland.model.Accounts.Account;
 import nl.Inholland.model.Accounts.Iban;
+import nl.Inholland.model.Users.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -38,9 +39,9 @@ public abstract class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "creator")
-    private Iban creator;
+    private User creator;
 
-    public Transaction(BigDecimal amount, String currency, Iban creator, CategoryEnum category, StatusEnum status, String dateCreated) {
+    public Transaction(BigDecimal amount, String currency, User creator, CategoryEnum category, StatusEnum status, String dateCreated) {
         this.amount = amount;
         this.currency = currency;
         this.creator = creator;

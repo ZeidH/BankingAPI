@@ -2,15 +2,16 @@ package nl.Inholland.model.Transactions;
 
 import nl.Inholland.enumerations.StatusEnum;
 import nl.Inholland.model.Accounts.Iban;
+import nl.Inholland.model.Users.User;
 import nl.Inholland.model.requests.TransactionRequest;
 
 import java.math.BigDecimal;
 
 public class WithdrawalFactory implements TransactionFactory {
 
-    private Iban creator;
+    private User creator;
 
-    public WithdrawalFactory(Iban creator) {
+    public WithdrawalFactory(User creator) {
         this.creator = creator;
     }
 

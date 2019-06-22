@@ -1,5 +1,6 @@
 package nl.Inholland.repository;
 
+import nl.Inholland.model.Accounts.Iban;
 import nl.Inholland.model.Users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -20,4 +21,5 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
     Optional<User> findByUsername(String username);
     User getUserByUsername(String username);
 
+    User findByIbanList(Iban iban);
 }

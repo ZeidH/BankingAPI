@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nl.Inholland.enumerations.AccountType;
 import nl.Inholland.model.Accounts.Account;
 import nl.Inholland.model.Accounts.Iban;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,7 +40,7 @@ public abstract class User implements UserDetails {
 
     @Nullable
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Iban> ibanList = new ArrayList<>();
+    private Map<AccountType,Iban> ibanList = new HashMap<>();
 
     public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
         this.firstName = firstName;
@@ -53,8 +54,8 @@ public abstract class User implements UserDetails {
         addAuthority();
     }
 
-    public void addIban(Iban iban){
-        ibanList.add(iban);
+    public void addIban(AccountType type, Iban iban){
+        ibanList.put(type, iban);
     }
 
     /*
