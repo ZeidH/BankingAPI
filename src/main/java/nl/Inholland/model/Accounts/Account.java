@@ -28,7 +28,7 @@ public abstract class Account {
     protected String name;
     protected AccountStatusEnum status;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "iban", nullable = false)
     private Iban iban;
 

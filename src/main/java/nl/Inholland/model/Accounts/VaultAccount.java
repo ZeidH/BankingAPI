@@ -1,6 +1,8 @@
 package nl.Inholland.model.Accounts;
 
 import nl.Inholland.enumerations.AccountStatusEnum;
+import nl.Inholland.enumerations.BankCodeEnum;
+import nl.Inholland.enumerations.CountryCodeEnum;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;
@@ -14,7 +16,7 @@ public class VaultAccount extends Account{
         this.setName("Bank");
         this.setStatus(AccountStatusEnum.OPEN);
         this.setBalance(new Balance(new BigDecimal(0.0)));
-       // this.setIban(new Iban());
+        this.setIban(IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO, "0000000001"));
     }
 
     public static VaultAccount getVaultInstance() {

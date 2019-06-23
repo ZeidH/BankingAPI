@@ -51,19 +51,12 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     }
 
     private void initData() {
-        Iban bartIban = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO, "0000000001");
-        Iban lisaIban = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO, "0000000002");
-
-
-
 
 
         User userBart = new Customer("Bart", "fried","potato@hotmail.com", "1234566", "bartS", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");
 
         User userLisa = new Customer("Lisa", "fried","potato@hotmail.com", "1234566", "lisa", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");
 
-        userBart.addIban(AccountType.Current, bartIban);
-        userLisa.addIban(AccountType.Current, lisaIban);
 
 
 

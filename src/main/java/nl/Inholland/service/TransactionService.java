@@ -4,6 +4,7 @@ import nl.Inholland.QueryBuilder.SpecSearchCriteria;
 import nl.Inholland.QueryBuilder.Specifications.TransactionSpecification;
 import nl.Inholland.enumerations.AccountStatusEnum;
 import nl.Inholland.enumerations.AccountType;
+import nl.Inholland.enumerations.BankCodeEnum;
 import nl.Inholland.enumerations.StatusEnum;
 import nl.Inholland.model.Accounts.*;
 import nl.Inholland.model.Transactions.*;
@@ -24,7 +25,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Service
-public class TransactionService extends AbstractService {
+public class TransactionService extends AbstractService implements VaultSubject {
 
     private TransactionFactory transactionFactory;
 
@@ -34,17 +35,25 @@ public class TransactionService extends AbstractService {
         super(userRepo, tranRepo, accoRepo, ibanRepo);
     }
 
+    @Override
+    public void registerVault(VaultObserver vault) {
+        this.vault = vault;
+    }
+
     public void createTransaction(TransactionRequest request) throws Exception{
 
         User creator = userRepo.getUserByUsername(request.getCreator());
-
-
+        Transaction newTransaction;
 
         switch (request.getType().toLowerCase()){
-            case "flow":
+            case "flow":{
                 Iban sender = ibanRepo.getOne(request.getSender());
                 Iban receiver = ibanRepo.getOne(request.getReceiver());
                 transactionFactory = new TransactionFlowFactory(creator, sender, receiver);
+                newTransaction = transactionFactory.createTransaction(request);
+                tranRepo.save(newTransaction);
+                performTransactionFlow((TransactionFlow) newTransaction);
+                }
                 break;
             case "withdrawal":
                 transactionFactory = new WithdrawalFactory(creator);
@@ -55,35 +64,39 @@ public class TransactionService extends AbstractService {
             default:
                 throw new Exception();
         }
-
-        Transaction newTransaction = transactionFactory.createTransaction(request);
-        tranRepo.save(newTransaction);
-
-        // ADD CONCURRENCY
-
-        performTransactionFlow((TransactionFlow) newTransaction);
-
-
     }
 
     private void performTransactionFlow(TransactionFlow newTransaction) throws Exception{
 
-        if(!sufficientFunds(newTransaction.getSender(), newTransaction.getAmount())) throw new Exception();
-        if(!doesNotSurpassDailyLimit(newTransaction.getSender())) throw new Exception();
-        if(notSendingFromSavingsToThirdParty(newTransaction.getSender(), newTransaction.getReceiver())) throw new Exception();
+        if(sendingToOutsideBank(newTransaction.getReceiver())){
+            vault.attachTransaction(newTransaction);
+            vault.decreaseBalance(newTransaction.getAmount());
+            decreaseIndividual(newTransaction.getSender(), newTransaction.getAmount());
+            attachTransactionToAccount(newTransaction.getSender(), newTransaction);
+        }else{
+            if(!bothAccountsActive(newTransaction.getSender(), newTransaction.getReceiver())) throw new Exception();
+            if(!sufficientFunds(newTransaction.getSender(), newTransaction.getAmount())) throw new Exception();
+            if(!doesNotSurpassDailyLimit(newTransaction.getSender())) throw new Exception();
+            if(!notSendingFromSavingsToThirdParty(newTransaction.getSender(), newTransaction.getReceiver())) throw new Exception();
+            if(!ibanExists(newTransaction.getSender())) throw new Exception();
 
-        attachTransactionToAccount(newTransaction.getSender(), newTransaction);
-        attachTransactionToAccount(newTransaction.getReceiver(), newTransaction);
-        updateBalanceSenderReceiver(newTransaction.getSender(), newTransaction.getReceiver(), newTransaction.getAmount());
-
+            attachTransactionToAccount(newTransaction.getSender(), newTransaction);
+            attachTransactionToAccount(newTransaction.getReceiver(), newTransaction);
+            updateBalanceSenderReceiver(newTransaction.getSender(), newTransaction.getReceiver(), newTransaction.getAmount());
+        }
         updateStatus(newTransaction.getId(), StatusEnum.PROCESSED);
-
     }
 
     private void attachTransactionToAccount(Iban account, Transaction transaction){
         Account accountToUpdate = accoRepo.getAccountByIban(account);
         accountToUpdate.addTransaction(transaction);
         accoRepo.save(accountToUpdate);
+    }
+
+    private void decreaseIndividual(Iban senderIban, BigDecimal amount){
+        Account sender = accoRepo.getAccountByIban(senderIban);
+        sender.getBalance().decreaseBalance(amount);
+        accoRepo.save(sender);
     }
 
     private void updateBalanceSenderReceiver(Iban senderIban, Iban receiverIban, BigDecimal amount){
@@ -95,46 +108,7 @@ public class TransactionService extends AbstractService {
 
         accoRepo.save(sender);
         accoRepo.save(receiver);
-
     }
-
-    /*
-    private void updateParticipantsBalance(Iban senderIban, Iban receiverIban, BigDecimal amount) throws Exception{
-
-        switch (request.getType().toLowerCase()){
-            case "flow": {
-                Account sender = accoRepo.getAccountByIban(senderIban);
-                Account receiver = accoRepo.getAccountByIban(receiverIban);
-
-                sender.getBalance().decreaseBalance(amount);
-                receiver.getBalance().increaseBalance(amount);
-
-                accoRepo.save(sender);
-                accoRepo.save(receiver);
-
-                System.out.println(sender.getBalance().getAmount().toString());
-                System.out.println(receiver.getBalance().getAmount().toString());
-
-                break;
-            }
-            case "withdrawal": {
-                Account creator = accoRepo.getAccountByIban(ibanRepo.getOne(request.getCreator()));
-                creator.getBalance().decreaseBalance(new BigDecimal(request.getAmount()));
-                accoRepo.save(creator);
-                break;
-            }
-            case "deposit": {
-                Account creator = accoRepo.getAccountByIban(ibanRepo.getOne(request.getCreator()));
-                creator.getBalance().increaseBalance(new BigDecimal(request.getAmount()));
-                accoRepo.save(creator);
-                break;
-            }
-            default:
-                throw new Exception();
-        }
-
-    }*/
-
 
     public List<Transaction> getTransactions(String search) {
         Specification<Transaction> spec = getBuilder(search).build(searchCriteria -> new TransactionSpecification((SpecSearchCriteria) searchCriteria));
@@ -142,8 +116,8 @@ public class TransactionService extends AbstractService {
     }
 
 
-    @Transactional
-    public void updateStatus(Long id, StatusEnum status) {
+
+    private void updateStatus(Long id, StatusEnum status) {
         Transaction transaction = getTransaction(id);
         transaction.setStatus(status);
         tranRepo.save(transaction);
@@ -151,6 +125,15 @@ public class TransactionService extends AbstractService {
 
     public Transaction getTransaction(Long id){
         return tranRepo.getOne(id);
+    }
+
+    private boolean ibanExists(Iban iban){
+        try{
+            ibanRepo.getOne(iban.getIbanCode());
+            return true;
+        }catch(NullPointerException e){
+            return false;
+        }
     }
 
     private boolean notSendingFromSavingsToThirdParty(Iban sender, Iban receiver){
@@ -170,15 +153,18 @@ public class TransactionService extends AbstractService {
     private boolean bothAccountsActive(Iban sender, Iban receiver){
         Account senderAccount = accoRepo.getAccountByIban(sender);
         Account receiverAccount = accoRepo.getAccountByIban(receiver);
-
         if(senderAccount.getStatus() == AccountStatusEnum.ClOSED || receiverAccount.getStatus() == AccountStatusEnum.ClOSED) return false;
-
         return true;
     }
 
     private boolean sufficientFunds(Iban sender, BigDecimal amount){
         Account senderAccount = accoRepo.getAccountByIban(sender);
         if(senderAccount.getBalance().getAmount().compareTo(amount) == 1) return true;
+        return false;
+    }
+
+    private boolean sendingToOutsideBank(Iban receiver){
+        if(!receiver.getBank().toString().equals(BankCodeEnum.INHO.toString())) return true;
         return false;
     }
 

@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public abstract class AbstractService implements VaultSubject {
+public abstract class AbstractService{
 
     protected final UserRepository userRepo;
     protected final TransactionRepository tranRepo;
@@ -41,8 +41,10 @@ public abstract class AbstractService implements VaultSubject {
         return builder;
     }
 
-    @Override
-    public void registerVault(VaultObserver vault) {
-        this.vault = vault;
+    @Autowired
+    private void configureObservers(VaultSubject transactionService, VaultSubject accountService, VaultObserver vaultService){
+        transactionService.registerVault(vaultService);
+        accountService.registerVault(vaultService);
     }
+
 }

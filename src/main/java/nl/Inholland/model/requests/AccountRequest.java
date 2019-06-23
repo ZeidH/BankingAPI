@@ -8,15 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AccountRequest {
 
-    private String iban;
+    private String countryCode;
+    private String bank;
+    private String bban = null;
+    private String user;
     private String name;
     private String balance;
     private String type;
 
-    public AccountRequest(String iban, String name, String balance, String type) {
-        this.iban = iban;
-        this.name = name;
-        this.balance = balance;
-        this.type = type;
-    }
 }
