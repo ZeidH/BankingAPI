@@ -6,6 +6,10 @@ import nl.Inholland.enumerations.AccountStatusEnum;
 import nl.Inholland.enumerations.AccountType;
 import nl.Inholland.enumerations.BankCodeEnum;
 import nl.Inholland.enumerations.CountryCodeEnum;
+import nl.Inholland.exceptions.CurrentAccountAlreadyExistsException;
+import nl.Inholland.exceptions.IbanAlreadyExistsException;
+import nl.Inholland.exceptions.InvalidAccountTypeException;
+import nl.Inholland.exceptions.SavingsAccountAlreadyExistsException;
 import nl.Inholland.model.Accounts.*;
 import nl.Inholland.model.Transactions.Transaction;
 import nl.Inholland.model.Users.User;
@@ -56,8 +60,11 @@ public class AccountService extends AbstractService implements VaultSubject {
 
         if(request.getBban() == null){
             newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()));
-        }else{
-            newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()), request.getBban());
+            if(ibanExists(newIban)) throw new IbanAlreadyExistsException("Iban is already in use");
+        }else {
+            do {
+                newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()), request.getBban());
+            }while(ibanExists(newIban));
         }
 
         User activeUser = userRepo.getUserByUsername(request.getUser());
@@ -68,7 +75,7 @@ public class AccountService extends AbstractService implements VaultSubject {
                 if(activeUser.getIbanList().get(AccountType.Current) == null) {
                     activeUser.addIban(AccountType.Current, newIban);
                 }else{
-                    throw new Exception();
+                    throw new CurrentAccountAlreadyExistsException("This user already owns an account of type current ");
                 }
                 break;
             case "savings":
@@ -76,11 +83,11 @@ public class AccountService extends AbstractService implements VaultSubject {
                 if(activeUser.getIbanList().get(AccountType.Savings) == null) {
                     activeUser.addIban(AccountType.Savings, newIban);
                 }else{
-                    throw new Exception();
+                    throw new SavingsAccountAlreadyExistsException("This user already owns an account of type savings ");
                 }
                 break;
             default:
-                throw new Exception();
+                throw new InvalidAccountTypeException("Type of account not recognized");
         }
         try{
             Account newAccount = accountFactory.createAccount(request);
@@ -91,7 +98,7 @@ public class AccountService extends AbstractService implements VaultSubject {
 
             vault.increaseBalance(newAccount.getBalance().getAmount());
         }catch(Exception e){
-            throw new Exception();
+            throw new Exception("An error ocurred while setting up your account");
         }
     }
 
@@ -103,6 +110,15 @@ public class AccountService extends AbstractService implements VaultSubject {
             accounts.add(accoRepo.getAccountByIban(entry.getValue()));
         }
         return accounts;
+    }
+
+    private boolean ibanExists(Iban iban){
+        try{
+            ibanRepo.getOne(iban.getIbanCode());
+            return true;
+        }catch(NullPointerException e){
+            return false;
+        }
     }
 
 

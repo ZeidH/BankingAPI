@@ -2,6 +2,7 @@ package nl.Inholland.controller.Transactions;
 
 import nl.Inholland.enumerations.CategoryEnum;
 import nl.Inholland.enumerations.StatusEnum;
+import nl.Inholland.exceptions.*;
 import nl.Inholland.model.Transactions.Transaction;
 import nl.Inholland.model.requests.TransactionRequest;
 import nl.Inholland.service.AccountService;
@@ -33,10 +34,9 @@ public class TransactionsApiController {
     public ResponseEntity<Object> createTransaction(@RequestBody TransactionRequest transaction) throws Exception {
         try{
             service.createTransactionFlow(transaction);
-        }catch(Exception e){
-            System.out.println(e.getCause());
+        }catch(Exception e) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-       }
+        }
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 

@@ -6,6 +6,7 @@ import nl.Inholland.enumerations.AccountStatusEnum;
 import nl.Inholland.enumerations.AccountType;
 import nl.Inholland.enumerations.BankCodeEnum;
 import nl.Inholland.enumerations.StatusEnum;
+import nl.Inholland.exceptions.*;
 import nl.Inholland.model.Accounts.*;
 import nl.Inholland.model.Transactions.*;
 import nl.Inholland.model.Users.User;
@@ -56,9 +57,8 @@ public class TransactionService extends AbstractService implements VaultSubject 
         try{
             performTransactionFlow((TransactionFlow) newTransaction);
         }catch (Exception e){
-            e.printStackTrace();
             updateStatus(newTransaction.getId(), StatusEnum.FAILED);
-            throw new Exception();
+            throw new Exception("An error ocurred while performing the transaction");
         }
 
     }
@@ -71,11 +71,11 @@ public class TransactionService extends AbstractService implements VaultSubject 
             decreaseIndividual(newTransaction.getSender(), newTransaction.getAmount());
             attachTransactionToAccount(newTransaction.getSender(), newTransaction);
         }else{
-            if(!bothAccountsActive(newTransaction.getSender(), newTransaction.getReceiver())) throw new Exception();
-            if(!sufficientFunds(newTransaction.getSender(), newTransaction.getAmount())) throw new Exception();
-            if(!doesNotSurpassDailyLimit(newTransaction.getSender())) throw new Exception();
-            if(!notSendingFromSavingsToThirdParty(newTransaction.getSender(), newTransaction.getReceiver())) throw new Exception();
-            if(!ibanExists(newTransaction.getSender())) throw new Exception();
+            if(!bothAccountsActive(newTransaction.getSender(), newTransaction.getReceiver())) throw new ReceiverNotActiveException("One or all the accounts participant of this transaction are not active");
+            if(!sufficientFunds(newTransaction.getSender(), newTransaction.getAmount())) throw new NotEnoughFundsException("Sender does not posses enough balance to perform this transaction");
+            if(!doesNotSurpassDailyLimit(newTransaction.getSender())) throw new DailyLimitSurpassedException("This action does not obay daily limit");
+            if(!notSendingFromSavingsToThirdParty(newTransaction.getSender(), newTransaction.getReceiver())) throw new SendingFromSavingsToThirdPartyException("Savings accounts can only send to their owner's current account");
+            if(!ibanExists(newTransaction.getSender())) throw new AccountDoesNotExistException("Sender is not known within this domain");
 
             attachTransactionToAccount(newTransaction.getSender(), newTransaction);
             attachTransactionToAccount(newTransaction.getReceiver(), newTransaction);
