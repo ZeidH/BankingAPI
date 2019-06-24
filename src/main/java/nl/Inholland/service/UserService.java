@@ -2,7 +2,10 @@ package nl.Inholland.service;
 
 import nl.Inholland.QueryBuilder.SpecSearchCriteria;
 import nl.Inholland.QueryBuilder.Specifications.UserSpecification;
+import nl.Inholland.model.Users.Customer;
+import nl.Inholland.model.Users.Employee;
 import nl.Inholland.model.Users.User;
+import nl.Inholland.model.requests.UserRequest;
 import nl.Inholland.repository.AccountRepository;
 import nl.Inholland.repository.IbanRepository;
 import nl.Inholland.repository.TransactionRepository;
@@ -33,13 +36,30 @@ public class UserService extends AbstractService {
         this.authenticationManager = authenticationManager;
     }
 
-    public void deleteUser(Long id) {
-        userRepo.getOne(id).setNotLocked(false);
-    }
 
-    public void registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepo.save(user);
+    public void registerUser(UserRequest userRequest) {
+        User newUser;
+        if(userRequest.getInitRole() == "ROLE_EMPLOYEE"){
+            newUser = new Employee();
+        }else if (userRequest.getInitRole() == "ROLE_CUSTOMER"){
+            newUser = new Customer();
+        }else{
+            throw new NoSuchElementException();
+        }
+        if(userRequest != null){
+            if(!userRequest.getFirstName().equals(null) || !userRequest.getFirstName().isEmpty()) newUser.setFirstName(userRequest.getFirstName());
+            if(!userRequest.getLastName().equals(null) || !userRequest.getLastName().isEmpty()) newUser.setLastName(userRequest.getLastName());
+            if(!userRequest.getEmail().equals(null) || !userRequest.getEmail().isEmpty()) newUser.setEmail(userRequest.getEmail());
+            if(!userRequest.getPhone().equals(null) || !userRequest.getPhone().isEmpty()) newUser.setPhone(userRequest.getPhone());
+            if(!userRequest.getUsername().equals(null) || !userRequest.getUsername().isEmpty()) newUser.setUsername(userRequest.getUsername());
+            if(!userRequest.getPassword().equals(null) || !userRequest.getPassword().isEmpty()) newUser.setPassword(userRequest.getPassword());
+            if(!userRequest.getDateCreated().equals(null) || !userRequest.getDateCreated().isEmpty()) newUser.setDateCreated(userRequest.getDateCreated());
+            if(!userRequest.getBirthday().equals(null) || !userRequest.getBirthday().isEmpty()) newUser.setBirthday(userRequest.getBirthday());
+        }else{
+            throw new NullPointerException();
+        }
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        userRepo.save(newUser);
     }
 
     public List<User> getUsers(String search) {
@@ -72,5 +92,7 @@ public class UserService extends AbstractService {
                                 accoRepo.getOne(accountId)));
     }
 
-
+    public void editUser(User user){
+        userRepo.save(user);
+    }
 }
