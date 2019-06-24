@@ -16,9 +16,10 @@ import nl.Inholland.repository.TransactionRepository;
 import nl.Inholland.repository.UserRepository;
 import org.omg.CORBA.Request;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -40,30 +41,26 @@ public class TransactionService extends AbstractService implements VaultSubject 
         this.vault = vault;
     }
 
-    public void createTransaction(TransactionRequest request) throws Exception{
+    @Async("TransactionTaskExecutor")
+    @Transactional
+    public void createTransactionFlow(TransactionRequest request) throws Exception{
 
         User creator = userRepo.getUserByUsername(request.getCreator());
-        Transaction newTransaction;
 
-        switch (request.getType().toLowerCase()){
-            case "flow":{
-                Iban sender = ibanRepo.getOne(request.getSender());
-                Iban receiver = ibanRepo.getOne(request.getReceiver());
-                transactionFactory = new TransactionFlowFactory(creator, sender, receiver);
-                newTransaction = transactionFactory.createTransaction(request);
-                tranRepo.save(newTransaction);
-                performTransactionFlow((TransactionFlow) newTransaction);
-                }
-                break;
-            case "withdrawal":
-                transactionFactory = new WithdrawalFactory(creator);
-                break;
-            case "deposit":
-                transactionFactory = new DepositFactory(creator);
-                break;
-            default:
-                throw new Exception();
+        Iban sender = ibanRepo.getOne(request.getSender());
+        Iban receiver = ibanRepo.getOne(request.getReceiver());
+        transactionFactory = new TransactionFlowFactory(creator, sender, receiver);
+        Transaction newTransaction = transactionFactory.createTransaction(request);
+        tranRepo.save(newTransaction);
+
+        try{
+            performTransactionFlow((TransactionFlow) newTransaction);
+        }catch (Exception e){
+            e.printStackTrace();
+            updateStatus(newTransaction.getId(), StatusEnum.FAILED);
+            throw new Exception();
         }
+
     }
 
     private void performTransactionFlow(TransactionFlow newTransaction) throws Exception{
@@ -138,7 +135,7 @@ public class TransactionService extends AbstractService implements VaultSubject 
 
     private boolean notSendingFromSavingsToThirdParty(Iban sender, Iban receiver){
         //if its a savings account
-        if(accoRepo.getAccountByIban(sender).getClass().equals(CurrentAccount.class)){
+        if(accoRepo.getAccountByIban(sender).getClass().equals(SavingsAccount.class)){
             User activeUser = userRepo.findByIbanList(sender);
             if(receiver.getIbanCode() != activeUser.getIbanList().get(AccountType.Current).getIbanCode()){
                 return false;

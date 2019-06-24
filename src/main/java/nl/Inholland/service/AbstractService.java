@@ -41,10 +41,5 @@ public abstract class AbstractService{
         return builder;
     }
 
-    @Autowired
-    private void configureObservers(VaultSubject transactionService, VaultSubject accountService, VaultObserver vaultService){
-        transactionService.registerVault(vaultService);
-        accountService.registerVault(vaultService);
-    }
 
 }

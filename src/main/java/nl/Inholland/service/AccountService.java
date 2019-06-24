@@ -14,8 +14,10 @@ import nl.Inholland.repository.*;
 import org.hibernate.boot.spi.InFlightMetadataCollector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +48,10 @@ public class AccountService extends AbstractService implements VaultSubject {
         return accoRepo.findAll(spec);
     }
 
+    @Async("AccountTaskExecutor")
+    @Transactional
     public void createAccount(AccountRequest request) throws Exception{
-        // ADD CONCURRENCY
+
         Iban newIban;
 
         if(request.getBban() == null){
@@ -58,43 +62,37 @@ public class AccountService extends AbstractService implements VaultSubject {
 
         User activeUser = userRepo.getUserByUsername(request.getUser());
 
-
         switch (request.getType().toLowerCase()){
             case "current":
                 accountFactory = new CurrentAccountFactory();
-
                 if(activeUser.getIbanList().get(AccountType.Current) == null) {
                     activeUser.addIban(AccountType.Current, newIban);
                 }else{
                     throw new Exception();
                 }
-
                 break;
             case "savings":
                 accountFactory = new SavingsAccountFactory();
-                activeUser.addIban(AccountType.Savings, newIban);
-
                 if(activeUser.getIbanList().get(AccountType.Savings) == null) {
                     activeUser.addIban(AccountType.Savings, newIban);
                 }else{
                     throw new Exception();
                 }
-
                 break;
             default:
                 throw new Exception();
         }
+        try{
+            Account newAccount = accountFactory.createAccount(request);
+            newAccount.setIban(newIban);
 
-        Account newAccount = accountFactory.createAccount(request);
+            accoRepo.save(newAccount);
+            userRepo.save(activeUser);
 
-        newAccount.setIban(newIban);
-
-        accoRepo.save(newAccount);
-
-        userRepo.save(activeUser);
-
-        vault.increaseBalance(newAccount.getBalance().getAmount());
-
+            vault.increaseBalance(newAccount.getBalance().getAmount());
+        }catch(Exception e){
+            throw new Exception();
+        }
     }
 
     public List<Account> getUserRelatedAccounts(Long id){

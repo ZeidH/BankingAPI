@@ -31,12 +31,12 @@ public class TransactionsApiController {
     @RequestMapping(value = "/Customer/Transactions", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Object> createTransaction(@RequestBody TransactionRequest transaction) throws Exception {
-     //   try{
-            service.createTransaction(transaction);
-    //    }catch(Exception e){
-           // System.out.println(e.getCause());
-            //return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-     //   }
+        try{
+            service.createTransactionFlow(transaction);
+        }catch(Exception e){
+            System.out.println(e.getCause());
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+       }
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 

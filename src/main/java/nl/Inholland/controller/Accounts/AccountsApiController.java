@@ -47,12 +47,12 @@ public class AccountsApiController {
     @RequestMapping(value = "/Employee/Accounts", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Object> registerAccount(@RequestBody(required = true) AccountRequest account) throws Exception {
-     //   try{
+        try{
             accountService.createAccount(account);
-     //   }catch(Exception e){
-         //   System.out.println(e.getMessage());
-           // return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-     //   }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+           return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
