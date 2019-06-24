@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="414b4a4c-183e-4c92-b501-35ea25607a0a" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AbstractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AbstractService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Transactions/TransactionsApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Transactions/TransactionsApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AbstractService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AbstractService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/TransactionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/TransactionService.class" afterDir="false" />
+>>>>>>> moneyFlow_v1
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,11 +42,19 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="55" column="7" lean-forward="true" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+>>>>>>> moneyFlow_v1
               <folding>
                 <element signature="e#1542#1543#0" expanded="true" />
                 <element signature="e#1576#1577#0" expanded="true" />
@@ -58,11 +79,19 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+>>>>>>> moneyFlow_v1
             </state>
           </provider>
         </entry>
@@ -81,6 +110,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-357">
@@ -91,11 +121,18 @@
                 <element signature="e#1519#1520#0" expanded="true" />
                 <element signature="e#4080#4081#0" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultSubject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+>>>>>>> moneyFlow_v1
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-197">
@@ -103,6 +140,16 @@
               <folding>
                 <element signature="e#2993#2994#0" expanded="true" />
                 <element signature="e#3051#3052#0" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1485#1486#0" expanded="true" />
+                <element signature="e#1519#1520#0" expanded="true" />
+>>>>>>> moneyFlow_v1
               </folding>
             </state>
           </provider>
@@ -158,12 +205,20 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/ObservablePostProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultSubject.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AbstractService.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/AsycConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/AsyncConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" />
+=======
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/AsycConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/AsyncConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" />
+>>>>>>> moneyFlow_v1
       </list>
     </option>
   </component>
@@ -421,18 +476,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561344433474</updated>
+<<<<<<< HEAD
       <workItem from="1561344464474" duration="1504000" />
+=======
+      <workItem from="1561344464474" duration="1040000" />
+>>>>>>> moneyFlow_v1
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="2197000" />
+=======
+    <option name="totallyTimeSpent" value="1733000" />
+>>>>>>> moneyFlow_v1
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20735608" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20735608" />
+>>>>>>> moneyFlow_v1
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -442,7 +509,11 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+=======
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+>>>>>>> moneyFlow_v1
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -538,6 +609,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> moneyFlow_v1
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/ObservablePostProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -558,6 +639,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -577,15 +659,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-357">
           <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+>>>>>>> moneyFlow_v1
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1485#1486#0" expanded="true" />
             <element signature="e#1519#1520#0" expanded="true" />
+<<<<<<< HEAD
             <element signature="e#4080#4081#0" expanded="true" />
+=======
+>>>>>>> moneyFlow_v1
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-197">
@@ -593,10 +685,24 @@
           <folding>
             <element signature="e#2993#2994#0" expanded="true" />
             <element signature="e#3051#3052#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+          <folding>
+            <element signature="e#1542#1543#0" expanded="true" />
+            <element signature="e#1576#1577#0" expanded="true" />
+            <element signature="e#5080#5081#0" expanded="true" />
+            <element signature="e#5122#5123#0" expanded="true" />
+            <element signature="e#6819#6820#0" expanded="true" />
+            <element signature="e#6879#6880#0" expanded="true" />
+>>>>>>> moneyFlow_v1
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -604,5 +710,7 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> moneyFlow_v1
   </component>
 </project>
