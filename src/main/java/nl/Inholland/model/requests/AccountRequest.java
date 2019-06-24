@@ -15,5 +15,7 @@ public class AccountRequest {
     private String name;
     private String balance;
     private String type;
+    private String dailyLimit;
+    private String interestRate;
 
 }

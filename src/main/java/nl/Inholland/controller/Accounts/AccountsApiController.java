@@ -12,6 +12,9 @@ import nl.Inholland.model.requests.AccountRequest;
 import nl.Inholland.repository.IbanRepository;
 import nl.Inholland.service.AccountService;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +25,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+
+
 
 @RestController
 public class AccountsApiController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AccountsApiController.class.getName());
 
     private AccountService accountService;
 
@@ -53,13 +61,17 @@ public class AccountsApiController {
         try{
             accountService.createAccount(account);
         }catch(CurrentAccountAlreadyExistsException e){
+            System.out.println(e.getMessage());
            return new ResponseEntity<Object>(HttpStatus.NOT_ACCEPTABLE);
         }catch (SavingsAccountAlreadyExistsException e){
             return new ResponseEntity<Object>(HttpStatus.NOT_ACCEPTABLE);
         }catch (InvalidAccountTypeException e){
+            System.out.println(e.getMessage());
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
         }
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }

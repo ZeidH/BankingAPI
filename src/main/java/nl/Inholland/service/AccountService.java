@@ -59,12 +59,12 @@ public class AccountService extends AbstractService implements VaultSubject {
         Iban newIban;
 
         if(request.getBban() == null){
-            newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()));
-            if(ibanExists(newIban)) throw new IbanAlreadyExistsException("Iban is already in use");
-        }else {
             do {
-                newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()), request.getBban());
-            }while(ibanExists(newIban));
+                newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()));
+            }while(ibanRepo.existsById(newIban.getIbanCode()));
+        }else {
+            newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()), request.getBban());
+            if(ibanRepo.existsById(newIban.getIbanCode())) throw new IbanAlreadyExistsException("Iban is already in use");
         }
 
         User activeUser = userRepo.getUserByUsername(request.getUser());
@@ -115,10 +115,11 @@ public class AccountService extends AbstractService implements VaultSubject {
     private boolean ibanExists(Iban iban){
         try{
             ibanRepo.getOne(iban.getIbanCode());
-            return true;
+
         }catch(NullPointerException e){
             return false;
         }
+        return true;
     }
 
 

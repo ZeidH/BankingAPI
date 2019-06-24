@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 public class CurrentAccount extends Account {
-    private BigDecimal transactionLimit;
     private BigDecimal dailyLimit;
 
  //   public CurrentAccount(String name, Balance balance, AccountStatusEnum status) {

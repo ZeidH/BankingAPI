@@ -9,9 +9,10 @@ public class SavingsAccountFactory implements AccountFactory {
 
     @Override
     public Account createAccount(AccountRequest request) {
-        Account account = new SavingsAccount();
+        SavingsAccount account = new SavingsAccount();
         account.setName(request.getName());
         account.setBalance(new Balance(new BigDecimal(request.getBalance())));
+        account.setInterestRate(new BigDecimal(request.getInterestRate()));
         account.setStatus(AccountStatusEnum.OPEN);
 
         return account;

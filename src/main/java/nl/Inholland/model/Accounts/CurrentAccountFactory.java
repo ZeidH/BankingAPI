@@ -10,9 +10,10 @@ public class CurrentAccountFactory implements AccountFactory {
     @Override
     public Account createAccount(AccountRequest request) {
 
-        Account account = new CurrentAccount();
+        CurrentAccount account = new CurrentAccount();
         account.setBalance(new Balance(new BigDecimal(request.getBalance())));
         account.setName(request.getName());
+        account.setDailyLimit(new BigDecimal(request.getDailyLimit()));
         account.setStatus(AccountStatusEnum.OPEN);
 
         return account;
