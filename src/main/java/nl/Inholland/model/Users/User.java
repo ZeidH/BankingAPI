@@ -2,24 +2,25 @@ package nl.Inholland.model.Users;
 
 import com.sun.istack.Nullable;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import nl.Inholland.enumerations.AccountType;
 import nl.Inholland.model.Accounts.Account;
+import nl.Inholland.model.Accounts.Iban;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(uniqueConstraints =  {@UniqueConstraint(columnNames = {"username"})})
+@Table(uniqueConstraints =  {@UniqueConstraint(columnNames = {"username"})}, name = "Users")
 public abstract class User implements UserDetails {
 
     @Id
@@ -38,8 +39,8 @@ public abstract class User implements UserDetails {
 
 
     @Nullable
-    @OneToMany
-    private List<Account> accounts = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Map<AccountType,Iban> ibanList = new HashMap<>();
 
     public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday) {
         this.firstName = firstName;
@@ -52,6 +53,12 @@ public abstract class User implements UserDetails {
         this.birthday = birthday;
         addAuthority();
     }
+
+    public void addIban(AccountType type, Iban iban){
+        ibanList.put(type, iban);
+    }
+
+    /*
 
     public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday,List<Account> accounts) {
         this.firstName = firstName;
@@ -70,6 +77,9 @@ public abstract class User implements UserDetails {
         this.accounts.add(accountsItem);
         return this;
     }
+
+     */
+
     abstract void addAuthority();
 
     @ElementCollection(fetch = FetchType.EAGER)

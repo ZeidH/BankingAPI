@@ -14,12 +14,4 @@ public class SavingsAccount extends Account{
 
     private BigDecimal interestRate = new BigDecimal(0.10);
 
-    @OneToOne
-    private Account ownerAccount;
-
-    public SavingsAccount(Account ownerAccount) {
-        this.ownerAccount = ownerAccount;
-        this.iban = ownerAccount.getIban();
-    }
-
 }

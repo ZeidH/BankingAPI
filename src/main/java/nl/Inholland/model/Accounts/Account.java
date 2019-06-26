@@ -1,42 +1,50 @@
 package nl.Inholland.model.Accounts;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.sun.istack.Nullable;
+import lombok.*;
 import nl.Inholland.enumerations.AccountStatusEnum;
 import nl.Inholland.model.Transactions.Transaction;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "account_seq", initialValue = 0, allocationSize=1)
+@Table(name = "Accounts")
+@SequenceGenerator(name = "account_seq", initialValue = 1, allocationSize=1)
 public abstract class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
-    private Long id;
-    private BigDecimal balance;
-    private String name;
-    private AccountStatusEnum status;
+    @Column(name = "account_id")
+    @Setter(AccessLevel.NONE)
+    protected Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "iban_account", referencedColumnName = "ibanCode")
-    protected Iban iban;
+    protected String name;
+    protected AccountStatusEnum status;
 
-    @OneToMany
-    private List<Transaction> transactions;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "iban", nullable = false)
+    private Iban iban;
 
-    public Account(String name,BigDecimal balance, Iban iban, AccountStatusEnum status) {
-        this.balance = balance;
-        this.name = name;
-        this.status = status;
-        this.iban = iban;
-        this.transactions = transactions;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    protected Balance balance;
+
+    @ManyToMany
+    @JoinTable(
+            name = "account_has_transaction",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "transaction_id"))
+    protected List<Transaction> transactions = new ArrayList<>();
+
+    public void addTransaction(Transaction transaction){
+        transactions.add(transaction);
     }
+
 }
-
-
-

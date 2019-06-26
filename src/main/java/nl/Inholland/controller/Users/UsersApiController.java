@@ -60,11 +60,10 @@ public class UsersApiController {
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
 
-    // May not be needed depending on how User works with IBAN...
-    @RequestMapping(value = "/Employee/Users", method = RequestMethod.PUT)
-    @ResponseBody
-    public ResponseEntity<Void> attachAccountToUser(@RequestParam(value = "userId", required = true) long userId, @RequestParam(value = "accountId", required = true) long accountId){
-        service.attachAccount(userId, accountId);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
+//  //  public ResponseEntity<Void> validateRequest(){
+//        return new ResponseEntity<Void>(HttpStatus.OK);
+//    }
 }

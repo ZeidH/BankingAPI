@@ -1,25 +1,27 @@
 package nl.Inholland.service;
 
+import com.google.common.base.Joiner;
 import nl.Inholland.QueryBuilder.GenericSpecificationsBuilder;
 import nl.Inholland.QueryBuilder.SearchOperation;
-import nl.Inholland.repository.AccountRepository;
-import nl.Inholland.repository.IbanRepository;
-import nl.Inholland.repository.TransactionRepository;
-import nl.Inholland.repository.UserRepository;
-import com.google.common.base.Joiner;
+import nl.Inholland.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public abstract class AbstractService {
+public abstract class AbstractService{
 
     protected final UserRepository userRepo;
     protected final TransactionRepository tranRepo;
     protected final AccountRepository accoRepo;
     protected final IbanRepository ibanRepo;
 
+
+    protected VaultObserver vault;
+
+    @Autowired
     public AbstractService(UserRepository userRepo, TransactionRepository tranRepo, AccountRepository accoRepo, IbanRepository ibanRepo) {
         this.userRepo = userRepo;
         this.tranRepo = tranRepo;
@@ -38,4 +40,6 @@ public abstract class AbstractService {
         }
         return builder;
     }
+
+
 }
