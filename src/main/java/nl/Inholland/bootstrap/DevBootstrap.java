@@ -6,6 +6,7 @@ import nl.Inholland.model.Transactions.Transaction;
 import nl.Inholland.model.Users.Customer;
 import nl.Inholland.model.Users.Employee;
 import nl.Inholland.model.Users.User;
+import nl.Inholland.model.requests.AccountRequest;
 import nl.Inholland.repository.AccountRepository;
 import nl.Inholland.repository.IbanRepository;
 import nl.Inholland.repository.TransactionRepository;
@@ -36,7 +37,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private CurrentAccountFactory currentAccountFactory;
+    private CurrentAccountFactory currentAccountFactory = new CurrentAccountFactory();
 
     @Autowired
     public DevBootstrap(AccountService accountService, TransactionService transactionService) {
@@ -52,17 +53,13 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
 
-
         User userBart = new Customer("Bart", "fried","potato@hotmail.com", "1234566", "bartS", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");
 
         User userLisa = new Customer("Lisa", "fried","potato@hotmail.com", "1234566", "lisa", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");
 
-
-
-
-
         userRepository.save(userBart);
         userRepository.save(userLisa);
+
 
 
         User employee = new Employee("Bart", "fried","potato@hotmail.com", "1234566", "bart", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");

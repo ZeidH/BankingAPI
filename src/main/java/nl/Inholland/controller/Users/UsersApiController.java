@@ -92,12 +92,6 @@ public class UsersApiController {
 
     }
 
-    @RequestMapping(value = "/Employee/Users", method = RequestMethod.PUT)
-    @ResponseBody
-    public ResponseEntity<Void> attachAccountToUser(@RequestParam(value = "userId", required = true) long userId, @RequestParam(value = "accountId", required = true) long accountId){
-      //  service.attachAccount(userId, accountId);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
 
 //  //  public ResponseEntity<Void> validateRequest(){
 //        return new ResponseEntity<Void>(HttpStatus.OK);

@@ -89,7 +89,7 @@ public class AccountService extends AbstractService implements VaultSubject {
             default:
                 throw new InvalidAccountTypeException("Type of account not recognized");
         }
-        try{
+
             Account newAccount = accountFactory.createAccount(request);
             newAccount.setIban(newIban);
 
@@ -97,14 +97,11 @@ public class AccountService extends AbstractService implements VaultSubject {
             userRepo.save(activeUser);
 
             vault.increaseBalance(newAccount.getBalance().getAmount());
-        }catch(Exception e){
-            throw new Exception("An error ocurred while setting up your account");
-        }
     }
 
-    public List<Account> getUserRelatedAccounts(Long id){
+    public List<Account> getUserRelatedAccounts(String username){
         List<Account> accounts = new ArrayList<>();
-        User activeUser = userRepo.getOne(id);
+        User activeUser = userRepo.getUserByUsername(username);
 
         for (Map.Entry<AccountType, Iban> entry : activeUser.getIbanList().entrySet()) {
             accounts.add(accoRepo.getAccountByIban(entry.getValue()));

@@ -104,10 +104,10 @@ public class AccountsApiController {
 
     ///----------------------------- CUSTOMER -----------------------------------------------///
 
-    @RequestMapping(value = "/Customer/{id}/Accounts", method = RequestMethod.GET)
+    @RequestMapping(value = "/Customer/{username}/Accounts", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Account>> getUserAccounts(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(accountService.getUserRelatedAccounts(id), HttpStatus.OK);
+    public ResponseEntity<List<Account>> getUserAccounts(@PathVariable("username") String username) {
+        return new ResponseEntity<>(accountService.getUserRelatedAccounts(username), HttpStatus.OK);
     }
 
 }
