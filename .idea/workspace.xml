@@ -1,75 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="414b4a4c-183e-4c92-b501-35ea25607a0a" name="Default Changelist" comment="">
+    <list default="true" id="8a76f94e-3c7e-4b11-a833-f0f1ccb7280e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/bootstrap/DevBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/bootstrap/DevBootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/APISecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/APISecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/swagger-spring.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/GenericSpecification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/GenericSpecification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/GenericSpecificationsBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/GenericSpecificationsBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/SearchOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/SearchOperation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/SpecSearchCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/SpecSearchCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/Specifications/AccountSpecification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/Specifications/AccountSpecification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/Specifications/TransactionSpecification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/Specifications/TransactionSpecification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/Specifications/UserSpecification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/QueryBuilder/Specifications/UserSpecification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/bootstrap/DevBootstrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/bootstrap/DevBootstrap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/configuration/APISecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/configuration/APISecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/configuration/ApplicationContextProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/configuration/ApplicationContextProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/configuration/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/configuration/WebConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Accounts/AccountsApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Accounts/AccountsApiController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Transactions/TransactionsApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Transactions/TransactionsApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Users/UsersApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/controller/Users/UsersApiController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/AccountStatusEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/AccountStatusEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/AccountType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/AccountType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/BankCodeEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/BankCodeEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/CategoryEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/CategoryEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/CountryCodeEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/CountryCodeEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/StatusEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/enumerations/StatusEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/filters/JwtTokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/filters/JwtTokenFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/filters/LargeRequestFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/filters/LargeRequestFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/AccountFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/AccountFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/Balance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/Balance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/CurrentAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/CurrentAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/CurrentAccountFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/CurrentAccountFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/Iban.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/Iban.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/IbanGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/IbanGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/SavingsAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/SavingsAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/SavingsAccountFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Accounts/SavingsAccountFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/Deposit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/Deposit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/DepositFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/DepositFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/TransactionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/TransactionFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/TransactionFlow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/TransactionFlow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/TransactionFlowFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/TransactionFlowFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/Withdrawal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/Withdrawal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/WithdrawalFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Transactions/WithdrawalFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Users/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Users/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Users/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Users/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Users/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/Users/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/requests/AccountRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/requests/AccountRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/requests/TransactionRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/requests/TransactionRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/model/requests/UserRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/model/requests/UserRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/repository/AccountRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/repository/AccountRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/repository/IbanRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/repository/IbanRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/security/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/security/CustomUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/security/InvalidJwtAuthenticationException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/security/InvalidJwtAuthenticationException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/security/JwtConfigurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/security/JwtConfigurer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/security/JwtTokenProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/security/JwtTokenProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AbstractService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AbstractService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/AccountService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/ObservablePostProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/ObservablePostProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/TransactionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/TransactionService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/VaultObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/VaultObserver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/VaultService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/VaultService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/Inholland/service/VaultSubject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/Inholland/service/VaultSubject.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -85,23 +23,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="172" column="60" selection-start-line="172" selection-start-column="56" selection-end-line="172" selection-end-column="60" />
+            <state relative-caret-position="257">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
               <folding>
-                <element signature="e#7376#7377#0" expanded="true" />
-                <element signature="e#7436#7437#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/APISecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="58" column="94" selection-start-line="58" selection-start-column="94" selection-end-line="58" selection-end-column="94" />
+            <state relative-caret-position="128">
+              <caret line="62" column="76" lean-forward="true" selection-start-line="62" selection-start-column="76" selection-end-line="62" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/GenericSpecificationsBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/SearchOperation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -109,17 +64,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/bootstrap/DevBootstrap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="57" column="150" selection-start-line="57" selection-start-column="150" selection-end-line="57" selection-end-column="150" />
+            <state relative-caret-position="80">
+              <caret line="55" column="42" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="988">
-              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="209">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/AuthenticationFacade.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/CustomUserDetailsService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,63 +110,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/SpecSearchCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="56" />
-              <folding>
-                <element signature="e#897#898#0" expanded="true" />
-                <element signature="e#935#936#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountsSearch.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="117" selection-start-line="117" selection-end-line="117" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
-              <caret line="91" selection-start-line="91" selection-end-line="91" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4895#4896#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/CurrentAccountFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountOverview.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/TransactionFlowFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="208">
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -220,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/exceptions/SendingFromSavingsToThirdPartyException.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/TransactionRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/AccountRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/repository/IbanRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/CurrentAccount.java" />
@@ -231,13 +159,15 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/bootstrap/DevBootstrap.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="975" />
-    <option name="height" value="1048" />
+    <option name="x" value="-14" />
+    <option name="width" value="982" />
+    <option name="height" value="1034" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -247,19 +177,28 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="InhollandBank" type="58d84e3e:PackageViewProjectNode" />
+              <item name="swagger-spring" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="InhollandBank" type="58d84e3e:PackageViewProjectNode" />
+              <item name="swagger-spring" type="616d4139:PackageViewModuleNode" />
+              <item name="nl.Inholland" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
               <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
@@ -322,16 +261,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Inholland" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Accounts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="Transactions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -351,33 +280,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Inholland" type="462c0819:PsiDirectoryNode" />
-              <item name="enumerations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
-              <item name="filters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -387,8 +289,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Inholland" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Accounts" type="462c0819:PsiDirectoryNode" />
+              <item name="QueryBuilder" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
@@ -397,17 +298,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Inholland" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="requests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="QueryBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="Specifications" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
@@ -440,10 +332,26 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,7 +362,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -508,14 +416,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25161000" />
+    <option name="totallyTimeSpent" value="28716000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1431" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16375838" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16314639" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -523,10 +430,11 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33144477" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33144477" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39937598" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -537,7 +445,7 @@
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.32936078" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.57675904" weight="0.15722379" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.57675904" weight="0.5397816" />
       <window_info anchor="bottom" id="Database Console" order="15" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.020134227" />
@@ -550,6 +458,41 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" weight="0.32995737" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18718135" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32917318" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3268206" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.349454" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3285968" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -559,59 +502,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/ObservablePostProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/TransactionFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/Deposit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/exceptions/AccountDoesNotExistException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#151#152#0" expanded="true" />
-            <element signature="e#181#182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/exceptions/CurrentAccountAlreadyExistsException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -714,13 +604,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/CreateAccount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/CreateAccount.js" />
     <entry file="file://$PROJECT_DIR$/../InhollandBank/src/service/UsersService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -728,23 +612,6 @@
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="89" column="30" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -790,20 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/AuthenticationFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/CustomUserDetailsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/InvalidJwtAuthenticationException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -813,15 +666,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/JwtConfigurer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="192">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/JwtTokenProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="225">
+          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -872,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/bootstrap/DevBootstrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="57" column="150" selection-start-line="57" selection-start-column="150" selection-end-line="57" selection-end-column="150" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
@@ -897,13 +743,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountOverview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountOverview.js" />
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/TransactionFlowFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -932,13 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/APISecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="58" column="94" selection-start-line="58" selection-start-column="94" selection-end-line="58" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -950,10 +783,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountsSearch.js">
+    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountsSearch.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/SpecSearchCriteria.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        <state relative-caret-position="208">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/SearchOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/GenericSpecificationsBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AbstractService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="38" column="59" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/Specifications/UserSpecification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/GenericSpecification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/bootstrap/DevBootstrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/AuthenticationFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/security/CustomUserDetailsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/APISecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="62" column="76" lean-forward="true" selection-start-line="62" selection-start-column="76" selection-end-line="62" selection-end-column="76" />
         </state>
       </provider>
     </entry>
