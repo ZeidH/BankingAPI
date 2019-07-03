@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000", "https://app.swaggerhub.com/apis/Plez/BankingAPI/1.4, https://inhollandbank-divqyq.firebaseapp.com" )
+                .allowedOrigins("http://localhost:3000", "https://app.swaggerhub.com/apis/Plez/BankingAPI/1.4", "https://inhollandbank-divqyq.firebaseapp.com" )
                 .allowedMethods("PUT", "DELETE", "POST", "GET", "OPTIONS")
                 .allowCredentials(true).maxAge(3600);
     }
