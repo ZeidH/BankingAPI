@@ -31,7 +31,13 @@ public class UsersApiController {
     @RequestMapping(value = "/Employee/Users/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<User> getUser( @PathVariable("id") Long id){
-        return new ResponseEntity<>(service.getUser(id), HttpStatus.OK);
+        User user;
+        try{
+           user = service.getUser(id);
+        }catch(NoSuchElementException exp){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 

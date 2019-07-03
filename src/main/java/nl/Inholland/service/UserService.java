@@ -11,6 +11,7 @@ import nl.Inholland.repository.IbanRepository;
 import nl.Inholland.repository.TransactionRepository;
 import nl.Inholland.repository.UserRepository;
 import nl.Inholland.security.JwtTokenProvider;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class UserService extends AbstractService {
@@ -68,7 +70,7 @@ public class UserService extends AbstractService {
     }
 
     public User getUser(Long id) {
-        User user = userRepo.getOne(id);
+        User user = userRepo.findById(id).orElse(null);
         if (user != null) {
             return user;
         } else {
