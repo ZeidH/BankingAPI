@@ -39,9 +39,9 @@ public class UserService extends AbstractService {
 
     public void registerUser(UserRequest userRequest) {
         User newUser;
-        if(userRequest.getInitRole() == "ROLE_EMPLOYEE"){
+        if(userRequest.getInitRole().equals("ROLE_EMPLOYEE")){
             newUser = new Employee();
-        }else if (userRequest.getInitRole() == "ROLE_CUSTOMER"){
+        }else if (userRequest.getInitRole().equals("ROLE_CUSTOMER")){
             newUser = new Customer();
         }else{
             throw new NoSuchElementException();
