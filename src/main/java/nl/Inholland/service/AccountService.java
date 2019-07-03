@@ -99,10 +99,15 @@ public class AccountService extends AbstractService implements VaultSubject {
             vault.increaseBalance(newAccount.getBalance().getAmount());
     }
 
+    // NOT TESTED
     public List<Account> getUserRelatedAccounts(String username){
         List<Account> accounts = new ArrayList<>();
-        User activeUser = userRepo.getUserByUsername(username);
-
+        User activeUser;
+        try{
+            activeUser = userRepo.getUserByUsername(username);
+        }catch (Exception exp){
+            throw new NoSuchElementException();
+        }
         for (Map.Entry<AccountType, Iban> entry : activeUser.getIbanList().entrySet()) {
             accounts.add(accoRepo.getAccountByIban(entry.getValue()));
         }
@@ -120,7 +125,7 @@ public class AccountService extends AbstractService implements VaultSubject {
     }
 
 
-    public void deleteAccount(long id) {
+    public void deleteAccount(Long id) {
         accoRepo.delete(accoRepo.getOne(id));
     }
 

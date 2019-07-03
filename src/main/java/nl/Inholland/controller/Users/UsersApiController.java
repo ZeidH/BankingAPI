@@ -20,13 +20,6 @@ public class UsersApiController {
     public UsersApiController(UserService service) {
         this.service = service;
     }
-//      Goes through PUT instead > No way to disable a user
-//    @RequestMapping(value = "/Employee/Users/{id}", method = RequestMethod.DELETE)
-//    @ResponseBody
-//    public ResponseEntity<Void> deleteUser(@RequestParam(value = "id") Long id) {
-//        service.disableUser(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
 
     @RequestMapping(value = "/Employee/Users/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -59,17 +52,14 @@ public class UsersApiController {
         }
     }
 
-//    @RequestMapping(value = "/Employee/Users", method = RequestMethod.PUT)
-//    @ResponseBody
-//    public ResponseEntity<Void> editUser(@RequestBody User user){
-//        service.editUser(user);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-
-
-
-
-//  //  public ResponseEntity<Void> validateRequest(){
-//        return new ResponseEntity<Void>(HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/Employee/Users/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        try{
+            service.disableUser(id);
+        }catch (NoSuchElementException exp){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

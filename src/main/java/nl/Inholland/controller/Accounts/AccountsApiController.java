@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.logging.Level;
 
 
@@ -91,7 +92,7 @@ public class AccountsApiController {
 
     @RequestMapping(value = "/Employee/Accounts/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseEntity<Void> deleteAccount(@PathVariable("id") Integer id) {
+    public ResponseEntity<Void> deleteAccount(@PathVariable("id") Long id) {
         accountService.deleteAccount(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -107,7 +108,14 @@ public class AccountsApiController {
     @RequestMapping(value = "/Customer/{username}/Accounts", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Account>> getUserAccounts(@PathVariable("username") String username) {
-        return new ResponseEntity<>(accountService.getUserRelatedAccounts(username), HttpStatus.OK);
+        List<Account> accounts;
+        try{
+            accounts = accountService.getUserRelatedAccounts(username);
+        }catch (NoSuchElementException exp){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+
+        }
+        return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
 }

@@ -86,16 +86,14 @@ public class UserService extends AbstractService {
             throw new BadCredentialsException("Invalid password!");
         }
     }
-
-    /*
-    public void attachAccount(long userId, long accountId) {
-        userRepo.save(
-                userRepo.getOne(userId)
-                        .addAccountsItem(
-                                accoRepo.getOne(accountId)));
-    }
-
-    public void editUser(User user){
+    public void disableUser(Long id){
+        User user;
+        try{
+            user = this.getUser(id);
+        }catch (NoSuchElementException exp){
+            throw exp;
+        }
+        user.setNotLocked(true);
         userRepo.save(user);
-    }*/
+    }
 }

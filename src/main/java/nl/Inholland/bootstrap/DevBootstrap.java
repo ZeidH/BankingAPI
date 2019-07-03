@@ -63,6 +63,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
 
         User employee = new Employee("Bart", "fried","potato@hotmail.com", "1234566", "bart", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");
+        employee.additionalAuthority("ROLE_CUSTOMER");
         userRepository.save(employee);
 
 

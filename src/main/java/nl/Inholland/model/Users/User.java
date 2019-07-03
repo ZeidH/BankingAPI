@@ -58,28 +58,6 @@ public abstract class User implements UserDetails {
         ibanList.put(type, iban);
     }
 
-    /*
-
-    public User(String firstName, String lastName, String email, String phone, String username, String password, String dateCreated, String birthday,List<Account> accounts) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.username = username;
-        this.password = password;
-        this.dateCreated = dateCreated;
-        this.birthday = birthday;
-        this.accounts = accounts;
-        addAuthority();
-    }
-
-    public User addAccountsItem(Account accountsItem) {
-        this.accounts.add(accountsItem);
-        return this;
-    }
-
-     */
-
     abstract void addAuthority();
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -90,6 +68,9 @@ public abstract class User implements UserDetails {
         return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
     }
 
+    public void additionalAuthority(String authority){
+        roles.add(authority);
+    }
 
     @Override
     public boolean isAccountNonExpired() {

@@ -170,7 +170,8 @@ public class TransactionService extends AbstractService implements VaultSubject 
     }
 
 
-    public List<Transaction> getTransactionsFromAccount(Long id) {
-        return accoRepo.getOne(id).getTransactions();
+    public List<Transaction> getTransactionsFromAccount(String id) {
+        Iban iban = ibanRepo.getOne(id);
+        return accoRepo.getAccountByIban(iban).getTransactions();
     }
 }
