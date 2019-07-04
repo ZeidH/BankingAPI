@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -171,7 +172,7 @@ public class TransactionService extends AbstractService implements VaultSubject 
 
 
     public List<Transaction> getTransactionsFromAccount(String id) {
-        Iban iban = ibanRepo.getOne(id);
+        Iban iban = ibanRepo.findById(id).orElseThrow(NoSuchElementException::new);
         return accoRepo.getAccountByIban(iban).getTransactions();
     }
 }

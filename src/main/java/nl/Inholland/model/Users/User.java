@@ -51,6 +51,7 @@ public abstract class User implements UserDetails {
         this.password = password;
         this.dateCreated = dateCreated;
         this.birthday = birthday;
+        this.isNotLocked = true;
         addAuthority();
     }
 
@@ -74,7 +75,7 @@ public abstract class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
