@@ -3,12 +3,16 @@ package nl.Inholland.model.Transactions;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import nl.Inholland.enumerations.CategoryEnum;
+import nl.Inholland.enumerations.StatusEnum;
 import nl.Inholland.model.Accounts.Iban;
+import nl.Inholland.model.Users.User;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import java.math.BigDecimal;
 
 @SequenceGenerator(name = "transId_seq", initialValue = 10000001)
 @NoArgsConstructor
@@ -37,6 +41,12 @@ public class TransactionFlow extends Transaction{
     }
 
     public void setReceiver(Iban receiver) {
+        this.receiver = receiver;
+    }
+
+    public TransactionFlow(BigDecimal amount, String currency, User creator, CategoryEnum category, StatusEnum status, String dateCreated, Iban sender, Iban receiver) {
+        super(amount, currency, creator, category, status, dateCreated);
+        this.sender = sender;
         this.receiver = receiver;
     }
 }

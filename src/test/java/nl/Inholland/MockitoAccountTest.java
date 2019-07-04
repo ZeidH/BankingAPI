@@ -13,8 +13,10 @@ import nl.Inholland.repository.AccountRepository;
 import nl.Inholland.repository.UserRepository;
 import nl.Inholland.service.AccountService;
 import nl.Inholland.service.UserService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.MockitoAnnotations;
 import org.omg.CORBA.Current;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,11 +34,17 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class MockitoAccountTest {
 
-    @Autowired // What we're testing here is the service layer.
+    @Autowired
     private AccountService service;
 
     @MockBean // Mocked! Doesn't really exists and won't use real data
     private AccountRepository repository;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+    }
+
 
     @Test
     public void getAccountsTest() {
@@ -49,7 +57,21 @@ public class MockitoAccountTest {
 
         when(repository.findAll(spec)).thenReturn(Stream.of(acc).collect(Collectors.toList()));
 
-         assertEquals(1, service.getAccounts("").size());
+        assertEquals(1, service.getAccounts("").size());
+    }
+
+    @Test
+    public void getAccountTest() {
+
+        String search = "";
+        Specification<Account> spec = service.getBuilder(search).build(searchCriteria -> new UserSpecification((SpecSearchCriteria) searchCriteria));
+
+        AccountFactory factory = new CurrentAccountFactory();
+        Account acc = factory.createAccount(new AccountRequest("NL", "INHO", "Personal Account", "30", "50"));
+
+        when(repository.findAll(spec)).thenReturn(Stream.of(acc).collect(Collectors.toList()));
+
+        assertEquals(1, service.getAccounts("").size());
     }
 
 }
