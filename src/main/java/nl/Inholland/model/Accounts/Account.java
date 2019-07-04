@@ -19,6 +19,13 @@ import java.util.List;
 @SequenceGenerator(name = "account_seq", initialValue = 1, allocationSize=1)
 public abstract class Account {
 
+    public Account(String name, AccountStatusEnum status, Iban iban, Balance balance) {
+        this.name = name;
+        this.status = status;
+        this.iban = iban;
+        this.balance = balance;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
     @Column(name = "account_id")
@@ -46,5 +53,7 @@ public abstract class Account {
     public void addTransaction(Transaction transaction){
         transactions.add(transaction);
     }
+
+
 
 }

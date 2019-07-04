@@ -14,7 +14,8 @@ import java.math.BigDecimal;
 public class CurrentAccount extends Account {
     private BigDecimal dailyLimit;
 
- //   public CurrentAccount(String name, Balance balance, AccountStatusEnum status) {
-  //      super(name, balance, status);
-  //  }
+    public CurrentAccount(String name, AccountStatusEnum status, Iban iban, Balance balance, BigDecimal dailyLimit) {
+        super(name, status, iban, balance);
+        this.dailyLimit = dailyLimit;
+    }
 }

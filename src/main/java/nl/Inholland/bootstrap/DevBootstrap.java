@@ -3,6 +3,7 @@ package nl.Inholland.bootstrap;
 import nl.Inholland.enumerations.*;
 import nl.Inholland.model.Accounts.*;
 import nl.Inholland.model.Transactions.Transaction;
+import nl.Inholland.model.Transactions.TransactionFlow;
 import nl.Inholland.model.Users.Customer;
 import nl.Inholland.model.Users.Employee;
 import nl.Inholland.model.Users.User;
@@ -26,25 +27,18 @@ import java.util.List;
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    private AccountService accountService;
-    private TransactionService transactionService;
+
 
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private AccountRepository accountRepository;
+    @Autowired
+    private TransactionRepository transactionRepository;
     @Autowired
     private IbanRepository ibanRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    private CurrentAccountFactory currentAccountFactory = new CurrentAccountFactory();
-
-    @Autowired
-    public DevBootstrap(AccountService accountService, TransactionService transactionService) {
-        this.accountService = accountService;
-        this.transactionService = transactionService;
-    }
-
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -60,12 +54,35 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         userRepository.save(userBart);
         userRepository.save(userLisa);
 
+        Iban ibanBart = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO, "1111111111");
+        Iban ibanLisa = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO, "2222222222");
 
+        userBart.addIban(AccountType.Current, ibanBart);
+        userLisa.addIban(AccountType.Current, ibanLisa);
+
+
+        Account  accountBart = new CurrentAccount("Bart's current account", nl.Inholland.enumerations.AccountStatusEnum.OPEN, ibanBart, new Balance(new BigDecimal(30)), new BigDecimal(100));
+        Account  accountLisa = new CurrentAccount("Lisa's current account", nl.Inholland.enumerations.AccountStatusEnum.OPEN, ibanLisa, new Balance(new BigDecimal(30)), new BigDecimal(100));
+
+        accountRepository.save(accountBart);
+        accountRepository.save(accountLisa);
+
+
+        userRepository.save(userBart);
+        userRepository.save(userLisa);
+
+        Transaction trans_1 = new TransactionFlow(new BigDecimal(5), "EUR", CategoryEnum.OTHER, StatusEnum.PROCESSED, "04-06-19", userBart, ibanBart, ibanLisa);
+
+        transactionRepository.save(trans_1);
+
+        accountBart.addTransaction(trans_1);
+        accountLisa.addTransaction(trans_1);
+
+        accountRepository.save(accountBart);
+        accountRepository.save(accountLisa);
 
         User employee = new Employee("Bart", "fried","potato@hotmail.com", "1234566", "bart", passwordEncoder.encode("1234"), "9-6-2019", "8-6-2019");
         employee.additionalAuthority("ROLE_CUSTOMER");
         userRepository.save(employee);
-
-
     }
 }

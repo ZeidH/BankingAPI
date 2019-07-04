@@ -24,6 +24,15 @@ import java.util.List;
 @Setter
 public abstract class Transaction {
 
+    public Transaction(BigDecimal amount, String currency, CategoryEnum category, StatusEnum status, String dateCreated, User creator) {
+        this.amount = amount;
+        this.currency = currency;
+        this.category = category;
+        this.status = status;
+        this.dateCreated = dateCreated;
+        this.creator = creator;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transId_seq")
     @Column(name = "transaction_id")
