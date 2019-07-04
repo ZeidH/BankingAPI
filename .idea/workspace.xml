@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a76f94e-3c7e-4b11-a833-f0f1ccb7280e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/CurrentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/CurrentAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/SavingsAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/TransactionFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/TransactionFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/Balance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/Balance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/AccountRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/AccountRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoAccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoAccountTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoTransactionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoTransactionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,43 +25,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/App.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-663">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoAccountTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204">
-              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+            <state relative-caret-position="189">
+              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,20 +39,80 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/model/TransactionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="238">
+              <caret line="28" column="170" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="170" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2460#2461#0" expanded="true" />
+                <element signature="e#2536#2537#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
+              <folding>
+                <element signature="e#5671#5672#0" expanded="true" />
+                <element signature="e#5713#5714#0" expanded="true" />
+                <element signature="e#7314#7315#0" expanded="true" />
+                <element signature="e#7341#7342#0" expanded="true" />
+                <element signature="e#7440#7441#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoUserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="42" column="120" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="120" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-124">
+              <caret line="55" column="18" lean-forward="true" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoTransactionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
+            <state relative-caret-position="400">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/TransactionRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -88,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="910">
+              <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,28 +130,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/TransactionFlow.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/controller/TransactionsControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="45" lean-forward="true" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="166" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/CurrentAccount.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="349">
+              <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -153,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/exceptions/AccountDoesNotExistException.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/exceptions/IbanAlreadyExistsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/exceptions/SendingFromSavingsToThirdPartyException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/TransactionRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/repository/IbanRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/CurrentAccountFactory.java" />
@@ -161,23 +174,26 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/APISecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/bootstrap/DevBootstrap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Users/UsersApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/ApplicationContextProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/WebConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/AccountRequest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoTransactionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/Account.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/CurrentAccount.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/SavingsAccount.java" />
-        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoAccountTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Transactions/TransactionFlow.java" />
         <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/model/TransactionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/AccountRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/Balance.java" />
+        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/controller/TransactionsControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoAccountTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoTransactionTest.java" />
       </list>
     </option>
   </component>
@@ -243,6 +259,35 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Inholland" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Accounts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Transactions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -253,7 +298,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Inholland" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Transactions" type="462c0819:PsiDirectoryNode" />
+              <item name="Accounts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BankingAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Inholland" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="requests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="InhollandBank" type="b2602c69:ProjectViewProjectNode" />
@@ -348,6 +403,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="nl.Inholland.controller" />
       <recent name="nl.Inholland.model" />
       <recent name="nl.Inholland" />
       <recent name="nl.Inholland.exceptions" />
@@ -365,40 +421,24 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TransactionTest">
-    <configuration name="AccountTest.createAccountsShouldNotBeNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MockitoTransactionTest.incompleteTransactionShouldThrowExeption">
+    <configuration name="AccountsControllerTest.deleteReturnsOk" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swagger-spring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.Inholland.model.*" />
+          <option name="PATTERN" value="nl.Inholland.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.Inholland.model" />
-      <option name="MAIN_CLASS_NAME" value="nl.Inholland.model.AccountTest" />
-      <option name="METHOD_NAME" value="createAccountsShouldNotBeNull" />
+      <option name="PACKAGE_NAME" value="nl.Inholland.controller" />
+      <option name="MAIN_CLASS_NAME" value="nl.Inholland.controller.AccountsControllerTest" />
+      <option name="METHOD_NAME" value="deleteReturnsOk" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountTest.testAccountDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="swagger-spring" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.Inholland.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.Inholland.model" />
-      <option name="MAIN_CLASS_NAME" value="nl.Inholland.model.AccountTest" />
-      <option name="METHOD_NAME" value="testAccountDetails" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MockitoAccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MockitoAccountTest.getAccountsRelatedToUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swagger-spring" />
       <extension name="coverage">
         <pattern>
@@ -408,12 +448,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="nl.Inholland" />
       <option name="MAIN_CLASS_NAME" value="nl.Inholland.MockitoAccountTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="getAccountsRelatedToUserTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MockitoTransactionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MockitoTransactionTest.getTransactionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swagger-spring" />
       <extension name="coverage">
         <pattern>
@@ -423,33 +464,51 @@
       </extension>
       <option name="PACKAGE_NAME" value="nl.Inholland" />
       <option name="MAIN_CLASS_NAME" value="nl.Inholland.MockitoTransactionTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="getTransactionsTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransactionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="swagger-spring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.Inholland.model.*" />
+          <option name="PATTERN" value="nl.Inholland.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.Inholland.model" />
-      <option name="MAIN_CLASS_NAME" value="nl.Inholland.model.TransactionTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="nl.Inholland" />
+      <option name="MAIN_CLASS_NAME" value="nl.Inholland.MockitoTransactionTest" />
+      <option name="METHOD_NAME" value="incompleteTransactionShouldThrowExeption" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionsControllerTest.transactionsShouldReturnJsonArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="swagger-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.Inholland.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.Inholland.controller" />
+      <option name="MAIN_CLASS_NAME" value="nl.Inholland.controller.TransactionsControllerTest" />
+      <option name="METHOD_NAME" value="transactionsShouldReturnJsonArray" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TransactionTest" />
-        <item itemvalue="JUnit.AccountTest.testAccountDetails" />
-        <item itemvalue="JUnit.AccountTest.createAccountsShouldNotBeNull" />
-        <item itemvalue="JUnit.MockitoTransactionTest" />
-        <item itemvalue="JUnit.MockitoAccountTest" />
+        <item itemvalue="JUnit.MockitoTransactionTest.incompleteTransactionShouldThrowExeption" />
+        <item itemvalue="JUnit.AccountsControllerTest.deleteReturnsOk" />
+        <item itemvalue="JUnit.MockitoAccountTest.getAccountsRelatedToUserTest" />
+        <item itemvalue="JUnit.MockitoTransactionTest.getTransactionsTest" />
+        <item itemvalue="JUnit.TransactionsControllerTest.transactionsShouldReturnJsonArray" />
       </list>
     </recent_temporary>
   </component>
@@ -477,45 +536,45 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MockitoUserTest_getUsersTest - 2019.07.03 at 11h 48m 20s.xml">
-      <configuration name="MockitoUserTest.getUsersTest" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 31m 13s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MockitoAccountTest_getAccountsTest - 2019.07.03 at 11h 58m 45s.xml">
-      <configuration name="MockitoAccountTest.getAccountsTest" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 32m 26s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MockitoAccountTest - 2019.07.03 at 12h 04m 18s.xml">
-      <configuration name="MockitoAccountTest" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 33m 41s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MockitoAccountTest - 2019.07.03 at 12h 06m 28s.xml">
-      <configuration name="MockitoAccountTest" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 39m 28s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MockitoAccountTest - 2019.07.03 at 12h 12m 50s.xml">
-      <configuration name="MockitoAccountTest" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 39m 57s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MockitoTransactionTest - 2019.07.03 at 12h 22m 41s.xml">
-      <configuration name="MockitoTransactionTest" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 41m 38s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountTest_createAccountsShouldNotBeNull - 2019.07.04 at 18h 23m 42s.xml">
-      <configuration name="AccountTest.createAccountsShouldNotBeNull" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 42m 53s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountTest_testAccountDetails - 2019.07.04 at 18h 43m 23s.xml">
-      <configuration name="AccountTest.testAccountDetails" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 43m 42s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountTest_testAccountDetails - 2019.07.04 at 18h 43m 47s.xml">
-      <configuration name="AccountTest.testAccountDetails" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 44m 50s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TransactionTest - 2019.07.04 at 19h 28m 16s.xml">
-      <configuration name="TransactionTest" configurationId="JUnit" />
+    <history-entry file="MockitoTransactionTest_incompleteTransactionShouldThrowExeption - 2019.07.05 at 01h 46m 14s.xml">
+      <configuration name="MockitoTransactionTest.incompleteTransactionShouldThrowExeption" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43747000" />
+    <option name="totallyTimeSpent" value="62481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23294243" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23294243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -526,7 +585,7 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33044422" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33044422" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -594,58 +653,23 @@
     <MESSAGE value="test - del appcontext for heroku error" />
     <option name="LAST_COMMIT_MESSAGE" value="test - del appcontext for heroku error" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.1.5.RELEASE/spring-security-config-5.1.5.RELEASE.jar!/org/springframework/security/config/annotation/web/configurers/ExpressionUrlAuthorizationConfigurer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="161" column="96" selection-start-line="161" selection-start-column="86" selection-end-line="161" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountOverview.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../InhollandBank/src/AccountsSearch.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/Specifications/UserSpecification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/GenericSpecification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/GenericSpecificationsBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1024">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/QueryBuilder/SearchOperation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -685,31 +709,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AbstractService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="38" column="59" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/ObservablePostProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="173" column="40" selection-start-line="173" selection-start-column="40" selection-end-line="173" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -740,13 +743,6 @@
           <folding>
             <element signature="e#0#320#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/ApplicationContextProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="25" selection-start-column="2" selection-end-line="23" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -805,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/AccountRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/2.23.4/mockito-core-2.23.4.jar!/org/mockito/junit/MockitoJUnitRunner.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -822,24 +811,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoUserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="42" column="120" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/AccountFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/TransactionRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -854,20 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoTransactionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/SavingsAccountFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -896,16 +857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -940,34 +891,189 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AbstractService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" selection-start-line="15" selection-end-line="18" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/math/BigDecimal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="808" selection-start-line="808" selection-end-line="808" />
+          <folding>
+            <element signature="e#34258#34259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/SavingsAccountFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/AccountRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test-autoconfigure/2.1.5.RELEASE/spring-boot-test-autoconfigure-2.1.5.RELEASE.jar!/org/springframework/boot/test/autoconfigure/web/servlet/MockMvcAutoConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="77" column="19" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+          <folding>
+            <element signature="e#3286#3287#0" expanded="true" />
+            <element signature="e#3324#3325#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/configuration/ApplicationContextProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.1.7.RELEASE/spring-test-5.1.7.RELEASE.jar!/org/springframework/test/web/servlet/request/MockMvcRequestBuilders.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="50" column="54" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Accounts/AccountsApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-606">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/VaultObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/Accounts/Balance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/IllegalArgumentException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <folding>
+            <element signature="e#828#829#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/controller/Transactions/TransactionsApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="35" column="9" selection-start-line="34" selection-start-column="1" selection-end-line="38" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
+            <element signature="e#2536#2537#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/model/TransactionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="238">
+          <caret line="28" column="170" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="170" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoAccountTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/controller/TransactionsControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        <state relative-caret-position="349">
+          <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoUserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        <state relative-caret-position="400">
+          <caret line="42" column="120" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/model/requests/TransactionRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/controller/AccountsControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/model/AccountTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/AccountService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
+        <state relative-caret-position="-124">
+          <caret line="55" column="18" lean-forward="true" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/Inholland/service/TransactionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#5671#5672#0" expanded="true" />
+            <element signature="e#5713#5714#0" expanded="true" />
+            <element signature="e#7314#7315#0" expanded="true" />
+            <element signature="e#7341#7342#0" expanded="true" />
+            <element signature="e#7440#7441#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoAccountTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/nl/Inholland/MockitoTransactionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,5 +1,6 @@
 package nl.Inholland;
 
+import junit.framework.TestCase;
 import nl.Inholland.QueryBuilder.SpecSearchCriteria;
 import nl.Inholland.QueryBuilder.Specifications.UserSpecification;
 import nl.Inholland.enumerations.BankCodeEnum;
@@ -31,6 +32,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -58,5 +61,6 @@ public class MockitoTransactionTest {
 
         assertEquals(1, service.getTransactions("").size());
     }
+
 
 }

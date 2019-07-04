@@ -54,4 +54,17 @@ public class AccountTest {
         Assert.assertEquals(EXPECTED_DAILY_LIMIT, current.getDailyLimit());
         Assert.assertEquals(EXPECTED_INTEREST_RATE, savings.getInterestRate());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void negativeBalanceWillThrowException() {
+        current.getBalance().decreaseBalance(new BigDecimal(329032));
+    }
+
+    @Test
+    public void accountIsIntanceOfAccountTest() {
+        assertTrue(current instanceof Account);
+        assertTrue(savings instanceof Account);
+    }
+
+
 }

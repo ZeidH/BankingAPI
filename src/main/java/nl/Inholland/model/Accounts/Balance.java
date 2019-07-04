@@ -33,9 +33,11 @@ public class Balance {
     }
 
     public void decreaseBalance(BigDecimal quant){
+        if(this.amount.compareTo(quant) == -1){
+            throw new IllegalArgumentException("Not sufficients funds");
+        }
         BigDecimal newAmount = amount.subtract(quant);
         setAmount(newAmount);
     }
-
 
 }
