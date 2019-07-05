@@ -64,11 +64,11 @@ public class AccountService extends AbstractService implements VaultSubject {
 
         Iban newIban;
 
-        if(request.getBban() == null){
+        if(request.getBban() == null){ //if the request object doesn't have a bban then create a random one
             do {
                 newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()));
-            }while(ibanRepo.existsById(newIban.getIbanCode()));
-        }else {
+            }while(ibanRepo.existsById(newIban.getIbanCode())); //check is not currently in use until it is not
+        }else { //otherwise work with the customized bban
             newIban = IbanGenerator.makeIban(CountryCodeEnum.valueOf(request.getCountryCode()), BankCodeEnum.valueOf(request.getBank()), request.getBban());
             if(ibanRepo.existsById(newIban.getIbanCode())) throw new IbanAlreadyExistsException("Iban is already in use");
         }

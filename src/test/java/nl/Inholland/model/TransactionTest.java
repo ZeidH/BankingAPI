@@ -9,11 +9,13 @@ import nl.Inholland.model.Users.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 
 import static org.junit.Assert.assertNotNull;
 
+@SpringBootTest
 public class TransactionTest {
 
 

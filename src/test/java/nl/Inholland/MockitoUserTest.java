@@ -5,10 +5,17 @@ import nl.Inholland.QueryBuilder.Specifications.UserSpecification;
 import nl.Inholland.model.Users.Customer;
 import nl.Inholland.model.Users.User;
 import nl.Inholland.model.requests.UserRequest;
+import nl.Inholland.repository.AccountRepository;
+import nl.Inholland.repository.IbanRepository;
+import nl.Inholland.repository.TransactionRepository;
 import nl.Inholland.repository.UserRepository;
+import nl.Inholland.service.TransactionService;
 import nl.Inholland.service.UserService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,11 +32,24 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class MockitoUserTest {
 
-    @Autowired // What we're testing here is the service layer.
+    @InjectMocks // What we're testing here is the service layer.
+    @Autowired
     private UserService service;
 
     @MockBean // Mocked! Doesn't really exists and won't use real data
-    private UserRepository repository;
+    private UserRepository userRepo;
+    @MockBean // Mocked! Doesn't really exists and won't use real data
+    private TransactionRepository tranRepo;
+    @MockBean // Mocked! Doesn't really exists and won't use real data
+    private AccountRepository accoRepo;
+    @MockBean // Mocked! Doesn't really exists and won't use real data
+    private IbanRepository ibanRepo;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+
+    }
 
     @Test
     public void getUsersTest() {
@@ -39,7 +59,7 @@ public class MockitoUserTest {
 
         // the UserRepository here is mocked, it doesn't really exist and won't use the data in the devBootstrap
         // Therefore we must mock its behavior, so the line below is basically saying > When this method is accessed..
-        when(repository.findAll(spec)).thenReturn(Stream
+        when(userRepo.findAll(spec)).thenReturn(Stream
                 // ..I shall return <A list of Users> in this case.
                 .of(new Customer("Bart", "fried","stefano@gmail.com", "1234566", "bart", "1234", "9-6-2019", "8-6-2019")).collect(Collectors.toList()));
 
@@ -50,7 +70,7 @@ public class MockitoUserTest {
     @Test
     public void whenGivenIdReturnUser(){
         User user = new Customer("Bart", "fried","stefano@gmail.com", "1234566", "bart", "1234", "9-6-2019", "8-6-2019");
-        when(repository.findById(10000001L)).thenReturn(java.util.Optional.of(user));
+        when(userRepo.findById(10000001L)).thenReturn(java.util.Optional.of(user));
 
         // And then you call the real access point for the repository which is through the service, to check if it works
         assertEquals(user, service.getUser(10000001L));
