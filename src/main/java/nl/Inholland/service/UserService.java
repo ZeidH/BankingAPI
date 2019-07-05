@@ -26,6 +26,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+/*
+ * User service covers actions to be performed for users
+ * Inherits AbstractService for access to all repositories and specification builder
+ * Takes care of encrypted password for login and whether user can login or if its locked
+ */
+
 @Service
 public class UserService extends AbstractService {
     private final JwtTokenProvider jwtTokenProvider;

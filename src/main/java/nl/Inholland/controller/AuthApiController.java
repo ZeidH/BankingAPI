@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Handles endpoint Login
+ */
+
 @RestController
 public class AuthApiController {
 
@@ -41,7 +45,6 @@ public class AuthApiController {
     @RequestMapping(value = "/Refresh", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> refresh() {
-
         return new ResponseEntity<>("todo", HttpStatus.OK);
     }
 

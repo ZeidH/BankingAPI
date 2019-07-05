@@ -6,6 +6,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+/*
+ * Finds a user entity based on the username and can be overridden to customize the process of finding the user
+ * Used by the JwtTokenProvider to load details about the user during authentication..
+ */
+
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 

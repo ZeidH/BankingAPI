@@ -1,6 +1,7 @@
-package nl.Inholland;
+package nl.Inholland.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import nl.Inholland.App;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

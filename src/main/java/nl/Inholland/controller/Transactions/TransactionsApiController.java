@@ -1,6 +1,5 @@
 package nl.Inholland.controller.Transactions;
 
-
 import nl.Inholland.model.Transactions.Transaction;
 import nl.Inholland.model.requests.TransactionRequest;
 import nl.Inholland.service.TransactionService;
@@ -11,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
+
+/*
+ * Handles endpoints for Transactions
+ */
 
 @RestController
 @Transactional

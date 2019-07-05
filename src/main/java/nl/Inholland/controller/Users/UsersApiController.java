@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/*
+ * Handles endpoints for Users
+ */
+
 @RestController
 public class UsersApiController {
 

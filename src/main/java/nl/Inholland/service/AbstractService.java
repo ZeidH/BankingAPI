@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+ * Abstract service has an instance of all repositories to be used by different services
+ * for increased flexibility
+ */
+
 @Service
 public abstract class AbstractService{
 
@@ -29,6 +34,8 @@ public abstract class AbstractService{
         this.ibanRepo = ibanRepo;
     }
 
+
+    //Define pattern for all search functions, generic covers all usages of specificationsbuilder
     public <T> GenericSpecificationsBuilder getBuilder(T search) {
         GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")

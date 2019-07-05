@@ -10,6 +10,15 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/*
+ * The JwtTokenFilter is applied to each endpoint with exception of the login endpoint.
+ *
+ * Check for access token in Authorization header. If Access token is found in the header,
+ * delegate authentication to JwtTokenProvider otherwise throw authentication exception
+ *
+ * Invokes success or failure strategies based on the outcome of authentication process performed by JwtTokenProvider
+ */
+
 @Component
 @Order(1)
 public class JwtTokenFilter implements Filter {

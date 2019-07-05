@@ -24,6 +24,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Fills initial in memory database
+ */
+
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 

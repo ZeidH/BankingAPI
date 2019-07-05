@@ -69,18 +69,17 @@ public class AccountsControllerTest {
 
         mvc.perform(get("/Employee/Accounts"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name").value("Bank"));
     }
 
     @Test
     public void givenAccountsShouldReturnJsonArray() throws Exception {
-        List<Account> accounts = Arrays.asList(current);
+        List<Account> accounts = Arrays.asList(current, savings);
         given(service.getAccounts("")).willReturn(accounts);
 
         mvc.perform(get("/Employee/Accounts"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(jsonPath("$", hasSize(2)));
       }
 
     @Test
