@@ -4,6 +4,7 @@ import nl.Inholland.QueryBuilder.SpecSearchCriteria;
 import nl.Inholland.QueryBuilder.Specifications.UserSpecification;
 import nl.Inholland.model.Users.Customer;
 import nl.Inholland.model.Users.User;
+import nl.Inholland.model.requests.UserRequest;
 import nl.Inholland.repository.UserRepository;
 import nl.Inholland.service.UserService;
 import org.junit.Test;
@@ -44,6 +45,15 @@ public class MockitoUserTest {
 
         // And then you call the real access point for the repository which is through the service, to check if it works
         assertEquals(1, service.getUsers("").size());
+    }
+
+    @Test
+    public void whenGivenIdReturnUser(){
+        User user = new Customer("Bart", "fried","stefano@gmail.com", "1234566", "bart", "1234", "9-6-2019", "8-6-2019");
+        when(repository.findById(10000001L)).thenReturn(java.util.Optional.of(user));
+
+        // And then you call the real access point for the repository which is through the service, to check if it works
+        assertEquals(user, service.getUser(10000001L));
     }
 
 }

@@ -13,9 +13,11 @@ import nl.Inholland.repository.UserRepository;
 import nl.Inholland.security.JwtTokenProvider;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.*;
+import org.springframework.security.core.SpringSecurityMessageSource;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -80,10 +82,37 @@ public class UserService extends AbstractService {
 
     public String auth(String username, String rawPassword) {
         User user = userRepo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("username " + username + "not found"));
+        check(user);
         if (passwordEncoder.matches(rawPassword, user.getPassword())) {
             return jwtTokenProvider.createToken(username, user.getRoles());
         } else {
             throw new BadCredentialsException("Invalid password!");
+        }
+    }
+    protected final MessageSourceAccessor messages = SpringSecurityMessageSource
+            .getAccessor();
+
+    private void check(UserDetails user) {
+        if (!user.isAccountNonLocked()) {
+            throw new LockedException(messages.getMessage(
+                    "AccountStatusUserDetailsChecker.locked", "User account is locked"));
+        }
+
+        if (!user.isEnabled()) {
+            throw new DisabledException(messages.getMessage(
+                    "AccountStatusUserDetailsChecker.disabled", "User is disabled"));
+        }
+
+        if (!user.isAccountNonExpired()) {
+            throw new AccountExpiredException(
+                    messages.getMessage("AccountStatusUserDetailsChecker.expired",
+                            "User account has expired"));
+        }
+
+        if (!user.isCredentialsNonExpired()) {
+            throw new CredentialsExpiredException(messages.getMessage(
+                    "AccountStatusUserDetailsChecker.credentialsExpired",
+                    "User credentials have expired"));
         }
     }
     public void disableUser(Long id){
@@ -93,7 +122,7 @@ public class UserService extends AbstractService {
         }catch (NoSuchElementException exp){
             throw exp;
         }
-        user.setNotLocked(true);
+        user.setNotLocked(false);
         userRepo.save(user);
     }
 }
