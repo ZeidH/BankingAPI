@@ -105,7 +105,6 @@ public class AccountService extends AbstractService implements VaultSubject {
             vault.increaseBalance(newAccount.getBalance().getAmount());
     }
 
-    // NOT TESTED
     public List<Account> getUserRelatedAccounts(String username){
         List<Account> accounts = new ArrayList<>();
         User activeUser;
@@ -126,7 +125,7 @@ public class AccountService extends AbstractService implements VaultSubject {
     }
 
     public void updateAccountStatus(Long id) {
-        Account account = accoRepo.getOne(id);
+        Account account = accoRepo.findById(id).orElseThrow(NoSuchElementException::new);
         if (account.getStatus() == AccountStatusEnum.OPEN){
             account.setStatus(AccountStatusEnum.ClOSED);
         }else{
@@ -136,11 +135,6 @@ public class AccountService extends AbstractService implements VaultSubject {
     }
 
     public Account getAccount(long id) {
-        Account account = accoRepo.getOne(id);
-        if (account != null) {
-            return account;
-        } else {
-            throw new NoSuchElementException();
-        }
+        return accoRepo.findById(id).orElseThrow(NoSuchElementException::new);
     }
 }
