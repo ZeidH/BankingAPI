@@ -28,7 +28,9 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 
-
+/*
+ * Handles endpoints for Accounts
+ */
 
 @RestController
 public class AccountsApiController {

@@ -15,6 +15,13 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+/*
+ * Verifies the access token’s signature or provides JWT token.
+ * Extract identity and authorization claims from Access token and use them to find user.
+ * If Access token is malformed, expired or simply if token is not signed with the appropriate signing key,
+ * Authentication exception will be thrown
+ */
+
 @Component
 public class JwtTokenProvider {
 

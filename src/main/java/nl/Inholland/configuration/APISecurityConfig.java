@@ -20,6 +20,10 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+/*
+ * Extends WebSecurityConfigurerAdapter to provide custom security configuration.
+ */
+
 @Configuration
 @EnableWebSecurity
 public class APISecurityConfig extends WebSecurityConfigurerAdapter {
@@ -40,16 +44,18 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authProvider());
     }
 
+    // configure patterns to define protected/unprotected API endpoints
+    // disabled CSRF protection since no cookies are used.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         filter = new JwtTokenFilter(jwtTokenProvider);
 
-        //@formatter:off
         http
                 .cors()
                 .and()
                 .httpBasic().disable()
                 .csrf().disable()
+                // No session will be created or used by spring security
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
@@ -66,14 +72,16 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.PUT, "/Employee/**").hasRole("EMPLOYEE")
                 .anyRequest().authenticated()
+                // If a user try to access a resource without having enough permissions
+                .and()
+                .exceptionHandling().accessDeniedPage("/Login")
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
-
-        //@formatter:on
     }
 
+    // BCrypt
     @Bean
-    public PasswordEncoder passwordEncoder() { // BCrypt
+    public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
@@ -84,6 +92,4 @@ public class APISecurityConfig extends WebSecurityConfigurerAdapter {
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
-
-
 }

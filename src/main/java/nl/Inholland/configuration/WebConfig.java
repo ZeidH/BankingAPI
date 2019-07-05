@@ -5,6 +5,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/*
+ * Specified which origins are allowed to use the API and the max age of credentials
+ */
+
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
