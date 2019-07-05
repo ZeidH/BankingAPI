@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum AccountType {
     Current("current"),
 
-
     Savings("savings");
 
     private String value;

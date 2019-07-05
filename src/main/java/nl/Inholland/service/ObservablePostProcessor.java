@@ -25,7 +25,6 @@ public class ObservablePostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
-        // NOP
         return o;
     }
 
