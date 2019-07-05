@@ -18,4 +18,13 @@ public class AccountRequest {
     private String dailyLimit;
     private String interestRate;
 
+    public AccountRequest(String countryCode, String bank, String name, String balance, String dailyLimit, String interestRate) {
+        this.countryCode = countryCode;
+        this.bank = bank;
+        this.name = name;
+        this.balance = balance;
+        this.dailyLimit = dailyLimit;
+        this.interestRate = interestRate;
+    }
+
 }

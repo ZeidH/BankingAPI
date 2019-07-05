@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 public class CurrentAccount extends Account {
+
     private BigDecimal dailyLimit;
 
     public CurrentAccount(String name, AccountStatusEnum status, Iban iban, Balance balance, BigDecimal dailyLimit) {

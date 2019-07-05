@@ -49,4 +49,10 @@ public class TransactionFlow extends Transaction{
     public void setReceiver(Iban receiver) {
         this.receiver = receiver;
     }
+
+    public TransactionFlow(BigDecimal amount, String currency, User creator, CategoryEnum category, StatusEnum status, String dateCreated, Iban sender, Iban receiver) {
+        super(amount, currency, creator, category, status, dateCreated);
+        this.sender = sender;
+        this.receiver = receiver;
+    }
 }

@@ -21,6 +21,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -44,10 +45,9 @@ public class TransactionService extends AbstractService implements VaultSubject 
 
     @Async("TransactionTaskExecutor")
     @Transactional
-    public void createTransactionFlow(TransactionRequest request) throws Exception{
+    public void createTransactionFlow(TransactionRequest request) throws Exception, NullPointerException{
 
         User creator = userRepo.getUserByUsername(request.getCreator());
-
         Iban sender = ibanRepo.getOne(request.getSender());
         Iban receiver = ibanRepo.getOne(request.getReceiver());
         transactionFactory = new TransactionFlowFactory(creator, sender, receiver);
@@ -58,7 +58,7 @@ public class TransactionService extends AbstractService implements VaultSubject 
             performTransactionFlow((TransactionFlow) newTransaction);
         }catch (Exception e){
             updateStatus(newTransaction.getId(), StatusEnum.FAILED);
-            throw new Exception("An error ocurred while performing the transaction");
+            throw e;
         }
 
     }
