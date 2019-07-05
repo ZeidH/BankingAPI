@@ -1,11 +1,13 @@
 package nl.Inholland.model.Transactions;
 
 import nl.Inholland.enumerations.StatusEnum;
+import nl.Inholland.model.Accounts.CurrentAccount;
 import nl.Inholland.model.Accounts.Iban;
 import nl.Inholland.model.Users.User;
 import nl.Inholland.model.requests.TransactionRequest;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class TransactionFlowFactory implements TransactionFactory {
 
@@ -30,6 +32,8 @@ public class TransactionFlowFactory implements TransactionFactory {
 
         transaction.setSender(sender);
         transaction.setReceiver(receiver);
+        transaction.setDateCreated(LocalDateTime.now().toString());
+        transaction.setCurrency("EUR");
 
 
         return transaction;
