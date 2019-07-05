@@ -3,8 +3,10 @@ package nl.Inholland.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import junit.framework.TestCase;
 import nl.Inholland.App;
+import nl.Inholland.enumerations.AccountStatusEnum;
 import nl.Inholland.model.Accounts.Account;
 import nl.Inholland.model.Accounts.CurrentAccount;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -66,16 +68,44 @@ public class AccountControllerIT {
     }
 
     @Test
+    public void whenGivenPathIdReturnAccount() {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/Employee/Accounts/1"),
+                HttpMethod.GET, entity, String.class);
+
+        assertNotNull(response.getBody());
+    }
+
+    @Test
+    public void whenGivenAccountIdStatusIsChanged() throws ParseException, IOException, JSONException {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/Employee/Accounts/1"),
+                HttpMethod.PUT, entity, String.class);
+
+        ResponseEntity<String> verify = restTemplate.exchange(
+                createURLWithPort("/Employee/Accounts/1"),
+                HttpMethod.GET, entity, String.class);
+
+        JSONParser helper = new JSONParser();
+        org.json.simple.JSONObject accounts = (org.json.simple.JSONObject) helper.parse(verify.getBody());
+        assertEquals("CLOSED",accounts.get("status"));
+    }
+    @Test
     public void whenGivenAlreadyExistingAccountReturn406() {
         String accountJSON = "{\n" +
                 "  \"countryCode\": \"NL\",\n" +
                 "  \"bank\": \"INHO\",\n" +
-                "  \"bban\": \"1111111111\",\n" +
-                "  \"name\": \"Lisa's current account\",\n" +
-                "  \"status\": \"OPEN\",\n" +
-                "  \"iban\": \"test@bank.com\",\n" +
-                "  \"balance\": \"31631231234\",\n" +
+                "  \"bban\": \"0000000007\",\n" +
+                "  \"user\": \"bart\",\n" +
+                "  \"name\": \"Bart's personal account\",\n" +
+                "  \"balance\": \"100\",\n" +
+                "  \"type\": \"NL\",\n" +
                 "  \"dailyLimit\": \"1000\",\n" +
+                "  \"interestRate\": \"1.5\"\n" +
                 "}";
 
         headers.add("Content-Type", "application/json");
@@ -85,7 +115,7 @@ public class AccountControllerIT {
                 createURLWithPort("/Employee/Accounts"),
                 HttpMethod.POST, entity, String.class);
 
-        TestCase.assertEquals(HttpStatus.NOT_ACCEPTABLE, response.getStatusCode());
+        TestCase.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         headers.remove("Content-Type");
 
     }

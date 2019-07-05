@@ -82,13 +82,23 @@ public class AccountsApiController {
     @RequestMapping(value = "/Employee/Accounts/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Account> getAccount(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(accountService.getAccount(id), HttpStatus.OK);
+        Account account;
+        try{
+            account = accountService.getAccount(id);
+        }catch (NoSuchElementException exp){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/Employee/Accounts/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity<Void> setAccountStatus(@PathVariable("id") Long id) {
-        accountService.updateAccountStatus(id);
+        try{
+            accountService.updateAccountStatus(id);
+        }catch (NoSuchElementException exp){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -99,11 +109,11 @@ public class AccountsApiController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/Employee/Accounts", method = RequestMethod.OPTIONS)
-    @ResponseBody
-    public ResponseEntity<Void> validateRequest(){
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/Employee/Accounts", method = RequestMethod.OPTIONS)
+//    @ResponseBody
+//    public ResponseEntity<Void> validateRequest(){
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     ///----------------------------- CUSTOMER -----------------------------------------------///
 
