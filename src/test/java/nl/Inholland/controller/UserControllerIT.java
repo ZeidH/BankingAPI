@@ -1,6 +1,7 @@
-package nl.Inholland;
+package nl.Inholland.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import nl.Inholland.App;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -100,6 +101,18 @@ public class UserControllerIT {
         List<JSONObject> users = (List<JSONObject>) helper.parse(response.getBody());
         assertEquals(2, users.size());
     }
+    @Test
+    public void searchOnMistypedCriteriaReturnsAllUsers() throws ParseException {
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/Employee/Users?search=username:::patty"),
+                HttpMethod.GET, entity, String.class);
+
+        JSONParser helper = new JSONParser();
+        List<JSONObject> users = (List<JSONObject>) helper.parse(response.getBody());
+        assertEquals(3, users.size());
+    }
 
     @Test
     public void whenGivenPathIdToRetrieveReturnUser() throws ParseException {
@@ -112,6 +125,16 @@ public class UserControllerIT {
         assertNotNull(response.getBody());
     }
     @Test
+    public void whenGivenNonExistingPathIdToRetrieveReturn404() throws ParseException {
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/Employee/Users/10000009"),
+                HttpMethod.GET, entity, String.class);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+    @Test
     public void whenGivenPathIdToDeleteReturn201(){
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
@@ -120,6 +143,16 @@ public class UserControllerIT {
                 HttpMethod.DELETE, entity, String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+    @Test
+    public void whenGivenNonExistingPathIdToDeleteReturn404(){
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/Employee/Users/10000009"),
+                HttpMethod.DELETE, entity, String.class);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
@@ -132,6 +165,49 @@ public class UserControllerIT {
                 HttpMethod.POST, entity, String.class);
 
         assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
+    }
+    @Test
+    public void whenGivenIncompleteUserResult400(){
+        String userJSON = "{\n" +
+                "  \"firstName\": \"John\",\n" +
+                "  \"lastName\": \"Doe\",\n" +
+                "  \"email\": \"test@bank.com\",\n" +
+                "  \"phone\": \"31631231234\",\n" +
+                "  \"username\": \"JohnDoe\",\n" +
+                "  \"password\": \"welkom21\",\n" +
+                "}";
+        headers.add("Content-Type", "application/json");
+        HttpEntity<String> entity = new HttpEntity<String>(userJSON, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/Employee/Users"),
+                HttpMethod.POST, entity, String.class);
+
+        assertEquals(HttpStatus.BAD_REQUEST,response.getStatusCode());
+        headers.remove("Content-Type");
+    }
+    @Test
+    public void whenGivenUserWithInvalidRoleReturn400(){
+        String userJSON = "{\n" +
+                "  \"firstName\": \"John\",\n" +
+                "  \"lastName\": \"Doe\",\n" +
+                "  \"email\": \"test@bank.com\",\n" +
+                "  \"phone\": \"31631231234\",\n" +
+                "  \"username\": \"JohnDoe\",\n" +
+                "  \"password\": \"welkom21\",\n" +
+                "  \"dateCreated\": \"7/3/2019, 9:21:25 PM\",\n" +
+                "  \"birthday\": \"27-11-1998\",\n" +
+                "  \"initRole\": \"ROLE_POTATO\"\n" +
+                "}";
+        headers.add("Content-Type", "application/json");
+        HttpEntity<String> entity = new HttpEntity<String>(userJSON, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                createURLWithPort("/Employee/Users"),
+                HttpMethod.POST, entity, String.class);
+
+        assertEquals(HttpStatus.BAD_REQUEST,response.getStatusCode());
+        headers.remove("Content-Type");
     }
     @Test
     public void whenGivenUserResult201() throws ParseException {

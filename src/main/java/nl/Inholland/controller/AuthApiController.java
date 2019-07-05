@@ -45,7 +45,6 @@ public class AuthApiController {
     @RequestMapping(value = "/Refresh", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> refresh() {
-
         return new ResponseEntity<>("todo", HttpStatus.OK);
     }
 
