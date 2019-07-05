@@ -104,7 +104,11 @@ public class AccountsApiController {
     @RequestMapping(value = "/Employee/Accounts/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity<Void> deleteAccount(@PathVariable("id") Long id) {
-        accountService.deleteAccount(id);
+        try{
+            accountService.deleteAccount(id);
+        }catch (NoSuchElementException exp){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

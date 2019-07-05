@@ -121,7 +121,7 @@ public class AccountService extends AbstractService implements VaultSubject {
 
 
     public void deleteAccount(Long id) {
-        accoRepo.delete(accoRepo.getOne(id));
+        accoRepo.delete(accoRepo.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
     public void updateAccountStatus(Long id) {
