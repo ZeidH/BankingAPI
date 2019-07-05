@@ -114,16 +114,6 @@ public class AccountService extends AbstractService implements VaultSubject {
         return accounts;
     }
 
-    private boolean ibanExists(Iban iban){
-        try{
-            ibanRepo.getOne(iban.getIbanCode());
-
-        }catch(NullPointerException e){
-            return false;
-        }
-        return true;
-    }
-
 
     public void deleteAccount(Long id) {
         accoRepo.delete(accoRepo.getOne(id));
