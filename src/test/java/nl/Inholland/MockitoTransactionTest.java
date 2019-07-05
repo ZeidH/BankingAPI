@@ -81,7 +81,7 @@ public class MockitoTransactionTest {
 
     @Test(expected = Exception.class)
     public void incompleteTransactionShouldThrowExeption() throws Exception{
-        service.createTransactionFlow(new TransactionRequest(null, null, null, null, null));
+        service.createTransactionFlow(new TransactionRequest(null, null, null, null, null, null));
     }
 
 }
