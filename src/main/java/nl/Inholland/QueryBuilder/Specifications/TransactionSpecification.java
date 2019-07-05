@@ -13,7 +13,7 @@ public class TransactionSpecification extends GenericSpecification<Transaction> 
         enumConverter();
     }
 
-    private void enumConverter(){
+    private void enumConverter(){ // Makes it possible to query enums
         Object anEnum1 = CategoryEnum.fromValue(criteria.getValue().toString());
         Object anEnum2 = StatusEnum.fromValue(criteria.getValue().toString());
         if(anEnum1 != null){
