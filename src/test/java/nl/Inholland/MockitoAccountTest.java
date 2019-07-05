@@ -30,6 +30,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -74,27 +75,22 @@ public class MockitoAccountTest {
         assertEquals(1, service.getAccounts("").size());
     }
 
+    @Test
+    public void getAccountsByIdTest(){
+        AccountFactory factory = new CurrentAccountFactory();
+        Account acc = factory.createAccount(new AccountRequest("NL", "INHO", "Personal Account", "30", "50", "1.5"));
+
+        when(accoRepo.getOne(acc.getId())).thenReturn(acc);
+
+        Account testAccount = accoRepo.getOne(acc.getId());
+
+        assertEquals(testAccount.getBalance(), acc.getBalance());
+    }
+
+    @Test(expected = Exception.class)
+    public void incompleteAccountShouldThrowExeption() throws Exception{
+        service.createAccount(new AccountRequest(null, null, null, null, null, null));
+    }
+
 
 }
-
-/*
-
-        User bart = new Customer();
-        bart.setUsername("bart");
-
-        AccountFactory factory = new CurrentAccountFactory();
-        Account current = factory.createAccount(new AccountRequest("NL", "INHO", "Personal Account", "30", "50", "1.5"));
-
-        factory = new SavingsAccountFactory();
-        Account savings = factory.createAccount(new AccountRequest("NL", "INHO", "Savings Account", "30", "50", "1.5"));
-
-        Iban curIban = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO);
-        Iban savIban = IbanGenerator.makeIban(CountryCodeEnum.NL, BankCodeEnum.INHO);
-
-        bart.addIban(AccountType.Current, curIban);
-        bart.addIban(AccountType.Savings, savIban);
-
-        accoRepo.save(current);
-        accoRepo.save(savings);
-        userRepo.save(bart);
- */

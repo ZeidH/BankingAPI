@@ -21,6 +21,7 @@ import nl.Inholland.service.TransactionService;
 import nl.Inholland.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.omg.CORBA.Current;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,7 +41,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class MockitoTransactionTest {
 
-    @Autowired // What we're testing here is the service layer.
+    @InjectMocks // What we're testing here is the service layer.
     private TransactionService service;
 
     @MockBean // Mocked! Doesn't really exists and won't use real data
@@ -62,5 +63,9 @@ public class MockitoTransactionTest {
         assertEquals(1, service.getTransactions("").size());
     }
 
+    @Test(expected = Exception.class)
+    public void incompleteTransactionShouldThrowExeption() throws Exception{
+        service.createTransactionFlow(new TransactionRequest(null, null, null, null, null));
+    }
 
 }
