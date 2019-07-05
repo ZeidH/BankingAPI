@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 import javax.servlet.*;
 import java.io.IOException;
 
+/*
+ * Filters request based on size to prevent overload
+ */
+
 @Log
 @Component
 @Order(2)

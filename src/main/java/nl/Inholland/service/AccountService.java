@@ -30,6 +30,12 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/*
+ * Account service covers actions to be performed for accounts
+ * Inherits AbstractService for access to all repositories and specification builder
+ * Implements vault subject to register vault
+ */
+
 @Service
 public class AccountService extends AbstractService implements VaultSubject {
 

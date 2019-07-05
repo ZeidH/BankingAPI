@@ -28,6 +28,12 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/*
+ * Transaction service covers transactions to be performed
+ * Inherits AbstractService for access to all repositories and specification builder
+ * Checks if requirements for transactions are met and changes transactions status if failed or processed
+ */
+
 @Service
 public class TransactionService extends AbstractService implements VaultSubject {
 

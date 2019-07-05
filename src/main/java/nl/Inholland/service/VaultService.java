@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+/*
+ * Vault service handles actions to be performed for the vault
+ * Inherits AbstractService for access to all repositories and specification builder
+ */
+
 @Service
 public class VaultService extends AbstractService implements VaultObserver {
 

@@ -5,6 +5,10 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/*
+ * ObservablePostProcessor observes made transactions
+ */
+
 @Component
 @Scope("prototype")
 public class ObservablePostProcessor implements BeanPostProcessor {
